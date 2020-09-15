@@ -58,24 +58,37 @@ const App = () => {
   const valuesMax = maxIndexs(vAnswers);
   const personalityMax = maxIndexs(pAnswers);
 
+  const secImg = {
+    values: {
+      "path": `${process.env.PUBLIC_URL}/values.png`,
+      "alt": "価値観診断タイトル"
+    },
+    personality: {
+      "path": `${process.env.PUBLIC_URL}/personality.png`,
+      "alt": "性格診断タイトル"
+    }
+  };
+
   const ROUTES = [
     { path: "/", Component: Start },
-    { path: "/values/top", Component: SectionTop, atrributes: { type: "values" } },
+    { path: "/values/top", Component: SectionTop, atrributes: { type: "values", secImg: secImg } },
     {
       path: "/values/questions/:index", Component: Board, atrributes: {
         questions: vQuestions,
         answers: vAnswers,
         setAnswers: setvAnswers,
-        type: "values"
+        type: "values",
+        secImg: secImg
       }
     },
-    { path: "/personality/top", Component: SectionTop, atrributes: { type: "personality" } },
+    { path: "/personality/top", Component: SectionTop, atrributes: { type: "personality", secImg: secImg } },
     {
       path: "/personality/questions/:index", Component: Board, atrributes: {
         questions: pQuestions,
         answers: pAnswers,
         setAnswers: setpAnswers,
-        type: "personality"
+        type: "personality",
+        secImg: secImg
       }
     },
     {

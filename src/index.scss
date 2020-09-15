@@ -27,7 +27,7 @@ code {
   cursor: pointer;
   position: relative;
   display: inline-block;
-  padding: 1em 2em;
+  padding: .8em 1.5em;
   text-decoration: none;
   color: #FFF;
   background: #35a3fd;/*背景色*/
@@ -39,14 +39,18 @@ code {
     border-bottom: solid 3px #1a74be;
   box-shadow: 0 0 2px rgba(0, 0, 0, 0.30);
   }
+  &_box {
+    width: 90%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;  
+  }
 }
 
-.btn_box {
-  width: 70%;
+.sec-img {
+  width: 60%;
   margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
 }
 
 
