@@ -4,6 +4,7 @@ import { CSSTransition } from 'react-transition-group';
 import Start from "./components/Start";
 import SectionTop from "./components/SectionTop";
 import Board from "./components/Board";
+import Form from "./components/Form";
 import Result from "./components/Result";
 import axios from "axios";
 
@@ -75,6 +76,10 @@ const App = () => {
         answers: pAnswers,
         setAnswers: setpAnswers,
         type: "personality"
+      }
+    },
+    {
+      path: "/form", Component: Form, atrributes: {
       }
     },
     {

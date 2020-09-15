@@ -6,7 +6,7 @@ const FLIP_STYLE = {
     // 前面⇒背面
     entering: {
       transition: 'all .5s ease',
-      transform: 'perspective(25rem) rotateY(-360deg)'
+      transform: 'perspective(25rem) rotateY(360deg)'
     },
     // 背面
     entered: {
@@ -16,7 +16,7 @@ const FLIP_STYLE = {
     // 背面⇒前面
     exiting: {
       transition: 'all .5s ease',
-      transform: 'perspective(25rem) rotateY(-360deg)'
+      transform: 'perspective(25rem) rotateY(360deg)'
     },
     // 前面
     exited: {
@@ -37,7 +37,7 @@ export const Board = ({questions, answers, setAnswers, type}) => {
         setAnswers(newAnswers);
         setFlip(!flip);
         const path = index < questions.length 
-            ? `/${type}/questions/${parseInt(index, 10) + 1}` : type === "values" ? "/personality/top" : "/result"
+            ? `/${type}/questions/${parseInt(index, 10) + 1}` : type === "values" ? "/personality/top" : "/form"
         history.push(path);
     };
 
@@ -69,7 +69,10 @@ export const Board = ({questions, answers, setAnswers, type}) => {
                 <div className="flip-card" style={FLIP_STYLE[state]}>
                     <em>問{index}</em>
                     <h2>{questions[questionIndex].title}</h2>
-                    {buttons}
+                    <div className="btn_box">
+                        {buttons}
+                    </div>
+                    <p>{index}/{questions.length}問目</p>
                 </div>
             )}
             </Transition>
