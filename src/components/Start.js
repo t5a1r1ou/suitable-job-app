@@ -29,10 +29,6 @@ const Start = () => {
                     className="top-logo_item"
                 />
             </div>
-            <img
-                src={`${process.env.PUBLIC_URL}/logo-footer.png`}
-                alt="ロゴフッター"
-            />
         </div>
     )
 };

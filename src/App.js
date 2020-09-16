@@ -125,8 +125,13 @@ const App = () => {
                   classNames="page__item-"
                   unmountOnExit
                 >
-                  <div className="page__item">
+                  <div className="page__item base_box">
                     <Component {...atrributes} />
+                    <img
+                    src={`${process.env.PUBLIC_URL}/logo-footer.png`}
+                    alt="ロゴフッター"
+                    className="footer_img"
+                  />
                   </div>
                 </CSSTransition>
               )}
