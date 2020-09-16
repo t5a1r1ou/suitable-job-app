@@ -4,20 +4,36 @@ import { useHistory } from "react-router-dom";
 const Start = () => {
     const history = useHistory();
     return (
-        <div>
+        <div className="base_box">
             <h1>
-                <img 
-                    src={`${process.env.PUBLIC_URL}/logo.png`}
+                <img
+                    src={`${process.env.PUBLIC_URL}/logo-title.png`}
                     alt="ロゴ"
                     className="top-logo"
                 />
             </h1>
-            <p 
-                className="btn"
-                onClick={() => history.push("/values/top")}
-            >
-                始める 
-            </p>
+            <div className="top-logo_flex">
+                <img
+                    src={`${process.env.PUBLIC_URL}/logo-item_left.png`}
+                    alt="ロゴ"
+                    className="top-logo"
+                />
+                <p
+                    className="btn btn-start"
+                    onClick={() => history.push("/values/top")}
+                >
+                    始める
+                    </p>
+                <img
+                    src={`${process.env.PUBLIC_URL}/logo-item_right.png`}
+                    alt="ロゴ"
+                    className="top-logo"
+                />
+            </div>
+            <img
+                src={`${process.env.PUBLIC_URL}/logo-footer.png`}
+                alt="ロゴフッター"
+            />
         </div>
     )
 };

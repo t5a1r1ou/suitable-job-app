@@ -1,3 +1,16 @@
+@import './reset.scss';
+@import './routeTransition.scss';
+@import './questionsTransition.scss';
+
+
+$breakpoint: 400px;
+
+@mixin breakpoint {
+  @media screen and (min-width: $breakpoint) {
+    @content;
+  }
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -18,16 +31,44 @@ code {
   text-align: center;
 }
 
-.top-logo {
-  margin: 0 auto;
-  max-width: 90%;
+img {
+  max-width: 100%;
+  height: auto;
+  vertical-align: bottom;
+  box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	-o-box-sizing: border-box;
+	-ms-box-sizing: border-box;
 }
+
+.base_box {
+  background-color: #19452d;
+  width: 100%;
+  margin: 0 auto;
+  border-bottom: 10px solid #c9bc9c;
+}
+
+.top-logo {
+  &_flex {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    @include breakpoint {
+      justify-content: center;
+    }
+  }
+  &_box {
+    
+  }
+  
+}
+
 
 .btn {
   cursor: pointer;
-  position: relative;
   display: inline-block;
-  padding: .8em 1.5em;
+  padding: .8rem .7rem;
   text-decoration: none;
   color: #FFF;
   background: #35a3fd;/*背景色*/
@@ -35,6 +76,9 @@ code {
   border-radius: 8px;/*角の丸み*/
   box-shadow: inset 0 2px 0 rgba(255,255,255,0.2), 0 2px 2px rgba(0, 0, 0, 0.19);
   font-weight: bold;
+  @include breakpoint {
+    margin: 0 2rem;
+  }
   :active {
     border-bottom: solid 3px #1a74be;
   box-shadow: 0 0 2px rgba(0, 0, 0, 0.30);
@@ -44,7 +88,7 @@ code {
     margin: 0 auto;
     display: flex;
     flex-direction: column;
-    justify-content: space-around;  
+    justify-content: space-between;  
   }
 }
 
@@ -52,7 +96,3 @@ code {
   width: 60%;
   margin: 0 auto;
 }
-
-
-@import './routeTransition.scss';
-@import './questionsTransition.scss';
