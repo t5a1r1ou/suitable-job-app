@@ -1,6 +1,7 @@
 @import './reset.scss';
 @import './routeTransition.scss';
 @import './questionsTransition.scss';
+@import './fonts/TanukiMagic.ttf';
 
 
 $breakpoint: 400px;
@@ -11,9 +12,14 @@ $breakpoint: 400px;
   }
 }
 
+@font-face {
+  font-family: 'blackBoard';
+  src: local('blackBoard'), url(./fonts/TanukiMagic.ttf) format('truetype');
+}
+
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+  font-family: blackBoard, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -57,9 +63,6 @@ img {
     @include breakpoint {
       justify-content: center;
     }
-  }
-  &_box {
-    
   }
   
 }
