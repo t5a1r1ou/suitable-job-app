@@ -55,16 +55,13 @@ img {
   border-bottom: 10px solid #c9bc9c;
 }
 
-.top-logo {
-  &_flex {
+.top-logo_flex {
     display: flex;
     align-items: center;
     justify-content: space-around;
     @include breakpoint {
       justify-content: center;
     }
-  }
-  
 }
 
 

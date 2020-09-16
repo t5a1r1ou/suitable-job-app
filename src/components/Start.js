@@ -14,7 +14,7 @@ const Start = () => {
             </h1>
             <div className="top-logo_flex">
                 <img
-                    src={`${process.env.PUBLIC_URL}/logo-item_left_.png`}
+                    src={`${process.env.PUBLIC_URL}/logo-item_left.png`}
                     alt="ロゴ"
                     className="top-logo"
                 />
@@ -25,7 +25,7 @@ const Start = () => {
                     始める
                     </p>
                 <img
-                    src={`${process.env.PUBLIC_URL}/logo-item_right_.png`}
+                    src={`${process.env.PUBLIC_URL}/logo-item_right.png`}
                     alt="ロゴ"
                     className="top-logo"
                 />
