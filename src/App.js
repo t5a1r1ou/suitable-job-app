@@ -107,6 +107,13 @@ const App = () => {
 
   return (
     <div className="page">
+      <header className="header">
+        <img
+          src={`${process.env.PUBLIC_URL}/labo-logo.png`}
+          className="labo-logo"
+          alt="日総ラボロゴ"
+          />
+      </header>
       <BrowserRouter>
         <div className="page__container">
           {ROUTES.map(({ path, Component, atrributes }) => (
