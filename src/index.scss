@@ -67,15 +67,22 @@ header {
   border-bottom: 10px solid #c9bc9c;
 }
 
-.top-logo_flex {
+.top-logo_ {
+  &flex {
     display: flex;
     align-items: center;
     justify-content: space-around;
     @include breakpoint {
       justify-content: center;
     }
+  }
+  &item {
+    width: 27%;
+    @include breakpoint {
+      width: auto;
+    }
+  }
 }
-
 
 .btn {
   cursor: pointer;
@@ -92,7 +99,7 @@ header {
     margin: 0 2rem;
   }
   :active {
-    border-bottom: solid 3px #7c7c7c;
+  border-bottom: solid 3px #242424;
   box-shadow: 0 0 2px #0000004d;
   }
   &_box {
