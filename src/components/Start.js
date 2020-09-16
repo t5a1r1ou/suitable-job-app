@@ -4,7 +4,7 @@ import { useHistory } from "react-router-dom";
 const Start = () => {
     const history = useHistory();
     return (
-        <div className="base_box">
+        <div>
             <h1>
                 <img
                     src={`${process.env.PUBLIC_URL}/logo-title_.png`}

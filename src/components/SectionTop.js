@@ -5,7 +5,6 @@ import Constants from "../Constants";
 const SectionTop = ({type, secImg}) => {
     const { sectionTexts } = Constants;
     const history = useHistory();
-    console.log(secImg);
     const secTop = type === "values" ? secImg["values"]: secImg["personality"];
     
     const texts = type === "values" ? sectionTexts["values"] : sectionTexts["personality"];

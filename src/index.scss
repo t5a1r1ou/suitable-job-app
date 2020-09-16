@@ -60,16 +60,13 @@ header {
   }
 }
 
-.footer_img {
-  border-bottom: 10px solid #c9bc9c;
-}
-
 .base_box {
   background-color: #19452d;
   width: 100%;
   height: auto;
   padding-top: 0.5rem;
   margin: 0 auto;
+  border-bottom: 10px solid #c9bc9c;
 }
 
 .top-logo_ {
@@ -91,8 +88,8 @@ header {
 
 .btn {
   cursor: pointer;
-  display: inline-block;
   padding: .8rem .7rem;
+  margin: 1rem 1rem;
   text-decoration: none;
   color: #FFF;
   background: #7c7c7c;/*背景色*/
@@ -101,7 +98,7 @@ header {
   box-shadow: inset 0 2px 0 #ffffff33, 0 2px 2px #00000030;
   font-weight: bold;
   @include breakpoint {
-    margin: 0 2rem;
+    margin: 1rem 2rem;
   }
   :active {
   border-bottom: solid 3px #242424;
@@ -118,5 +115,6 @@ header {
 
 .sec-img {
   width: 60%;
+  max-width: 300px;
   margin: 0 auto;
 }

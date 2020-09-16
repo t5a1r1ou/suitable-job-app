@@ -130,7 +130,6 @@ const App = () => {
                     <img
                     src={`${process.env.PUBLIC_URL}/logo-footer.png`}
                     alt="ロゴフッター"
-                    className="footer_img"
                   />
                   </div>
                 </CSSTransition>
