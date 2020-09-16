@@ -7,14 +7,14 @@ const Start = () => {
         <div className="base_box">
             <h1>
                 <img
-                    src={`${process.env.PUBLIC_URL}/logo-title.png`}
+                    src={`${process.env.PUBLIC_URL}/logo-title_.png`}
                     alt="ロゴ"
                     className="top-logo"
                 />
             </h1>
             <div className="top-logo_flex">
                 <img
-                    src={`${process.env.PUBLIC_URL}/logo-item_left.png`}
+                    src={`${process.env.PUBLIC_URL}/logo-item_left_.png`}
                     alt="ロゴ"
                     className="top-logo"
                 />
@@ -25,7 +25,7 @@ const Start = () => {
                     始める
                     </p>
                 <img
-                    src={`${process.env.PUBLIC_URL}/logo-item_right.png`}
+                    src={`${process.env.PUBLIC_URL}/logo-item_right_.png`}
                     alt="ロゴ"
                     className="top-logo"
                 />
