@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter, Route, Link } from 'react-router-dom';
+import { BrowserRouter, Route } from 'react-router-dom';
 import { CSSTransition } from 'react-transition-group';
 import Start from "./components/Start";
 import SectionTop from "./components/SectionTop";
