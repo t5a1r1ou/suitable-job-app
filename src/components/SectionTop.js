@@ -2,15 +2,17 @@ import React from "react";
 import { useHistory } from "react-router-dom";
 import Typewriter from "typewriter-effect";
 import Constants from "../Constants";
-import docValues from "../images/doctor1_.png";
-import docPersonality from "../images/doctor2_.png";
+import docValues from "../images/doctor1.png";
+import docPersonality from "../images/doctor2.png";
 
 const SectionTop = ({type, secImg}) => {
     const { sectionTexts } = Constants;
     const history = useHistory();
+
     const secTop = type === "values" ? secImg["values"] : secImg["personality"];
     const docImg = type === "values" ? docValues : docPersonality;
     const texts = type === "values" ? sectionTexts["values"] : sectionTexts["personality"];
+    
     const test_start = () => history.push(`/${type}/questions/1`);
     return (
         <>
@@ -29,7 +31,6 @@ const SectionTop = ({type, secImg}) => {
                         options={{
                             delay: 70
                         }}
-                        className="sectop-text"
                     />
                 </div>
                 <img

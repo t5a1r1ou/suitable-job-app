@@ -65,7 +65,7 @@ export const Board = ({ questions, answers, setAnswers, type, secImg }) => {
                 <img
                     src={secTop.path}
                     alt={secTop.alt}
-                    className="sec-img"
+                    className="sectop-img"
                 />
             </h1>
             <Transition
