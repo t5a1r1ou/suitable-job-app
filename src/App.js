@@ -8,6 +8,11 @@ import Form from "./components/Form";
 import Result from "./components/Result";
 import axios from "axios";
 
+import valuesImg from "./images/values.png";
+import personalityImg from "./images/personality.png";
+import laboLogo from "./images/labo-logo.png";
+import footerImg from "./images/logo-footer.png";
+
 axios.defaults.headers.post["Content-Type"] = "application/x-www-form-urlencoded";
 
 const App = () => {
@@ -60,11 +65,11 @@ const App = () => {
 
   const secImg = {
     values: {
-      "path": `${process.env.PUBLIC_URL}/values.png`,
+      "path": valuesImg,
       "alt": "価値観診断タイトル"
     },
     personality: {
-      "path": `${process.env.PUBLIC_URL}/personality.png`,
+      "path": personalityImg,
       "alt": "性格診断タイトル"
     }
   };
@@ -109,7 +114,7 @@ const App = () => {
     <div className="page">
       <header className="header">
         <img
-          src={`${process.env.PUBLIC_URL}/labo-logo.png`}
+          src={laboLogo}
           className="labo-logo"
           alt="日総ラボロゴ"
           />
@@ -128,7 +133,7 @@ const App = () => {
                   <div className="page__item base_box">
                     <Component {...atrributes} />
                     <img
-                    src={`${process.env.PUBLIC_URL}/logo-footer.png`}
+                    src={footerImg}
                     alt="ロゴフッター"
                   />
                   </div>

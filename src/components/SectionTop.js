@@ -2,12 +2,14 @@ import React from "react";
 import { useHistory } from "react-router-dom";
 import Typewriter from "typewriter-effect";
 import Constants from "../Constants";
+import docValues from "../images/doctor1.png";
+import docPersonality from "../images/doctor2.png";
 
 const SectionTop = ({type, secImg}) => {
     const { sectionTexts } = Constants;
     const history = useHistory();
-    const secTop = type === "values" ? secImg["values"]: secImg["personality"];
-    const imgIndex = type === "values" ? "1": "2";
+    const secTop = type === "values" ? secImg["values"] : secImg["personality"];
+    const docImg = type === "values" ? docValues : docPersonality;
     const texts = type === "values" ? sectionTexts["values"] : sectionTexts["personality"];
     const test_start = () => history.push(`/${type}/questions/1`);
     return (
@@ -31,7 +33,7 @@ const SectionTop = ({type, secImg}) => {
                     />
                 </div>
                 <img
-                    src={`${process.env.PUBLIC_URL}/doctor${imgIndex}.png`}
+                    src={docImg}
                     alt="博士"
                     className="sectop-doc"
                 />
