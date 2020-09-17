@@ -61,6 +61,10 @@ header {
   }
 }
 
+option {
+  color: #000;
+}
+
 .base_box {
   background-color: #19452d;
   width: 100%;
@@ -163,5 +167,16 @@ header {
 .Typewriter__wrapper {
   @include breakpoint {
     font-size: 2rem;
+  }
+}
+
+.form- {
+  &box {
+    width: 80%;
+    margin: 0 auto;
+    padding: 2rem;
+  }
+  &elements {
+    margin-bottom: 1rem !important;
   }
 }
