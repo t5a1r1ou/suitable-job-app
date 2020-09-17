@@ -71,7 +71,7 @@ const Form = () => {
                 />
                 <Label htmlFor='wage'>年収（任意）</Label>
                 <Input
-                    type="text"
+                    type="number"
                     name='wage'
                     value={sendElements["wage"]}
                     onChange={e => handleChange(e)}
@@ -80,7 +80,7 @@ const Form = () => {
                 />
                 <Label htmlFor='email'>メールアドレス（任意）</Label>
                 <Input
-                    type="text"
+                    type="email"
                     name='email'
                     value={sendElements["email"]}
                     onChange={e => handleChange(e)}
