@@ -4,7 +4,7 @@ import { useHistory } from "react-router-dom";
 const Start = () => {
     const history = useHistory();
     return (
-        <div>
+        <>
             <h1>
                 <img
                     src={`${process.env.PUBLIC_URL}/logo-title.png`}
@@ -29,7 +29,7 @@ const Start = () => {
                     className="top-logo_item"
                 />
             </div>
-        </div>
+        </>
     )
 };
 

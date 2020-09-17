@@ -43,16 +43,17 @@ img {
   height: auto;
   vertical-align: bottom;
   box-sizing: border-box;
-	-moz-box-sizing: border-box;
-	-webkit-box-sizing: border-box;
-	-o-box-sizing: border-box;
-	-ms-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -o-box-sizing: border-box;
+  -ms-box-sizing: border-box;
 }
 
 header {
   height: 40px;
   padding: .2rem;
   background-color: #7c7c7c;
+
   .labo-logo {
     width: 30%;
     max-width: 160px;
@@ -74,12 +75,15 @@ header {
     display: flex;
     align-items: center;
     justify-content: space-around;
+
     @include breakpoint {
       justify-content: center;
     }
   }
+
   &item {
     width: 27%;
+
     @include breakpoint {
       width: auto;
     }
@@ -92,29 +96,71 @@ header {
   margin: 1rem 1rem;
   text-decoration: none;
   color: #FFF;
-  background: #7c7c7c;/*背景色*/
-  border-bottom: solid 2px #5a5a5a;/*少し濃い目の色に*/
-  border-radius: 8px;/*角の丸み*/
+  background: #7c7c7c;
+  border-bottom: solid 2px #5a5a5a;
+  border-radius: 8px;
   box-shadow: inset 0 2px 0 #ffffff33, 0 2px 2px #00000030;
   font-weight: bold;
+
   @include breakpoint {
     margin: 1rem 2rem;
   }
+
   :active {
-  border-bottom: solid 3px #242424;
-  box-shadow: 0 0 2px #0000004d;
+    border-bottom: solid 3px #242424;
+    box-shadow: 0 0 2px #0000004d;
   }
+
   &_box {
     width: 90%;
     margin: 0 auto;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;  
+    justify-content: space-between;
   }
 }
 
-.sec-img {
-  width: 60%;
-  max-width: 300px;
-  margin: 0 auto;
+.sectop- {
+  &box {
+    width: 80%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  &dia {
+    width: 60%;
+    margin-top: 1rem;
+    padding: .6rem 1rem 1rem;
+    background-color: #e7e7e7;
+    color: #000;
+    font-size: .6rem;
+    border-radius: 20px;
+    text-align: left;
+  }
+  &name {
+    display: inline-block;
+    border-bottom: 2px solid #3508af;
+    margin-bottom: 0.7rem;
+    @include breakpoint {
+      font-size: 2.2rem;
+    }
+  }
+  &img {
+    width: 60%;
+    max-width: 300px;
+    margin: 0 auto .7rem;
+  }
+  &doc {
+    width: 40%;
+    @include breakpoint {
+      width: 20%;
+    }
+  }
+}
+
+.Typewriter__wrapper {
+  @include breakpoint {
+    font-size: 2rem;
+  }
 }

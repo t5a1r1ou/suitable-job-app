@@ -1,14 +1,8 @@
 class Constants {
 
     static sectionTexts = {
-        values: {
-            name: "価値観",
-            body: "価値観診断テスト説明説明説明"
-        },
-        personality: {
-            name: "性格",
-            body: "性格診断テスト説明説明説明"
-        }
+        values: "価値観診断テスト説明説明説明説明説明説明説明説明説明説明説明説明説明説明説明説明説明説明説明説明説明説明説明説明説明説明説明説明説明説明",
+        personality: "性格診断テスト説明説明説明"
     };
 
     static areas = [
