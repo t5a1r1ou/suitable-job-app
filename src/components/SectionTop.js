@@ -2,8 +2,8 @@ import React from "react";
 import { useHistory } from "react-router-dom";
 import Typewriter from "typewriter-effect";
 import Constants from "../Constants";
-import docValues from "../images/doctor1.png";
-import docPersonality from "../images/doctor2.png";
+import docValues from "../images/doctor1_.png";
+import docPersonality from "../images/doctor2_.png";
 
 const SectionTop = ({type, secImg}) => {
     const { sectionTexts } = Constants;
