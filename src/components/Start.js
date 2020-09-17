@@ -7,7 +7,7 @@ const Start = () => {
         <div>
             <h1>
                 <img
-                    src={`${process.env.PUBLIC_URL}/logo-title_.png`}
+                    src={`${process.env.PUBLIC_URL}/logo-title.png`}
                     alt="ロゴ"
                 />
             </h1>
