@@ -272,20 +272,57 @@ class Constants {
         }
     ];
 
-    static wages = [
-        "200万円以下",
-        "250万円以下",
-        "300万円以下",
-        "350万円以下",
-        "400万円以下",
-        "400万円以上"
-    ];
-
-    static genders = [
-        "男",
-        "女",
-        "答えない"
-    ]
+    static formElements = [
+        {
+                label: "age",
+                labelName: "年齢",
+                type: "number",
+                placeholder: "",
+                required: true,
+            },
+        {
+                label: "sex",
+                labelName: "性別",
+                type: "select",
+                placeholder: "",
+                required: true,
+                options: [
+                    "男",
+                    "女",
+                    "答えない"
+                ]
+            },
+        {
+                label: "job",
+                labelName: "職業",
+                type: "text",
+                placeholder: "現職または直近のご職業をお答えください",
+                required: false,
+            },
+            {
+                label: "wage",
+                labelName: "年収",
+                type: "select",
+                placeholder: "現職または直近のご年収をお答えください",
+                required: false,
+                options: [
+                    "-",
+                    "200万円以下",
+                    "250万円以下",
+                    "300万円以下",
+                    "350万円以下",
+                    "400万円以下",
+                    "400万円以上"
+                ]
+            },
+            {
+                label: "email",
+                labelName: "メールアドレス",
+                type: "email",
+                placeholder: "結果を基に厳選したお仕事をメールにてご紹介します",
+                required: false,
+            }
+        ];
 };
 
 export default Constants;
