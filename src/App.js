@@ -98,6 +98,7 @@ const App = () => {
     },
     {
       path: "/form", Component: Form, atrributes: {
+        answers: [...pAnswers, ...vAnswers]
       }
     },
     {

@@ -1,15 +1,17 @@
 import React, { useState } from "react";
 
-import { useHistory } from "react-router-dom";
+import { Redirect, useHistory } from "react-router-dom";
 import {
     Label,
     Input,
     Select,
     Checkbox,
   } from '@rebass/forms'
+import Constants from "../Constants";
 
-const Form = () => {
-
+const Form = ({answers}) => {
+    const checkAnswers = answers.every(ele => ele === 0);
+    const { wages, genders } = Constants;
     const [sendElements, setSendElements] = useState({
         age: "",
         email: "",
@@ -23,9 +25,17 @@ const Form = () => {
     });
 
     const handleChange = e => setSendElements({...sendElements, [e.target.name]: e.target.value});
-    const handleChecked = e => setSendElements({ ...sendElements, dormitory: e.target.checked });
+    const handleChecked = e => setSendElements({ ...sendElements, [e.target.name]: e.target.checked });
 
     const history = useHistory();
+
+    const canSubmit = () => {
+        const validAge = sendElements.age !== "";
+        const validSex = sendElements.sex !== "";
+        return validAge && validSex;
+    };
+
+    // return ( !checkAnswers ?
     return (
         <>
             <h1>アンケート</h1>
@@ -48,9 +58,10 @@ const Form = () => {
                     required
                     className="form-elements"
                     >
-                    <option>男</option>
+                    {genders.map(gender => <option key={gender}>{gender}</option>)}
+                    {/* <option>男</option>
                     <option>女</option>
-                    <option>答えない</option>
+                    <option>答えない</option> */}
                 </Select>
                 <Label width={[1/2, 1/4]} p={2}>
                 <Checkbox
@@ -70,31 +81,34 @@ const Form = () => {
                     className="form-elements"
                 />
                 <Label htmlFor='wage'>年収（任意）</Label>
-                <Input
-                    type="number"
+                <Select
                     name='wage'
                     value={sendElements["wage"]}
-                    onChange={e => handleChange(e)}
+                    onChange={e => handleChecked(e)}
                     placeholder="現職または直近のご年収をお答えください"
                     className="form-elements"
-                />
+                >
+                    {wages.map(wage => <option key={wage}>{wage}</option>)}
+                </Select>
                 <Label htmlFor='email'>メールアドレス（任意）</Label>
                 <Input
                     type="email"
                     name='email'
                     value={sendElements["email"]}
                     onChange={e => handleChange(e)}
-                    placeholder="今回の結果を基に厳選したお仕事をメールにてご紹介いたします。"
+                    placeholder="今回の結果を基に厳選したお仕事をメールにてご紹介いたします"
                     className="form-elements"
                 />
 
             </div>
-            <p
+            <button
                 className="btn"
+                disabled={!canSubmit()}
                 onClick={() => history.push("/result")}
             >
                 結果へ
-            </p>
+            </button>
+        {/* </> : <Redirect to="/" /> */}
         </>
     );
 };
