@@ -38,8 +38,7 @@ const Form = ({answers}) => {
 
     const sendForm = () => canSubmit() ? submitAct() : setAlertText(true);
 
-    // return ( !checkAnswers ?
-    return (
+    return ( !checkAnswers ?
         <>
             <h1>アンケート</h1>
             <div className="form-box">
@@ -66,13 +65,12 @@ const Form = ({answers}) => {
             )}
             <button
                 className="btn"
-                // disabled={!canSubmit()}
+                disabled={!canSubmit()}
                 onClick={() => sendForm()}
             >
                 結果へ
             </button>
-        {/* </> : <Redirect to="/" /> */}
-        </>
+        </> : <Redirect to="/" />
     );
 };
 
