@@ -2,7 +2,7 @@ import React from "react";
 
 import Constants from "../Constants";
 
-const ProgressBar = ({ now, length }) => {
+const ProgressBar = ({ now, length, type }) => {
     const { progressTexts } = Constants;
 
     const percent = Math.floor((now / length) * 100);
@@ -27,7 +27,7 @@ const ProgressBar = ({ now, length }) => {
         <div className="center-contents">
           <div className="progress-bar">
             <div
-              className="progress-bar-done"
+              className={`progress-bar-done${type === "values" ? "_v" : "_p"}`}
               style={{ width: `${percent}%` }}
             ></div>
           </div>

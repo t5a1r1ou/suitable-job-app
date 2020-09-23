@@ -65,6 +65,7 @@ export const Board = ({ questions, answers, setAnswers, type, secImg }) => {
             <ProgressBar
                 now={questionIndex}
                 length={questions.length}
+                type={type}
             />
         </>
     );

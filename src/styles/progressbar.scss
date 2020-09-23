@@ -2,16 +2,17 @@
   .container {
     display: flex;
     height: 60px;
-    align-items: center
+    align-items: center;
   }
   
   .left-side {
     flex: 1;
-    align-items: center
+    align-items: center;
   }
   
   .text {
-    text-align: center
+    text-align: center;
+    margin-top: 0.4rem;
   }
   
   
@@ -24,7 +25,7 @@
   }
   
   .right-side {
-    flex: 1
+    flex: 1;
   }
   
   
@@ -32,11 +33,18 @@
     background-color: #bbb;
     height: 50%;
     width: 100%;
-    border-radius: 20px
+    border-radius: 20px;
   }
   
   .progress-bar-done {
-    background-color: #68a9cf;
     height: 100%;
-    border-radius: 20px
+    border-radius: 20px;
+    &_v {
+      @extend .progress-bar-done;
+      background-color: #7bece6;
+    }
+    &_p {
+      @extend .progress-bar-done;
+      background-color: #ec7bd4;
+    }
   }
