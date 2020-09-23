@@ -6,6 +6,7 @@
 @import './styles/start.scss';
 @import './styles/sectop.scss';
 @import './styles/form.scss';
+@import './styles/progressbar.scss';
 
 @font-face {
   font-family: 'blackBoard';
@@ -15,16 +16,10 @@
 body {
   margin: 0;
   font-family: blackBoard, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',sans-serif;
   color: #fff;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-}
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
 }
 
 #root {

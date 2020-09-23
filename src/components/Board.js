@@ -3,6 +3,7 @@ import { useHistory, useParams } from "react-router-dom";
 import { Transition } from "react-transition-group";
 
 import Card from "./Card";
+import ProgressBar from "./ProgressBar";
 
 export const Board = ({ questions, answers, setAnswers, type, secImg }) => {
     const [flip, setFlip] = useState(false);
@@ -61,6 +62,10 @@ export const Board = ({ questions, answers, setAnswers, type, secImg }) => {
                 />
             )}
             </Transition>
+            <ProgressBar
+                now={questionIndex}
+                length={questions.length}
+            />
         </>
     );
 };

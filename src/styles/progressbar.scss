@@ -1,0 +1,42 @@
+  
+  .container {
+    display: flex;
+    height: 60px;
+    align-items: center
+  }
+  
+  .left-side {
+    flex: 1;
+    align-items: center
+  }
+  
+  .text {
+    text-align: center
+  }
+  
+  
+  .center-contents {
+    flex: 8;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: center
+  }
+  
+  .right-side {
+    flex: 1
+  }
+  
+  
+  .progress-bar {
+    background-color: #bbb;
+    height: 50%;
+    width: 100%;
+    border-radius: 20px
+  }
+  
+  .progress-bar-done {
+    background-color: #68a9cf;
+    height: 100%;
+    border-radius: 20px
+  }

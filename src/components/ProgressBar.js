@@ -1,0 +1,47 @@
+import React from "react";
+
+import Constants from "../Constants";
+
+const ProgressBar = ({ now, length }) => {
+    const { progressTexts } = Constants;
+
+    const percent = Math.floor((now / length) * 100);
+
+    const progressText = () => {
+        if(percent < 30) {
+            return progressTexts["early"];
+        } else if (percent < 70) {
+            return progressTexts["middle"];
+        } else {
+            return progressTexts["late"];
+        };
+    };
+
+    const text = progressText();
+
+    return (
+      <div className="container">
+        <div className="left-side">
+          <p className="text">{percent}%</p>
+        </div>
+        <div className="center-contents">
+          <div className="progress-bar">
+            <div
+              className="progress-bar-done"
+              style={{ width: `${percent}%` }}
+            ></div>
+          </div>
+          {percent === 100 ? (
+            <p className="text">終了！お疲れ様！</p>
+          ) : (
+           <p className="text">{text || "Now Loading..."}</p>
+          )}
+        </div>
+        <div className="right-side">
+          <p className="text">{`${now} / ${length}`}</p>
+        </div>
+      </div>
+    );
+  };
+
+export default ProgressBar;

@@ -33,7 +33,6 @@ const Card = ({state, index, questionIndex, buttons, questions}) => {
         <div className="btn_box">
             {buttons}
         </div>
-        <p>{index}/{questions.length}問目</p>
     </div>
    );
 };
