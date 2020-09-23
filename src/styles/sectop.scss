@@ -1,0 +1,47 @@
+.sectop- {
+    &box {
+      width: 80%;
+      margin: 0 auto;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    &dia {
+      width: 60%;
+      margin-top: 1rem;
+      padding: .6rem 1rem 1rem;
+      background-color: #e7e7e7;
+      color: #000;
+      font-size: 1rem;
+      border-radius: 20px;
+      text-align: left;
+    }
+    &name {
+      display: inline-block;
+      border-bottom: 2px solid #3508af;
+      margin-bottom: 0.7rem;
+      font-size: 1.2rem;
+      @include breakpoint {
+        font-size: 2.2rem;
+      }
+    }
+    &img {
+      width: 60%;
+      max-width: 300px;
+      margin: 0 auto .7rem;
+    }
+    &doc {
+      width: 40%;
+      @include breakpoint {
+        width: 20%;
+      }
+    }
+  }
+  
+  .Typewriter__ {
+    &wrapper, &cursor {
+      @include breakpoint {
+        font-size: 2rem;
+      }
+    }
+  }

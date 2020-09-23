@@ -1,0 +1,32 @@
+@mixin breakpoint {
+  @media screen and (min-width: 400px) {
+    @content;
+  }
+}  
+
+.form- {
+    &box {
+      width: 80%;
+      margin: 0 auto;
+      padding: 2rem;
+    }
+    &elements {
+      margin-bottom: 1rem !important;
+    }
+    &alert {
+      color: 	#f7abad;
+      font-weight: bold;
+    }
+  }
+
+  option {
+    color: #000;
+  }
+  
+  ::placeholder {
+    font-size: .1rem;
+    @include breakpoint{
+      font-size: 1rem;
+    }
+  }
+  

@@ -9,17 +9,30 @@ const SectionTop = ({type, secImg}) => {
     const { sectionTexts } = Constants;
     const history = useHistory();
 
-    const secTop = type === "values" ? secImg["values"] : secImg["personality"];
-    const docImg = type === "values" ? docValues : docPersonality;
-    const texts = type === "values" ? sectionTexts["values"] : sectionTexts["personality"];
+    const secElements = {
+        values: {
+            topImg: secImg["values"],
+            docImg: docValues,
+            texts: sectionTexts["values"]
+        },
+        personality: {
+            topImg: secImg["personality"],
+            docImg: docPersonality,
+            texts: sectionTexts["personality"]
+        }
+    };
+
+    const secElement = type === "values" ? secElements["values"] : secElements["personality"];
+
+    const { topImg, docImg, texts } = secElement;
     
     const test_start = () => history.push(`/${type}/questions/1`);
     return (
         <>
             <h1>
                 <img
-                    src={secTop.path}
-                    alt={secTop.alt}
+                    src={topImg.path}
+                    alt={topImg.alt}
                     className="sectop-img"
                 />
             </h1>

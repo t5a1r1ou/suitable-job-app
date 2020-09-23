@@ -1,10 +1,7 @@
 import React, { useState } from "react";
 
 import { Redirect, useHistory } from "react-router-dom";
-import {
-    Label,
-    Checkbox,
-  } from '@rebass/forms';
+import { Label, Checkbox } from '@rebass/forms';
 
 import FormComp from "./FormComp";
 import Constants from "../Constants";
@@ -38,7 +35,7 @@ const Form = ({answers}) => {
 
     const sendForm = () => canSubmit() ? submitAct() : setAlertText(true);
 
-    return ( !checkAnswers ?
+    return (!checkAnswers ?
         <>
             <h1>アンケート</h1>
             <div className="form-box">
@@ -61,7 +58,7 @@ const Form = ({answers}) => {
 
             </div>
             {alertText && (
-                <p className="alert">年齢を入力してください</p>
+                <p className="form-alert">年齢を入力してください</p>
             )}
             <button
                 className="btn"
