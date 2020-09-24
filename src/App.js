@@ -13,7 +13,6 @@ import personalityImg from "./images/personality.png";
 import laboLogo from "./images/labo-logo.png";
 import footerImg from "./images/logo-footer.png";
 
-import PageHeader from "./components/PageHeader";
 
 axios.defaults.headers.post["Content-Type"] = "application/x-www-form-urlencoded";
 
