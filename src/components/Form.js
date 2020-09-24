@@ -4,6 +4,7 @@ import { Redirect, useHistory } from "react-router-dom";
 import { Label, Checkbox } from '@rebass/forms';
 
 import FormComp from "./FormComp";
+import PageHeader from "./PageHeader";
 import Constants from "../Constants";
 
 const Form = ({answers}) => {
@@ -17,7 +18,7 @@ const Form = ({answers}) => {
         job: "",
         wage: "",
         dormitory: false,
-        answers: "",
+        answers: answers,
         result_id: "",
         result_title: ""
     });
@@ -37,6 +38,7 @@ const Form = ({answers}) => {
 
     return (!checkAnswers ?
         <>
+            <PageHeader title="アンケート" />
             <h1>アンケート</h1>
             <div className="form-box">
                 {formElements.map(ele => (
@@ -49,11 +51,11 @@ const Form = ({answers}) => {
                 ))}
                 <Label>
                 <Checkbox
-                    name='domitory'
+                    name='dormitory'
                     onChange={e => handleChecked(e)}
                     className="form-elements"
                 />
-                寮付きのお仕事希望
+                寮付きのお仕事を希望している
                 </Label>
 
             </div>
@@ -62,7 +64,6 @@ const Form = ({answers}) => {
             )}
             <button
                 className="btn"
-                disabled={!canSubmit()}
                 onClick={() => sendForm()}
             >
                 結果へ

@@ -5,20 +5,23 @@ import logoTitle from "../images/logo-title.png";
 import logoLeft from "../images/logo-item_left.png";
 import logoRight from "../images/logo-item_right.png";
 
+import PageHeader from "./PageHeader";
+
 const Start = () => {
     const history = useHistory();
     return (
         <>
+            <PageHeader/>
             <h1>
                 <img
                     src={logoTitle}
-                    alt="ロゴ"
+                    alt="トップロゴ"
                 />
             </h1>
             <div className="top-logo_flex">
                 <img
                     src={logoLeft}
-                    alt="ロゴ"
+                    alt="ロゴ左"
                     className="top-logo_item"
                 />
                 <p
@@ -29,7 +32,7 @@ const Start = () => {
                     </p>
                 <img
                     src={logoRight}
-                    alt="ロゴ"
+                    alt="ロゴ右"
                     className="top-logo_item"
                 />
             </div>

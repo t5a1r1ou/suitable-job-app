@@ -1,6 +1,8 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
 
+import PageHeader from "./PageHeader";
+
 const Result = ({valuesMax, personalityMax, setpAnswers, setvAnswers}) => {
     const history = useHistory();
     const backTop = () => {
@@ -14,6 +16,7 @@ const Result = ({valuesMax, personalityMax, setpAnswers, setvAnswers}) => {
 
     return (
         <>
+            <PageHeader title="診断結果" />
             <h1>診断結果</h1>
             <p>価値観診断テスト結果：{valuesMaxTitle}タイプ</p>
             <p>性格診断テスト結果：{personalityMaxTitle}タイプ</p>

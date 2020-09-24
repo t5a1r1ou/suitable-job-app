@@ -4,21 +4,30 @@ import { Transition } from "react-transition-group";
 
 import Card from "./Card";
 import ProgressBar from "./ProgressBar";
+import PageHeader from "./PageHeader"
 
 export const Board = ({ questions, answers, setAnswers, type, secImg }) => {
     const [flip, setFlip] = useState(false);
     const history = useHistory();
     const { index } = useParams();
-    let questionIndex = index ? index - 1 : 0;
+    const questionIndex = index ? index - 1 : questions.length - 1;
+    const questionProgress = index ? index - 1 : questions.length;
     console.log(answers);
 
     const doAnswer = answer => {
-        console.log(answer);
         const newAnswers = answers.slice().map((current, i) => current + answer[i]); // 合計値,回答の配列をインデックス毎に足す
         setAnswers(newAnswers);
         setFlip(!flip);
-        const path = index < questions.length
-            ? `/${type}/questions/${parseInt(index, 10) + 1}` : type === "values" ? "/personality/top" : "/form"
+
+        const path = (function() {
+            if (index < questions.length) {
+                return `/${type}/questions/${parseInt(index, 10) + 1}`;
+            } else if (type === "values") {
+                return "/personality/top";
+            } else {
+                return "/form";
+            };
+        }());
         history.push(path);
     };
 
@@ -40,8 +49,10 @@ export const Board = ({ questions, answers, setAnswers, type, secImg }) => {
 
     const secTop = type === "values" ? secImg["values"]: secImg["personality"];
 
+    const pageTitle = type === "values" ? "価値観" : "性格";
     return (
-        <>
+        <>  
+            <PageHeader title={`${pageTitle}診断 設問${index}`} />
             <h1>
                 <img
                     src={secTop.path}
@@ -63,7 +74,7 @@ export const Board = ({ questions, answers, setAnswers, type, secImg }) => {
             )}
             </Transition>
             <ProgressBar
-                now={questionIndex}
+                now={questionProgress}
                 length={questions.length}
                 type={type}
             />

@@ -1,6 +1,9 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
 import Typewriter from "typewriter-effect";
+
+import PageHeader from "./PageHeader";
+
 import Constants from "../Constants";
 import docValues from "../images/doctor1.png";
 import docPersonality from "../images/doctor2.png";
@@ -29,6 +32,7 @@ const SectionTop = ({type, secImg}) => {
     const test_start = () => history.push(`/${type}/questions/1`);
     return (
         <>
+            <PageHeader title={type === "values" ? "価値観診断テスト" : "性格診断テスト"} />
             <h1>
                 <img
                     src={topImg.path}

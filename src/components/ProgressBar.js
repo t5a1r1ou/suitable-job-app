@@ -7,17 +7,15 @@ const ProgressBar = ({ now, length, type }) => {
 
     const percent = Math.floor((now / length) * 100);
 
-    const progressText = () => {
-        if(percent < 30) {
-            return progressTexts["early"];
-        } else if (percent < 70) {
-            return progressTexts["middle"];
-        } else {
-            return progressTexts["late"];
-        };
-    };
-
-    const text = progressText();
+    const text = (function() {
+      if(percent < 30) {
+        return progressTexts["early"];
+      } else if (percent < 70) {
+          return progressTexts["middle"];
+      } else {
+        return progressTexts["late"];
+      }
+    }());
 
     return (
       <div className="container">
