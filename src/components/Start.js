@@ -25,7 +25,7 @@ const Start = () => {
                     className="top-logo_item"
                 />
                 <p
-                    className="btn btn-start"
+                    className="btn-em"
                     onClick={() => history.push("/values/top")}
                 >
                     始める

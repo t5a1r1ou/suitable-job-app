@@ -25,7 +25,8 @@
       box-shadow: 0 0 2px #0000004d;
     }
   
-    &-start {
+    &-em {
+      @extend .btn;
       background-color: #68a9ce;
       border-bottom: solid 2px #4786aa;
     }

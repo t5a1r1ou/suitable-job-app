@@ -62,7 +62,7 @@ const Form = ({answers, checkAnswers}) => {
                 <p className="form-alert">年齢を入力してください</p>
             )}
             <button
-                className="btn"
+                className="btn-em"
                 onClick={() => sendForm()}
             >
                 結果へ
