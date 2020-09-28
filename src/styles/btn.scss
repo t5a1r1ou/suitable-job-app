@@ -37,6 +37,13 @@
       flex-direction: column;
       justify-content: space-between;
     }
+    &_back {
+      @extend .btn;
+      width: 80px;
+      margin: 1.4rem auto;
+      background-color: inherit;
+      border: solid 2px #fff;
+    }
   }
   
   

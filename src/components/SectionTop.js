@@ -5,8 +5,6 @@ import Typewriter from "typewriter-effect";
 import PageHeader from "./PageHeader";
 
 import Constants from "../Constants";
-import docValues from "../images/doctor1.png";
-import docPersonality from "../images/doctor2.png";
 
 const SectionTop = ({type, secImg}) => {
     const { sectionTexts } = Constants;
@@ -14,20 +12,18 @@ const SectionTop = ({type, secImg}) => {
 
     const secElements = {
         values: {
-            topImg: secImg["values"],
-            docImg: docValues,
+            imgs: secImg["values"],
             texts: sectionTexts["values"]
         },
         personality: {
-            topImg: secImg["personality"],
-            docImg: docPersonality,
+            imgs: secImg["personality"],
             texts: sectionTexts["personality"]
         }
     };
 
     const secElement = type === "values" ? secElements["values"] : secElements["personality"];
 
-    const { topImg, docImg, texts } = secElement;
+    const { imgs, texts } = secElement;
     
     const test_start = () => history.push(`/${type}/questions/1`);
     return (
@@ -35,8 +31,8 @@ const SectionTop = ({type, secImg}) => {
             <PageHeader title={type === "values" ? "価値観診断テスト" : "性格診断テスト"} />
             <h1>
                 <img
-                    src={topImg.path}
-                    alt={topImg.alt}
+                    src={imgs.title}
+                    alt={imgs.titleAlt}
                     className="sectop-img"
                 />
             </h1>
@@ -51,8 +47,8 @@ const SectionTop = ({type, secImg}) => {
                     />
                 </div>
                 <img
-                    src={docImg}
-                    alt="博士"
+                    src={imgs.doc}
+                    alt={imgs.docAlt}
                     className="sectop-doc"
                 />
             </div>

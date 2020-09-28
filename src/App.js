@@ -7,11 +7,14 @@ import Board from "./components/Board";
 import Form from "./components/Form";
 import Result from "./components/Result";
 import axios from "axios";
+import { HelmetProvider } from "react-helmet-async";
 
 import valuesImg from "./images/values.png";
 import personalityImg from "./images/personality.png";
 import laboLogo from "./images/labo-logo.png";
 import footerImg from "./images/logo-footer.png";
+import docValues from "./images/doctor1.png";
+import docPersonality from "./images/doctor2.png";
 
 
 axios.defaults.headers.post["Content-Type"] = "application/x-www-form-urlencoded";
@@ -20,8 +23,8 @@ const App = () => {
 
   const [vQuestions, setvQuestions] = useState([]);
   const [pQuestions, setpQuestions] = useState([]);
-  const [vAnswers, setvAnswers] = useState(Array(4).fill(0));
-  const [pAnswers, setpAnswers] = useState(Array(6).fill(0));
+  const [vAnswers, setvAnswers] = useState(Array(5).fill([0,0,0,0]));
+  const [pAnswers, setpAnswers] = useState(Array(25).fill([0,0,0,0,0,0]));
 
   useEffect(() => {
     const getvQuestions = () => {
@@ -49,29 +52,20 @@ const App = () => {
 
   }, []);
 
-
-  const maxIndexs = arr => {
-    const max = arr.reduce((a, b) => Math.max(a, b));
-    let targetArr = [];
-    arr.forEach((a, index) => {
-      if (a === max) {
-        targetArr.push(index);
-      };
-    });
-    return targetArr;
-  };
-
-  const valuesMax = maxIndexs(vAnswers);
-  const personalityMax = maxIndexs(pAnswers);
+  const checkAnswers = answers => answers[0].every(ele => ele === 0);
 
   const secImg = {
     values: {
-      "path": valuesImg,
-      "alt": "価値観診断タイトル"
+      "title": valuesImg,
+      "titleAlt": "価値観診断タイトル",
+      "doc": docValues,
+      "docAlt": "博士（価値観）"
     },
     personality: {
-      "path": personalityImg,
-      "alt": "性格診断タイトル"
+      "title": personalityImg,
+      "titleAlt": "性格診断タイトル",
+      "doc": docPersonality,
+      "docAlt": "博士（性格）"
     }
   };
 
@@ -87,7 +81,12 @@ const App = () => {
         secImg: secImg
       }
     },
-    { path: "/personality/top", Component: SectionTop, atrributes: { type: "personality", secImg: secImg } },
+    { path: "/personality/top", Component: SectionTop, atrributes: { 
+      type: "personality",
+      secImg: secImg,
+      answers: [...vAnswers, ...pAnswers],
+    } 
+    },
     {
       path: "/personality/questions/:index", Component: Board, atrributes: {
         questions: pQuestions,
@@ -99,21 +98,23 @@ const App = () => {
     },
     {
       path: "/form", Component: Form, atrributes: {
-        answers: [...pAnswers, ...vAnswers]
+        answers: [...pAnswers, ...vAnswers],
+        checkAnswers: checkAnswers
       }
     },
     {
       path: "/result", Component: Result, atrributes: {
-        valuesMax: valuesMax,
-        personalityMax: personalityMax,
+        vAnswers: vAnswers,
+        pAnswers: pAnswers,
         setpAnswers: setpAnswers,
         setvAnswers: setvAnswers,
+        checkAnswers: checkAnswers
       }
     },
   ];
 
   return (
-    <div className="page">
+    <HelmetProvider className="page">
       <header className="header">
         <img
           src={laboLogo}
@@ -145,7 +146,7 @@ const App = () => {
           ))}
         </div>
       </BrowserRouter>
-    </div>
+    </HelmetProvider>
   );
 }
 

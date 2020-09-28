@@ -7,8 +7,8 @@ import FormComp from "./FormComp";
 import PageHeader from "./PageHeader";
 import Constants from "../Constants";
 
-const Form = ({answers}) => {
-    const checkAnswers = answers.every(ele => ele === 0);
+const Form = ({answers, checkAnswers}) => {
+    const validAnswers = checkAnswers(answers);
     const { formElements } = Constants;
     const [alertText, setAlertText] = useState(false);
     const [sendElements, setSendElements] = useState({
@@ -30,13 +30,12 @@ const Form = ({answers}) => {
     const canSubmit = () => sendElements.age !== "";
 
     const submitAct = () => {
-        console.log(sendElements);
         history.push("/result");
     };
 
     const sendForm = () => canSubmit() ? submitAct() : setAlertText(true);
 
-    return (!checkAnswers ?
+    return (!validAnswers ?
         <>
             <PageHeader title="アンケート" />
             <h1>アンケート</h1>

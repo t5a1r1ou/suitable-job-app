@@ -15,7 +15,9 @@ export const Board = ({ questions, answers, setAnswers, type, secImg }) => {
     console.log(answers);
 
     const doAnswer = answer => {
-        const newAnswers = answers.slice().map((current, i) => current + answer[i]); // 合計値,回答の配列をインデックス毎に足す
+        const newAnswers = answers.slice();
+        newAnswers[questionIndex] = answer;
+        // const newAnswers = answers.slice().map((current, i) => current + answer[i]); // 合計値,回答の配列をインデックス毎に足す
         setAnswers(newAnswers);
         setFlip(!flip);
 
@@ -32,9 +34,11 @@ export const Board = ({ questions, answers, setAnswers, type, secImg }) => {
     };
 
     const choices_count = type === "values" ? 4 : 2;
+    console.log(index);
+    console.log(index !== "1");
 
     const buttons = [...Array(choices_count).keys()].map(i => {
-        const vAnswer = [...Array(answers.length).keys()].map(n => n === i ? 1 : 0);
+        const vAnswer = [...Array(choices_count).keys()].map(n => n === i ? 1 : 0);
         const pAnswer = questions[questionIndex][`count${i === 0 ? 'A' : 'B'}`].split("").map(n => parseInt(n, 10));
         const answer = type === "values" ? vAnswer : pAnswer;
         return (
@@ -73,6 +77,14 @@ export const Board = ({ questions, answers, setAnswers, type, secImg }) => {
                 />
             )}
             </Transition>
+            {index !== "1" &&
+            <p
+                className="btn_back"
+                onClick={() => history.push(`/${type}/questions/${questionIndex}`)}
+            >
+                戻る
+            </p>
+            }
             <ProgressBar
                 now={questionProgress}
                 length={questions.length}
