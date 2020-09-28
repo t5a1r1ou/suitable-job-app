@@ -8,6 +8,8 @@ import PageHeader from "./PageHeader"
 
 export const Board = ({ questions, answers, setAnswers, type, secImg }) => {
     const [flip, setFlip] = useState(false);
+    const [flipBack, setFlipBack] = useState(false);
+    const [flipFlag, setFlipFlag] = useState(true);
     const history = useHistory();
     const { index } = useParams();
     const questionIndex = index ? index - 1 : questions.length - 1;
@@ -19,8 +21,9 @@ export const Board = ({ questions, answers, setAnswers, type, secImg }) => {
         newAnswers[questionIndex] = answer;
         // const newAnswers = answers.slice().map((current, i) => current + answer[i]); // 合計値,回答の配列をインデックス毎に足す
         setAnswers(newAnswers);
+        setFlipFlag(true);
         setFlip(!flip);
-
+        
         const path = (function() {
             if (index < questions.length) {
                 return `/${type}/questions/${parseInt(index, 10) + 1}`;
@@ -32,6 +35,12 @@ export const Board = ({ questions, answers, setAnswers, type, secImg }) => {
         }());
         history.push(path);
     };
+
+    const doBack = () => {
+        setFlipFlag(false);
+        setFlipBack(!flipBack);
+        history.push(`/${type}/questions/${questionIndex}`);
+    }
 
     const choices_count = type === "values" ? 4 : 2;
     console.log(index);
@@ -65,11 +74,12 @@ export const Board = ({ questions, answers, setAnswers, type, secImg }) => {
                 />
             </h1>
             <Transition
-                in={flip}
+                in={flipFlag ? flip : flipBack}
                 timeout={550}
             >{state => (
                 <Card
                     state={state}
+                    flipFlag={flipFlag}
                     index={index}
                     questionIndex={questionIndex}
                     buttons={buttons}
@@ -80,7 +90,7 @@ export const Board = ({ questions, answers, setAnswers, type, secImg }) => {
             {index !== "1" &&
             <p
                 className="btn_back"
-                onClick={() => history.push(`/${type}/questions/${questionIndex}`)}
+                onClick={() => doBack()}
             >
                 戻る
             </p>
