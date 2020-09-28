@@ -116,7 +116,6 @@ const App = () => {
   ];
 
   return (
-    <ErrorBoundary>
       <HelmetProvider className="page">
         <header className="header">
           <img
@@ -130,27 +129,29 @@ const App = () => {
             {ROUTES.map(({ path, Component, atrributes }) => (
               <Route key={path} path={path} exact>
                 {({ match }) => (
-                  <CSSTransition
-                    in={match != null}
-                    timeout={550}
-                    classNames="page__item-"
-                    unmountOnExit
-                  >
-                    <div className="page__item base_box">
-                      <Component {...atrributes} />
-                      <img
-                      src={footerImg}
-                      alt="ロゴフッター"
-                    />
-                    </div>
-                  </CSSTransition>
+                    <CSSTransition
+                      in={match != null}
+                      timeout={550}
+                      classNames="page__item-"
+                      unmountOnExit
+                    >
+                      <div className="page__item base_box">
+                      <ErrorBoundary>
+                        <Component {...atrributes} />
+                      </ErrorBoundary>
+                        <img
+                        src={footerImg}
+                        alt="ロゴフッター"
+                      />
+                      </div>
+                    </CSSTransition>
+                  
                 )}
               </Route>
             ))}
           </div>
         </BrowserRouter>
       </HelmetProvider>
-    </ErrorBoundary>
   );
 }
 

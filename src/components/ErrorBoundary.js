@@ -17,8 +17,8 @@ class ErrorBoundary extends React.Component {
         // You can render any custom fallback UI
         return (
             <>
-            <p style={{"color": "#000", "fontSize": "10rem"}}>エラーです</p>
-            <p style={{"color": "#000", "fontSize": "5rem"}}>修正中です</p>
+                <p style={{"fontSize": "10rem"}}>エラーです</p>
+                <p style={{"fontSize": "5rem"}}>修正中です</p>
             </>
         );
       }
