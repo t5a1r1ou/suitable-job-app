@@ -4,7 +4,7 @@ import { Transition } from "react-transition-group";
 
 import Card from "./Card";
 import ProgressBar from "./ProgressBar";
-import PageHeader from "./PageHeader"
+import PageHeader from "./PageHeader";
 
 export const Board = ({ questions, answers, setAnswers, type, secImg }) => {
     const [flip, setFlip] = useState(false);

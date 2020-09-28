@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter, Route } from 'react-router-dom';
 import { CSSTransition } from 'react-transition-group';
+import axios from "axios";
+import { HelmetProvider } from "react-helmet-async";
+
 import Start from "./components/Start";
 import SectionTop from "./components/SectionTop";
 import Board from "./components/Board";
 import Form from "./components/Form";
 import Result from "./components/Result";
-import axios from "axios";
-import { HelmetProvider } from "react-helmet-async";
+import ErrorBoundary from "./components/ErrorBoundary";
 
 import valuesImg from "./images/values.png";
 import personalityImg from "./images/personality.png";
@@ -114,39 +116,41 @@ const App = () => {
   ];
 
   return (
-    <HelmetProvider className="page">
-      <header className="header">
-        <img
-          src={laboLogo}
-          className="labo-logo"
-          alt="日総ラボロゴ"
-          />
-      </header>
-      <BrowserRouter>
-        <div className="page__container">
-          {ROUTES.map(({ path, Component, atrributes }) => (
-            <Route key={path} path={path} exact>
-              {({ match }) => (
-                <CSSTransition
-                  in={match != null}
-                  timeout={550}
-                  classNames="page__item-"
-                  unmountOnExit
-                >
-                  <div className="page__item base_box">
-                    <Component {...atrributes} />
-                    <img
-                    src={footerImg}
-                    alt="ロゴフッター"
-                  />
-                  </div>
-                </CSSTransition>
-              )}
-            </Route>
-          ))}
-        </div>
-      </BrowserRouter>
-    </HelmetProvider>
+    <ErrorBoundary>
+      <HelmetProvider className="page">
+        <header className="header">
+          <img
+            src={laboLogo}
+            className="labo-logo"
+            alt="日総ラボロゴ"
+            />
+        </header>
+        <BrowserRouter>
+          <div className="page__container">
+            {ROUTES.map(({ path, Component, atrributes }) => (
+              <Route key={path} path={path} exact>
+                {({ match }) => (
+                  <CSSTransition
+                    in={match != null}
+                    timeout={550}
+                    classNames="page__item-"
+                    unmountOnExit
+                  >
+                    <div className="page__item base_box">
+                      <Component {...atrributes} />
+                      <img
+                      src={footerImg}
+                      alt="ロゴフッター"
+                    />
+                    </div>
+                  </CSSTransition>
+                )}
+              </Route>
+            ))}
+          </div>
+        </BrowserRouter>
+      </HelmetProvider>
+    </ErrorBoundary>
   );
 }
 
