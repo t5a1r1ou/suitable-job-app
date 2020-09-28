@@ -1,4 +1,7 @@
 import React from "react";
+import { Link } from "react-router-dom";
+
+import PageHeader from "./PageHeader";
 
 class ErrorBoundary extends React.Component {
     constructor(props) {
@@ -13,12 +16,15 @@ class ErrorBoundary extends React.Component {
   
     render() {
       if (this.state.hasError) {
-          console.log("rendered");
         // You can render any custom fallback UI
         return (
             <>
-                <p style={{"fontSize": "10rem"}}>エラーです</p>
-                <p style={{"fontSize": "5rem"}}>修正中です</p>
+                <PageHeader title="エラー" />
+                <div>
+                    <h1 className="err-title">エラーです</h1>
+                    <p className="err-text">お手数ですが、最初からやり直してください</p>
+                    <Link to="/" className="btn-em">トップへ戻る</Link>
+                </div>
             </>
         );
       }
