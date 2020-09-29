@@ -19,7 +19,8 @@
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.1",
     "react-transition-group": "^4.4.1",
-    "typewriter-effect": "^2.13.1"
+    "typewriter-effect": "^2.13.1",
+    "why-did-you-update": "^1.0.8"
   },
   "scripts": {
     "start": "react-scripts start",
