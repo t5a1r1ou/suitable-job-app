@@ -1,5 +1,7 @@
 import React from "react";
 
+import AnswerButtons from "./AnswerButtons";
+
 const FLIP_STYLE = {
     // 前面⇒背面
     entering: {
@@ -46,7 +48,7 @@ const FLIP_BACK_STYLE = {
     }
 };
 
-const Card = ({state, flipFlag, index, questionIndex, buttons, questions}) => {
+const Card = ({state, flipFlag, index, type, questionIndex, questions, doAnswer}) => {
    return (
     <div className="flip-card" style={flipFlag ? FLIP_STYLE[state] : FLIP_BACK_STYLE[state]}>
         <div className="flip-card_id">
@@ -54,7 +56,12 @@ const Card = ({state, flipFlag, index, questionIndex, buttons, questions}) => {
         </div>
         <h2 className="flip-card_title">{questions[questionIndex].title}</h2>
         <div className="btn_box">
-            {buttons}
+            <AnswerButtons
+                questions={questions}
+                questionIndex={questionIndex}
+                type={type}
+                doAnswer={doAnswer}
+                />
         </div>
     </div>
    );

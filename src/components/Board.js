@@ -14,12 +14,10 @@ export const Board = ({ questions, answers, setAnswers, type, secImg }) => {
     const { index } = useParams();
     const questionIndex = index ? index - 1 : questions.length - 1;
     const questionProgress = index ? index - 1 : questions.length;
-    console.log(answers);
 
     const doAnswer = answer => {
         const newAnswers = answers.slice();
         newAnswers[questionIndex] = answer;
-        // const newAnswers = answers.slice().map((current, i) => current + answer[i]); // 合計値,回答の配列をインデックス毎に足す
         setAnswers(newAnswers);
         setFlipFlag(true);
         setFlip(!flip);
@@ -42,24 +40,6 @@ export const Board = ({ questions, answers, setAnswers, type, secImg }) => {
         history.push(`/${type}/questions/${questionIndex}`);
     }
 
-    const choices_count = type === "values" ? 4 : 2;
-    console.log(index);
-    console.log(index !== "1");
-
-    const buttons = [...Array(choices_count).keys()].map(i => {
-        const vAnswer = [...Array(choices_count).keys()].map(n => n === i ? 1 : 0);
-        const pAnswer = questions[questionIndex][`count${i === 0 ? 'A' : 'B'}`].split("").map(n => parseInt(n, 10));
-        const answer = type === "values" ? vAnswer : pAnswer;
-        return (
-            <p
-                onClick={() => doAnswer(answer)} key={i}
-                className="btn"
-            >
-                {questions[questionIndex][`choice${i + 1}`]}
-            </p>
-        )
-    });
-
     const secTop = type === "values" ? secImg["values"]: secImg["personality"];
 
     const pageTitle = type === "values" ? "価値観" : "性格";
@@ -81,9 +61,10 @@ export const Board = ({ questions, answers, setAnswers, type, secImg }) => {
                     state={state}
                     flipFlag={flipFlag}
                     index={index}
+                    type={type}
                     questionIndex={questionIndex}
-                    buttons={buttons}
                     questions={questions}
+                    doAnswer={doAnswer}
                 />
             )}
             </Transition>
