@@ -1,5 +1,5 @@
 import React, { useState, useEffect, memo, useCallback } from 'react';
-import { BrowserRouter } from 'react-router-dom';
+import { BrowserRouter, Redirect } from 'react-router-dom';
 import axios from "axios";
 import { HelmetProvider } from "react-helmet-async";
 
@@ -9,6 +9,7 @@ import Board from "./components/Board";
 import Form from "./components/Form";
 import Result from "./components/Result";
 import Routes from "./components/Routes";
+import NotFound from "./components/NotFound";
 // import ErrorBoundary from "./components/ErrorBoundary";
 
 import valuesImg from "./images/values.png";
@@ -73,9 +74,9 @@ const App = memo(() => {
 
   const ROUTES = [
     { path: "/", Component: Start },
-    { path: "/values/top", Component: SectionTop, atrributes: { type: "values", secImg: secImg } },
+    { path: "/values/top", Component: SectionTop, attributes: { type: "values", secImg: secImg } },
     {
-      path: "/values/questions/:index", Component: Board, atrributes: {
+      path: "/values/questions/:index", Component: Board, attributes: {
         questions: vQuestions,
         answers: vAnswers,
         setAnswers: setvAnswers,
@@ -83,14 +84,14 @@ const App = memo(() => {
         secImg: secImg
       }
     },
-    { path: "/personality/top", Component: SectionTop, atrributes: { 
+    { path: "/personality/top", Component: SectionTop, attributes: { 
       type: "personality",
       secImg: secImg,
       answers: [...vAnswers, ...pAnswers],
     } 
     },
     {
-      path: "/personality/questions/:index", Component: Board, atrributes: {
+      path: "/personality/questions/:index", Component: Board, attributes: {
         questions: pQuestions,
         answers: pAnswers,
         setAnswers: setpAnswers,
@@ -99,13 +100,13 @@ const App = memo(() => {
       }
     },
     {
-      path: "/form", Component: Form, atrributes: {
+      path: "/form", Component: Form, attributes: {
         answers: [...pAnswers, ...vAnswers],
         checkAnswers: checkAnswers
       }
     },
     {
-      path: "/result", Component: Result, atrributes: {
+      path: "/result", Component: Result, attributes: {
         vAnswers: vAnswers,
         pAnswers: pAnswers,
         setpAnswers: setpAnswers,

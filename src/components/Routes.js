@@ -2,8 +2,10 @@ import React, { memo } from "react";
 import { Route } from "react-router-dom";
 import { CSSTransition } from 'react-transition-group';
 
+import ErrorBoundary from "./ErrorBoundary";
+
 const Routes = memo(({ROUTES, footerImg}) => {
-    const routes = ROUTES.map(({ path, Component, atrributes }) => (
+    const routes = ROUTES.map(({ path, Component, attributes }) => (
         <Route key={path} path={path} exact>
           {({ match }) => (
               <CSSTransition
@@ -13,12 +15,12 @@ const Routes = memo(({ROUTES, footerImg}) => {
                 unmountOnExit
               >
                 <div className="page__item base_box">
-                {/* <ErrorBoundary> */}
-                  <Component {...atrributes} />
-                {/* </ErrorBoundary> */}
+                <ErrorBoundary>
+                  <Component {...attributes} />
+                </ErrorBoundary>
                   <img
-                  src={footerImg}
-                  alt="ロゴフッター"
+                    src={footerImg}
+                    alt="ロゴフッター"
                 />
                 </div>
               </CSSTransition>
