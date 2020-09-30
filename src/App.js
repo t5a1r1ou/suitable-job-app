@@ -1,5 +1,5 @@
 import React, { useState, useEffect, memo, useCallback } from 'react';
-import { BrowserRouter, Redirect } from 'react-router-dom';
+import { BrowserRouter } from 'react-router-dom';
 import axios from "axios";
 import { HelmetProvider } from "react-helmet-async";
 
@@ -9,8 +9,6 @@ import Board from "./components/Board";
 import Form from "./components/Form";
 import Result from "./components/Result";
 import Routes from "./components/Routes";
-import NotFound from "./components/NotFound";
-// import ErrorBoundary from "./components/ErrorBoundary";
 
 import valuesImg from "./images/values.png";
 import personalityImg from "./images/personality.png";
