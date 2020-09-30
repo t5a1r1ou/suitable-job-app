@@ -1,6 +1,5 @@
-import React, { useState, useEffect, useMemo } from 'react';
-import { BrowserRouter, Route } from 'react-router-dom';
-import { CSSTransition } from 'react-transition-group';
+import React, { useState, useEffect, memo, useCallback } from 'react';
+import { BrowserRouter } from 'react-router-dom';
 import axios from "axios";
 import { HelmetProvider } from "react-helmet-async";
 
@@ -9,7 +8,8 @@ import SectionTop from "./components/SectionTop";
 import Board from "./components/Board";
 import Form from "./components/Form";
 import Result from "./components/Result";
-import ErrorBoundary from "./components/ErrorBoundary";
+import Routes from "./components/Routes";
+// import ErrorBoundary from "./components/ErrorBoundary";
 
 import valuesImg from "./images/values.png";
 import personalityImg from "./images/personality.png";
@@ -21,7 +21,7 @@ import docPersonality from "./images/doctor2.png";
 
 axios.defaults.headers.post["Content-Type"] = "application/x-www-form-urlencoded";
 
-const App = () => {
+const App = memo(() => {
 
   const [vQuestions, setvQuestions] = useState([]);
   const [pQuestions, setpQuestions] = useState([]);
@@ -54,7 +54,7 @@ const App = () => {
 
   }, []);
 
-  const checkAnswers = answers => answers[0].every(ele => ele === 0);
+  const checkAnswers = useCallback(answers => answers[0].every(ele => ele === 0), []);
 
   const secImg = {
     values: {
@@ -126,33 +126,14 @@ const App = () => {
         </header>
         <BrowserRouter>
           <div className="page__container">
-            {ROUTES.map(({ path, Component, atrributes }) => (
-              <Route key={path} path={path} exact>
-                {({ match }) => (
-                    <CSSTransition
-                      in={match != null}
-                      timeout={550}
-                      classNames="page__item-"
-                      unmountOnExit
-                    >
-                      <div className="page__item base_box">
-                      <ErrorBoundary>
-                        <Component {...atrributes} />
-                      </ErrorBoundary>
-                        <img
-                        src={footerImg}
-                        alt="ロゴフッター"
-                      />
-                      </div>
-                    </CSSTransition>
-                  
-                )}
-              </Route>
-            ))}
+            <Routes 
+              ROUTES={ROUTES}
+              footerImg={footerImg}
+            />
           </div>
         </BrowserRouter>
       </HelmetProvider>
   );
-}
+});
 
 export default App;

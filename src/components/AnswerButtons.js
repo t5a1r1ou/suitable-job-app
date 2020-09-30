@@ -1,6 +1,6 @@
-import React from "react";
+import React, { memo } from "react";
 
-const AnswerButtons = ({questions, questionIndex, type, doAnswer}) => {
+const AnswerButtons = memo(({questions, questionIndex, type, doAnswer}) => {
     const choices_count = type === "values" ? 4 : 2;
     const buttons = [...Array(choices_count).keys()].map(i => {
         const vAnswer = [...Array(choices_count).keys()].map(n => n === i ? 1 : 0);
@@ -17,6 +17,6 @@ const AnswerButtons = ({questions, questionIndex, type, doAnswer}) => {
         )
     });
     return buttons;
-};
+});
 
 export default AnswerButtons;

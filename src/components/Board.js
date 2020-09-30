@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, memo } from "react";
 import { useHistory, useParams } from "react-router-dom";
 import { Transition } from "react-transition-group";
 
@@ -6,7 +6,7 @@ import Card from "./Card";
 import ProgressBar from "./ProgressBar";
 import PageHeader from "./PageHeader";
 
-export const Board = ({ questions, answers, setAnswers, type, secImg }) => {
+export const Board = memo(({ questions, answers, setAnswers, type, secImg }) => {
     const [flip, setFlip] = useState(false);
     const [flipBack, setFlipBack] = useState(false);
     const [flipFlag, setFlipFlag] = useState(true);
@@ -83,6 +83,6 @@ export const Board = ({ questions, answers, setAnswers, type, secImg }) => {
             />
         </>
     );
-};
+});
 
 export default Board;

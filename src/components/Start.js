@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo } from "react";
 import { useHistory } from "react-router-dom";
 
 import logoTitle from "../images/logo-title.png";
@@ -7,7 +7,7 @@ import logoRight from "../images/logo-item_right.png";
 
 import PageHeader from "./PageHeader";
 
-const Start = () => {
+const Start = memo(() => {
     const history = useHistory();
     return (
         <>
@@ -38,6 +38,6 @@ const Start = () => {
             </div>
         </>
     )
-};
+});
 
 export default Start;

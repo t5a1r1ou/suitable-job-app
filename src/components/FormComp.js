@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo, useCallback } from "react";
 import {
     Label,
     Input,
@@ -6,9 +6,9 @@ import {
   } from '@rebass/forms'
 
 
-const FormComp = ({sendElements, setSendElements, eachData}) => {
+const FormComp = memo(({sendElements, setSendElements, eachData}) => {
     const { label, labelName, type, placeholder, required, options } = eachData;
-    const handleChange = e => setSendElements({...sendElements, [e.target.name]: e.target.value});
+    const handleChange = useCallback(e => setSendElements({...sendElements, [e.target.name]: e.target.value}), [sendElements, setSendElements]);
     return (
         <>
             <Label htmlFor={label}>{labelName}{required ? "※必須" : "(任意)"}</Label>
@@ -36,6 +36,6 @@ const FormComp = ({sendElements, setSendElements, eachData}) => {
         </>
     );
     
-};
+});
 
 export default FormComp;

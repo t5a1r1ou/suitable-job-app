@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { memo, useState } from "react";
 
 import { Redirect, useHistory } from "react-router-dom";
 import { Label, Checkbox } from '@rebass/forms';
@@ -7,7 +7,7 @@ import FormComp from "./FormComp";
 import PageHeader from "./PageHeader";
 import Constants from "../Constants";
 
-const Form = ({answers, checkAnswers}) => {
+const Form = memo(({answers, checkAnswers}) => {
     const validAnswers = checkAnswers(answers);
     const { formElements } = Constants;
     const [alertText, setAlertText] = useState(false);
@@ -69,6 +69,6 @@ const Form = ({answers, checkAnswers}) => {
             </button>
         </> : <Redirect to="/" />
     );
-};
+});
 
 export default Form;
