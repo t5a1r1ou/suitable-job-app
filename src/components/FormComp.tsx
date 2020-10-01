@@ -5,8 +5,30 @@ import {
     Select,
   } from '@rebass/forms'
 
+interface Props {
+    sendElements: {
+        age: string,
+        email: string,
+        sex: string,
+        job: string,
+        wage: string,
+        dormitory: boolean,
+        answers: number[][],
+        result_id: string,
+        result_title: string
+    };
+    setSendElements: any;
+    eachData: {
+        label: string,
+        labelName: string,
+        type: string,
+        placeholder: string,
+        required: boolean,
+        options?: string[]
+    }
+}
 
-const FormComp = memo(({sendElements, setSendElements, eachData}) => {
+const FormComp:React.FC<Props> = memo(({sendElements, setSendElements, eachData}) => {
     const { label, labelName, type, placeholder, required, options } = eachData;
     const handleChange = useCallback(e => setSendElements({...sendElements, [e.target.name]: e.target.value}), [sendElements, setSendElements]);
     return (
@@ -29,7 +51,7 @@ const FormComp = memo(({sendElements, setSendElements, eachData}) => {
                     onChange={e => handleChange(e)}
                     className="form-elements"
                     >
-                    {options.map(opt => <option key={opt}>{opt}</option>)}
+                    {options && options.map(opt => <option key={opt}>{opt}</option>)}
                 </Select>
             }
             

@@ -29,7 +29,7 @@ const App = memo(() => {
 
   useEffect(() => {
     const getvQuestions = () => {
-      axios.get(process.env.REACT_APP_SJC_VQUESTIONS)
+      axios.get(process.env.REACT_APP_SJC_VQUESTIONS as string)
         .then(r => {
           const datas = r.data.data;
           setvQuestions(datas);
@@ -39,7 +39,7 @@ const App = memo(() => {
     };
 
     const getpQuestions = () => {
-      axios.get(process.env.REACT_APP_SJC_PQUESTIONS)
+      axios.get(process.env.REACT_APP_SJC_PQUESTIONS as string)
         .then(r => {
           const datas = r.data.data;
           setpQuestions(datas);
@@ -57,16 +57,16 @@ const App = memo(() => {
 
   const secImg = {
     values: {
-      "title": valuesImg,
-      "titleAlt": "価値観診断タイトル",
-      "doc": docValues,
-      "docAlt": "博士（価値観）"
+      title: valuesImg,
+      titleAlt: "価値観診断タイトル",
+      doc: docValues,
+      docAlt: "博士（価値観）"
     },
     personality: {
-      "title": personalityImg,
-      "titleAlt": "性格診断タイトル",
-      "doc": docPersonality,
-      "docAlt": "博士（性格）"
+      title: personalityImg,
+      titleAlt: "性格診断タイトル",
+      doc: docPersonality,
+      docAlt: "博士（性格）"
     }
   };
 
@@ -83,9 +83,9 @@ const App = memo(() => {
       }
     },
     { path: "/personality/top", Component: SectionTop, attributes: { 
-      type: "personality",
-      secImg: secImg,
-      answers: [...vAnswers, ...pAnswers],
+        type: "personality",
+        secImg: secImg,
+        answers: [...vAnswers, ...pAnswers],
     } 
     },
     {
@@ -115,7 +115,8 @@ const App = memo(() => {
   ];
 
   return (
-      <HelmetProvider className="page">
+      <div className="page">
+        <HelmetProvider>
         <header className="header">
           <img
             src={laboLogo}
@@ -125,13 +126,15 @@ const App = memo(() => {
         </header>
         <BrowserRouter>
           <div className="page__container">
-            <Routes 
+            <Routes
+            // @ts-ignore
               ROUTES={ROUTES}
               footerImg={footerImg}
             />
           </div>
         </BrowserRouter>
       </HelmetProvider>
+      </div>
   );
 });
 

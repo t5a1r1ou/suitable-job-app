@@ -2,7 +2,13 @@ import React from "react";
 
 import Constants from "../Constants";
 
-const ProgressBar = ({ now, length, type }) => {
+interface Props {
+  now: number;
+  length: number;
+  type: string;
+}
+
+const ProgressBar:React.FC<Props> = ({ now, length, type }) => {
     const { progressTexts } = Constants;
 
     const percent = Math.floor((now / length) * 100);

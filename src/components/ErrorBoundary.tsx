@@ -3,10 +3,16 @@ import { Link } from "react-router-dom";
 
 import PageHeader from "./PageHeader";
 
-class ErrorBoundary extends React.Component {
+interface IState {
+  hasError?: boolean;
+}
+
+class ErrorBoundary extends React.Component<IState> {
     constructor(props) {
       super(props);
-      this.state = {hasError: false};
+      this.state = {
+        hasError: false
+      };
     }
   
     componentDidCatch() {
@@ -15,7 +21,7 @@ class ErrorBoundary extends React.Component {
     }
   
     render() {
-      if (this.state.hasError) {
+      if (this.state["hasError"]) {
         // You can render any custom fallback UI
         return (
             <>

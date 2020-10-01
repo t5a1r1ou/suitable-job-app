@@ -1,7 +1,11 @@
 import React, { memo } from 'react';
 import { Helmet } from "react-helmet-async";
 
-const PageHeader = memo(({ title }) => {
+interface Props {
+    title?: string;
+}
+
+const PageHeader:React.FC<Props> = memo(({ title }) => {
     const head = [
         { charset: "utf-8" },
         { name: 'viewport', content: "minimum-scale=1, initial-scale=1, width=device-width, maximum-scale=1, shrink-to-fit=no" },

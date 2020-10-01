@@ -7,7 +7,12 @@ import FormComp from "./FormComp";
 import PageHeader from "./PageHeader";
 import Constants from "../Constants";
 
-const Form = memo(({answers, checkAnswers}) => {
+interface Props {
+    answers: number[][];
+    checkAnswers: (answers: number[][]) => boolean;
+}
+
+const Form:React.FC<Props> = memo(({answers, checkAnswers}) => {
     const validAnswers = checkAnswers(answers);
     const { formElements } = Constants;
     const [alertText, setAlertText] = useState(false);

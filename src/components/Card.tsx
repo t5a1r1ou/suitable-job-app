@@ -48,7 +48,21 @@ const FLIP_BACK_STYLE = {
     }
 };
 
-const Card = ({state, flipFlag, index, type, questionIndex, questions, doAnswer}) => {
+interface questionsItems {
+    title: string;
+}
+
+interface Props {
+    state: string;
+    flipFlag: boolean;
+    index: string;
+    type: string;
+    questionIndex: number;
+    questions: questionsItems[];
+    doAnswer: (answer:number[]) => void;
+}
+
+const Card:React.FC<Props> = ({state, flipFlag, index, type, questionIndex, questions, doAnswer}) => {
    return (
     <div className="flip-card" style={flipFlag ? FLIP_STYLE[state] : FLIP_BACK_STYLE[state]}>
         <div className="flip-card_id">

@@ -1,14 +1,35 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
+// @ts-ignore
 import Typewriter from "typewriter-effect";
 
 import PageHeader from "./PageHeader";
 
 import Constants from "../Constants";
 
-const SectionTop = ({type, secImg}) => {
+interface Props {
+    type: string;
+    secImg: {
+        values: {
+          title: string,
+          titleAlt: string,
+          doc: string,
+          docAlt: string
+        };
+        personality: {
+          title: string,
+          titleAlt: string,
+          doc: string,
+          docAlt: string
+        };
+    };
+}
+
+const SectionTop:React.FC<Props> = ({type, secImg}) => {
     const { sectionTexts } = Constants;
     const history = useHistory();
+
+    console.log(type);
 
     const secElements = {
         values: {

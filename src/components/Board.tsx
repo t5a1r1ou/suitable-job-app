@@ -6,24 +6,60 @@ import Card from "./Card";
 import ProgressBar from "./ProgressBar";
 import PageHeader from "./PageHeader";
 
-export const Board = memo(({ questions, answers, setAnswers, type, secImg }) => {
+interface questionsItems {
+    title: string;
+}
+
+interface Props {
+    questions: questionsItems[];
+    answers: number[][];
+    setAnswers: any;
+    type: string;
+    secImg: {
+        values: {
+            title: string,
+            titleAlt: string,
+            doc: string,
+            docAlt: string
+        },
+        personality: {
+            "title": string,
+            "titleAlt": string,
+            "doc": string,
+            "docAlt": string
+          }
+    }
+}
+
+interface RouteParams {
+    index: string;
+}
+
+interface secTop {
+    title: string;
+    titleAlt: string;
+    doc: string;
+    docAlt: string;
+}
+
+export const Board:React.FC<Props> = memo(({ questions, answers, setAnswers, type, secImg }) => {
     const [flip, setFlip] = useState(false);
     const [flipBack, setFlipBack] = useState(false);
     const [flipFlag, setFlipFlag] = useState(true);
     const history = useHistory();
-    const { index } = useParams();
-    const questionIndex = index ? index - 1 : questions.length - 1;
-    const questionProgress = index ? index - 1 : questions.length;
+    const { index } = useParams<RouteParams>();
+    const questionIndex = index ? parseInt(index, 10) - 1 : questions.length - 1;
+    const questionProgress = index ? parseInt(index, 10) - 1 : questions.length;
 
-    const doAnswer = answer => {
+    const doAnswer: (answer: number[]) => void = answer => {
         const newAnswers = answers.slice();
         newAnswers[questionIndex] = answer;
         setAnswers(newAnswers);
         setFlipFlag(true);
         setFlip(!flip);
         
-        const path = (function() {
-            if (index < questions.length) {
+        const path: string = (function() {
+            if (parseInt(index, 10) < questions.length) {
                 return `/${type}/questions/${parseInt(index, 10) + 1}`;
             } else if (type === "values") {
                 return "/personality/top";
@@ -34,29 +70,29 @@ export const Board = memo(({ questions, answers, setAnswers, type, secImg }) => 
         history.push(path);
     };
 
-    const doBack = () => {
+    const doBack: () => void = () => {
         setFlipFlag(false);
         setFlipBack(!flipBack);
         history.push(`/${type}/questions/${questionIndex}`);
     }
 
-    const secTop = type === "values" ? secImg["values"]: secImg["personality"];
+    const secTop: secTop = type === "values" ? secImg["values"]: secImg["personality"];
 
-    const pageTitle = type === "values" ? "価値観" : "性格";
+    const pageTitle: string = type === "values" ? "価値観" : "性格";
     return (
         <>  
             <PageHeader title={`${pageTitle}診断 設問${index}`} />
             <h1>
                 <img
-                    src={secTop.path}
-                    alt={secTop.alt}
+                    src={secTop.title}
+                    alt={secTop.titleAlt}
                     className="sectop-img"
                 />
             </h1>
             <Transition
                 in={flipFlag ? flip : flipBack}
                 timeout={550}
-            >{state => (
+            >{(state: string) => (
                 <Card
                     state={state}
                     flipFlag={flipFlag}

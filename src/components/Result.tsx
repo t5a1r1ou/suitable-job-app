@@ -3,7 +3,16 @@ import { Redirect, useHistory } from "react-router-dom";
 
 import PageHeader from "./PageHeader";
 
-const Result = ({vAnswers, pAnswers, setpAnswers, setvAnswers, checkAnswers}) => {
+
+interface Props {
+  vAnswers: number[][];
+  pAnswers: number[][];
+  setpAnswers: React.Dispatch<React.SetStateAction<any[]>>;
+  setvAnswers: React.Dispatch<React.SetStateAction<any[]>>;
+  checkAnswers: (answers: number[][]) => boolean;
+}
+
+const Result:React.FC<Props> = ({vAnswers, pAnswers, setpAnswers, setvAnswers, checkAnswers}) => {
     const validAnswers = checkAnswers(vAnswers);
     const history = useHistory();
     const backTop = () => {
@@ -17,7 +26,7 @@ const Result = ({vAnswers, pAnswers, setpAnswers, setvAnswers, checkAnswers}) =>
             return acc.map((a, i) => a + current[i]);
         });
         const max = sumArr.reduce((a, b) => Math.max(a, b));
-        const targetArr = [];
+        const targetArr: number[] = [];
         sumArr.forEach((a, index) => {
           if (a === max) {
             targetArr.push(index);
@@ -32,9 +41,6 @@ const Result = ({vAnswers, pAnswers, setpAnswers, setvAnswers, checkAnswers}) =>
 
     const MaxTitle = max => max.length === 1 ? max[0] + 1 : max.join("・");
     
-    // const valuesMaxTitle = valuesMax.length === 1 ? valuesMax[0] + 1 : valuesMax.join("・")
-    // const personalityMaxTitle = personalityMax.length === 1 ? personalityMax[0] + 1 : personalityMax.join("・")
-
     return (!validAnswers ?
         <>
             <PageHeader title="診断結果" />
