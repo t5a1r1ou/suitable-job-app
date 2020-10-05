@@ -1,0 +1,37 @@
+@mixin breakpoint {
+    @media screen and (min-width: 400px) {
+      @content;
+    }
+  }
+
+.result- {
+    &box {
+        width: 80%;
+        margin: 0 auto;
+    }
+    &top {
+    font-size: 1.2rem;
+    margin-bottom: .5rem;
+    }
+    &you {
+        font-size: .8rem;
+        margin-bottom: .4rem;
+    }
+    &type {
+        font-size: 1.7rem;
+        margin-bottom: .8rem;
+    }
+    &desc {
+        margin-bottom: 2rem;
+        text-align: left;
+        @include breakpoint {
+            text-align: center;
+        }
+    }
+    &share {
+        margin: 0 auto;
+        &btn {
+            margin-bottom: .8rem;
+        }
+    }
+}

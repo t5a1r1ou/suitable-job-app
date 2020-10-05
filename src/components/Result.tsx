@@ -1,5 +1,6 @@
 import React from "react";
 import { Redirect, useHistory } from "react-router-dom";
+import { LineShareButton, LineIcon } from "react-share";
 
 import PageHeader from "./PageHeader";
 
@@ -10,9 +11,10 @@ interface Props {
   setpAnswers: React.Dispatch<React.SetStateAction<any[]>>;
   setvAnswers: React.Dispatch<React.SetStateAction<any[]>>;
   checkAnswers: (answers: number[][]) => boolean;
+  resultTop: string;
 }
 
-const Result:React.FC<Props> = ({vAnswers, pAnswers, setpAnswers, setvAnswers, checkAnswers}) => {
+const Result:React.FC<Props> = ({vAnswers, pAnswers, setpAnswers, setvAnswers, checkAnswers, resultTop}) => {
     const validAnswers = checkAnswers(vAnswers);
     const history = useHistory();
     const backTop = () => {
@@ -44,13 +46,33 @@ const Result:React.FC<Props> = ({vAnswers, pAnswers, setpAnswers, setvAnswers, c
     return (!validAnswers ?
         <>
             <PageHeader title="診断結果" />
-            <h1>診断結果</h1>
-            <p>価値観診断テスト結果：{MaxTitle(valuesMax)}タイプ</p>
-            <p>性格診断テスト結果：{MaxTitle(personalityMax)}タイプ</p>
+            <h1>
+              <img
+                src={resultTop}
+                alt="診断結果"
+                className="sectop-result"
+              />
+            </h1>
+            <div className="result-box">
+              <h2 className="result-top">価値観診断テスト結果</h2>
+              <p className="result-you">あなたは…</p>
+              <p className="result-type">{MaxTitle(valuesMax)}タイプ！</p>
+              <p className="result-desc">ほにゃほにゃほにゃほにゃほにゃほにゃほにゃほにゃほにゃほにゃほにゃほにゃほにゃほにゃほにゃほにゃ</p>            
+              <h2 className="result-top">性格診断テスト結果</h2>
+              <p className="result-you">あなたは…</p>
+              <p className="result-type">{MaxTitle(personalityMax)}タイプ！</p>
+              <p className="result-desc">ほにゃほにゃほにゃほにゃほにゃほにゃほにゃほにゃほにゃほにゃほにゃほにゃほにゃほにゃほにゃほにゃ</p>
+            </div>
             <p 
                 onClick={() => backTop()}
                 className="btn"
             >トップへ</p>
+            <div className="result-share">
+              <LineShareButton url="https://nisso-jobcheck.netlify.app/" className="result-sharebtn">
+                <LineIcon size={50} round />
+              </LineShareButton>
+              <p>プチ自分発見診断をLINEでシェア！</p>
+            </div>
         </>
         :<Redirect to="/" />);
 };

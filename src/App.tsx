@@ -16,6 +16,7 @@ import laboLogo from "./images/labo-logo.png";
 import footerImg from "./images/logo-footer.png";
 import docValues from "./images/doctor1.png";
 import docPersonality from "./images/doctor2.png";
+import resultTop from "./images/result.png";
 
 
 axios.defaults.headers.post["Content-Type"] = "application/x-www-form-urlencoded";
@@ -109,7 +110,8 @@ const App = memo(() => {
         pAnswers: pAnswers,
         setpAnswers: setpAnswers,
         setvAnswers: setvAnswers,
-        checkAnswers: checkAnswers
+        checkAnswers: checkAnswers,
+        resultTop: resultTop
       }
     },
   ];

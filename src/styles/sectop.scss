@@ -30,6 +30,10 @@
       max-width: 300px;
       margin: 0 auto .7rem;
     }
+    &result {
+      @extend .sectop-img;
+      max-width: 200px;
+    }
     &doc {
       width: 40%;
       @include breakpoint {

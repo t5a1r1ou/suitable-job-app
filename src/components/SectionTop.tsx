@@ -29,8 +29,6 @@ const SectionTop:React.FC<Props> = ({type, secImg}) => {
     const { sectionTexts } = Constants;
     const history = useHistory();
 
-    console.log(type);
-
     const secElements = {
         values: {
             imgs: secImg["values"],
