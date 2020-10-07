@@ -1,6 +1,7 @@
 import React from "react";
 import { Redirect, useHistory } from "react-router-dom";
-import { TwitterShareButton, TwitterIcon } from "react-share";
+
+import TwitterShare from "./TwitterShare";
 
 import PageHeader from "./PageHeader";
 
@@ -23,7 +24,12 @@ const Result: React.FC<Props> = ({
   checkAnswers,
   resultTop,
 }) => {
-  const { questionsLen, answersLen } = Constants;
+  const {
+    questionsLen,
+    answersLen,
+    valuesResults,
+    personalityResults,
+  } = Constants;
   const validAnswers = checkAnswers(vAnswers);
   const history = useHistory();
   const backTop = () => {
@@ -60,6 +66,9 @@ const Result: React.FC<Props> = ({
   const MaxTitle: (max: number[]) => number = (max) =>
     max.length === 1 ? max[0] : max[Math.floor(Math.random() * max.length)];
 
+  const valuesResult = valuesResults[MaxTitle(valuesMax) - 1];
+  const personalityResult = personalityResults[MaxTitle(personalityMax) - 1];
+
   return !validAnswers ? (
     <>
       <PageHeader title="診断結果" />
@@ -69,37 +78,20 @@ const Result: React.FC<Props> = ({
       <div className="result-box">
         <h2 className="result-top">価値観診断テスト結果</h2>
         <p className="result-you">あなたは…</p>
-        <p className="result-type">{MaxTitle(valuesMax)}タイプ！</p>
-        <p className="result-desc">
-          ほにゃほにゃほにゃほにゃほにゃほにゃほにゃほにゃほにゃほにゃほにゃほにゃほにゃほにゃほにゃほにゃ
-        </p>
+        <p className="result-type">{valuesResult["type"]}タイプ！</p>
+        <p className="result-desc">{valuesResult["desc"]}</p>
         <h2 className="result-top">性格診断テスト結果</h2>
         <p className="result-you">あなたは…</p>
-        <p className="result-type">{MaxTitle(personalityMax)}タイプ！</p>
-        <p className="result-desc">
-          ほにゃほにゃほにゃほにゃほにゃほにゃほにゃほにゃほにゃほにゃほにゃほにゃほにゃほにゃほにゃほにゃ
-        </p>
+        <p className="result-type">{personalityResult["type"]}タイプ！</p>
+        <p className="result-desc">{personalityResult["desc"]}</p>
       </div>
       <p onClick={() => backTop()} className="btn">
         トップへ
       </p>
-      <div className="result-share">
-        <TwitterShareButton
-          url="https://nisso-jobcheck.netlify.app/"
-          title={`あなたの価値観タイプは「${MaxTitle(
-            valuesMax
-          )}タイプ」、性格タイプは「${MaxTitle(
-            personalityMax
-          )}タイプ」！工場求人ナビのプチ自分発見診断でお気軽に価値観・性格診断しよう`}
-          hashtags={["工場求人ナビ", "プチ自分発見診断"]}
-          via="717450NISSO"
-          related={["717450NISSO"]}
-          className="result-sharebtn"
-        >
-          <TwitterIcon size={50} round />
-        </TwitterShareButton>
-        <p>プチ自分発見診断をTwitterでシェア！</p>
-      </div>
+      <TwitterShare
+        valuesResult={valuesResult}
+        personalityResult={personalityResult}
+      />
     </>
   ) : (
     <Redirect to="/" />
