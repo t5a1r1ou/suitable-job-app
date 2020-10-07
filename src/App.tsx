@@ -69,7 +69,7 @@ const App = memo(() => {
 
   const checkAnswers = useCallback(
     (answers) => answers[0].every((ele: number) => ele === 0),
-    [vAnswers, pAnswers]
+    []
   );
 
   const secImg = {
