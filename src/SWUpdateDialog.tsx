@@ -16,7 +16,12 @@ const SWUpdateDialog: React.FC<{
 
   return show ? (
     <div style={style}>
-      <span>新しいバージョンがリリースされました。🎉</span>
+      <span>
+        新しいバージョンがリリースされました。
+        <span role="img" area-label="cracker">
+          🎉
+        </span>
+      </span>
       <button onClick={handleUpdate}>アップデート</button>
     </div>
   ) : (
