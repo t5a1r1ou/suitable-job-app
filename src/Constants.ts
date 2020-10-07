@@ -110,8 +110,6 @@ class Constants {
     vQuestions: 4,
     pQuestions: 6,
   };
-
-  static exvQuestions = [];
 }
 
 export default Constants;

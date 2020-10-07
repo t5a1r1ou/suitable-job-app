@@ -1,6 +1,6 @@
 import React from "react";
 import { Redirect, useHistory } from "react-router-dom";
-import { LineShareButton, LineIcon } from "react-share";
+import { TwitterShareButton, TwitterIcon } from "react-share";
 
 import PageHeader from "./PageHeader";
 
@@ -84,13 +84,19 @@ const Result: React.FC<Props> = ({
         トップへ
       </p>
       <div className="result-share">
-        <LineShareButton
+        <TwitterShareButton
           url="https://nisso-jobcheck.netlify.app/"
+          title={`あなたは${MaxTitle(
+            personalityMax
+          )}タイプ！工場求人ナビのプチ自分発見診断でお気軽に価値観・性格診断しよう`}
+          hashtags={["工場求人ナビ", "プチ自分発見診断"]}
+          via="717450NISSO"
+          related={["717450NISSO"]}
           className="result-sharebtn"
         >
-          <LineIcon size={50} round />
-        </LineShareButton>
-        <p>プチ自分発見診断をLINEでシェア！</p>
+          <TwitterIcon size={50} round />
+        </TwitterShareButton>
+        <p>プチ自分発見診断をTwitterでシェア！</p>
       </div>
     </>
   ) : (
