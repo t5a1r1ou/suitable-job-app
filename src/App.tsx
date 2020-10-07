@@ -111,7 +111,6 @@ const App = memo(() => {
       attributes: {
         type: "personality",
         secImg: secImg,
-        answers: [...vAnswers, ...pAnswers],
       },
     },
     {

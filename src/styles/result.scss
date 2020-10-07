@@ -22,11 +22,9 @@
         margin-bottom: .8rem;
     }
     &desc {
-        margin-bottom: 2rem;
-        text-align: left;
-        @include breakpoint {
-            text-align: center;
-        }
+        margin-bottom: 3rem;
+        text-align: center;
+        white-space: pre-line;
     }
     &share {
         margin: 0 auto;
