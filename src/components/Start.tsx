@@ -18,7 +18,7 @@ const Start: React.FC = memo(() => {
       <div className="top-logo_flex">
         <img src={logoLeft} alt="ロゴ左" className="top-logo_item" />
         <p className="btn-em" onClick={() => history.push("/values/top")}>
-          始める
+          始めるテスト
         </p>
         <img src={logoRight} alt="ロゴ右" className="top-logo_item" />
       </div>
