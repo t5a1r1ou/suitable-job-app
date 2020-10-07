@@ -18,7 +18,7 @@ const SWUpdateDialog: React.FC<{
     <div style={style}>
       <span>
         新しいバージョンがリリースされました。
-        <span role="img" area-label="cracker">
+        <span role="img" aria-label="cracker">
           🎉
         </span>
       </span>
