@@ -33,10 +33,6 @@ img {
   height: auto;
   vertical-align: bottom;
   box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  -o-box-sizing: border-box;
-  -ms-box-sizing: border-box;
 }
 
 header {
@@ -59,11 +55,12 @@ header {
   border-bottom: 10px solid #c9bc9c;
 }
 
-.err-title {
-  font-size: 3rem;
-}
-
-.err-text {
-  font-size: 1.2rem;
-  margin-bottom: 2rem;
+.err-{
+  &title {
+    font-size: 3rem;
+  }
+  &text {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+  }
 }
