@@ -40,7 +40,7 @@ const Result: React.FC<Props> = ({
     );
   };
 
-  const maxIndexs = (arr: number[][]) => {
+  const maxIndexs: (arr: number[][]) => number[] = (arr) => {
     const sumArr = arr.reduce((acc, current) =>
       acc.map((a, i) => a + current[i])
     );
@@ -48,7 +48,7 @@ const Result: React.FC<Props> = ({
     const targetArr: number[] = [];
     sumArr.forEach((a, index) => {
       if (a === max) {
-        targetArr.push(index);
+        targetArr.push(index + 1);
       }
     });
     return targetArr;
@@ -57,8 +57,8 @@ const Result: React.FC<Props> = ({
   const valuesMax = maxIndexs(vAnswers);
   const personalityMax = maxIndexs(pAnswers);
 
-  const MaxTitle = (max: number[]) =>
-    max.length === 1 ? max[0] + 1 : max.join("・");
+  const MaxTitle: (max: number[]) => number = (max) =>
+    max.length === 1 ? max[0] : max[Math.floor(Math.random() * max.length)];
 
   return !validAnswers ? (
     <>
@@ -86,9 +86,11 @@ const Result: React.FC<Props> = ({
       <div className="result-share">
         <TwitterShareButton
           url="https://nisso-jobcheck.netlify.app/"
-          title={`あなたは${MaxTitle(
+          title={`あなたの価値観タイプは「${MaxTitle(
+            valuesMax
+          )}タイプ」、性格タイプは「${MaxTitle(
             personalityMax
-          )}タイプ！工場求人ナビのプチ自分発見診断でお気軽に価値観・性格診断しよう`}
+          )}タイプ」！工場求人ナビのプチ自分発見診断でお気軽に価値観・性格診断しよう`}
           hashtags={["工場求人ナビ", "プチ自分発見診断"]}
           via="717450NISSO"
           related={["717450NISSO"]}
