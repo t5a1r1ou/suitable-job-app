@@ -69,7 +69,7 @@ const App = memo(() => {
 
   const checkAnswers = useCallback(
     (answers) => answers[0].every((ele: number) => ele === 0),
-    []
+    [vAnswers, pAnswers]
   );
 
   const secImg = {
@@ -105,17 +105,6 @@ const App = memo(() => {
         secImg: secImg,
       },
     },
-    // {
-    //   path: "/values/questions/extra/:index",
-    //   Component: Board,
-    //   attributes: {
-    //     questions: vQuestions,
-    //     answers: vAnswers,
-    //     setAnswers: setvAnswers,
-    //     type: "values",
-    //     secImg: secImg,
-    //   },
-    // },
     {
       path: "/personality/top",
       Component: SectionTop,
