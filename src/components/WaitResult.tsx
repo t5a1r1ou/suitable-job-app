@@ -41,7 +41,7 @@ const WaitResult: React.FC<Props> = memo(({ docWaiting, docWaited }) => {
       clearInterval(completeTimer);
       clearInterval(redirectTimer);
     };
-  }, []);
+  }, [history]);
 
   return (
     <div className="wait_box">
