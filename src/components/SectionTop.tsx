@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo } from "react";
 import { useHistory } from "react-router-dom";
 // @ts-ignore
 import Typewriter from "typewriter-effect";
@@ -25,7 +25,7 @@ interface Props {
   };
 }
 
-const SectionTop: React.FC<Props> = ({ type, secImg }) => {
+const SectionTop: React.FC<Props> = memo(({ type, secImg }) => {
   const { sectionTexts } = Constants;
   const history = useHistory();
 
@@ -71,6 +71,6 @@ const SectionTop: React.FC<Props> = ({ type, secImg }) => {
       </p>
     </>
   );
-};
+});
 
 export default SectionTop;

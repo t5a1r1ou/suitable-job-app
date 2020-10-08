@@ -11,6 +11,8 @@ class Constants {
     late: "あともう少し！",
   };
 
+  static progressWaitText = "お待ちください…";
+
   static formElements = [
     {
       label: "age",

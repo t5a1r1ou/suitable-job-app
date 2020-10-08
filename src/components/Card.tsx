@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo } from "react";
 
 import AnswerButtons from "./AnswerButtons";
 
@@ -62,34 +62,28 @@ interface Props {
   doAnswer: (answer: number[]) => void;
 }
 
-const Card: React.FC<Props> = ({
-  state,
-  flipFlag,
-  index,
-  type,
-  questionIndex,
-  questions,
-  doAnswer,
-}) => {
-  return (
-    <div
-      className="flip-card"
-      style={flipFlag ? FLIP_STYLE[state] : FLIP_BACK_STYLE[state]}
-    >
-      <div className="flip-card_id">
-        <em>問{index}</em>
+const Card: React.FC<Props> = memo(
+  ({ state, flipFlag, index, type, questionIndex, questions, doAnswer }) => {
+    return (
+      <div
+        className="flip-card"
+        style={flipFlag ? FLIP_STYLE[state] : FLIP_BACK_STYLE[state]}
+      >
+        <div className="flip-card_id">
+          <em>問{index}</em>
+        </div>
+        <h2 className="flip-card_title">{questions[questionIndex].title}</h2>
+        <div className="btn_box">
+          <AnswerButtons
+            questions={questions}
+            questionIndex={questionIndex}
+            type={type}
+            doAnswer={doAnswer}
+          />
+        </div>
       </div>
-      <h2 className="flip-card_title">{questions[questionIndex].title}</h2>
-      <div className="btn_box">
-        <AnswerButtons
-          questions={questions}
-          questionIndex={questionIndex}
-          type={type}
-          doAnswer={doAnswer}
-        />
-      </div>
-    </div>
-  );
-};
+    );
+  }
+);
 
 export default Card;

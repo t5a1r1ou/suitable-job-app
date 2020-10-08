@@ -47,4 +47,8 @@
       @extend .progress-bar-done;
       background-color: #ec7bd4;
     }
+    &_w {
+      @extend .progress-bar-done;
+      background-color: #ecb77b;
+    }
   }
