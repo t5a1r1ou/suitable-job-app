@@ -2,13 +2,7 @@ import React, { useState, useEffect, memo, useCallback } from "react";
 import { BrowserRouter } from "react-router-dom";
 import axios from "axios";
 import { HelmetProvider } from "react-helmet-async";
-
-import Start from "./components/Start";
-import SectionTop from "./components/SectionTop";
-import Board from "./components/Board";
-import Form from "./components/Form";
-import Result from "./components/Result";
-import Routes from "./components/Routes";
+import loadable from "@loadable/component";
 
 import valuesImg from "./images/values.png";
 import personalityImg from "./images/personality.png";
@@ -25,6 +19,13 @@ import WaitResult from "./components/WaitResult";
 
 axios.defaults.headers.post["Content-Type"] =
   "application/x-www-form-urlencoded";
+
+const Start = loadable(() => import("./components/Start"));
+const SectionTop = loadable(() => import("./components/SectionTop"));
+const Board = loadable(() => import("./components/Board"));
+const Form = loadable(() => import("./components/Form"));
+const Result = loadable(() => import("./components/Result"));
+const Routes = loadable(() => import("./components/Routes"));
 
 const App = memo(() => {
   const { questionsLen, answersLen } = Constants;

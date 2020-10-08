@@ -33,7 +33,6 @@ const Result: React.FC<Props> = memo(
     const validAnswers = checkAnswers(vAnswers);
     const history = useHistory();
     const backTop = () => {
-      history.push("/");
       setvAnswers(
         Array(questionsLen["vQuestions"]).fill(
           Array(answersLen["vQuestions"]).fill(0)
@@ -44,6 +43,7 @@ const Result: React.FC<Props> = memo(
           Array(answersLen["pQuestions"]).fill(0)
         )
       );
+      history.push("/");
     };
 
     const maxIndexs: (arr: number[][]) => number[] = (arr) => {
