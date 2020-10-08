@@ -16,9 +16,12 @@ import laboLogo from "./images/labo-logo.png";
 import footerImg from "./images/logo-footer.png";
 import docValues from "./images/doctor1.png";
 import docPersonality from "./images/doctor2.png";
+import docWaiting from "./images/doctor3.png";
+import docWaited from "./images/doctor4.png";
 import resultTop from "./images/result.png";
 
 import Constants from "./Constants";
+import WaitResult from "./components/WaitResult";
 
 axios.defaults.headers.post["Content-Type"] =
   "application/x-www-form-urlencoded";
@@ -122,6 +125,14 @@ const App = memo(() => {
         setAnswers: setpAnswers,
         type: "personality",
         secImg: secImg,
+      },
+    },
+    {
+      path: "/loading",
+      Component: WaitResult,
+      attributes: {
+        docWaiting: docWaiting,
+        docWaited: docWaited,
       },
     },
     {

@@ -36,7 +36,7 @@ const Form: React.FC<Props> = memo(({ answers, checkAnswers }) => {
   const canSubmit = () => sendElements.age !== "";
 
   const submitAct = () => {
-    history.push("/result");
+    history.push("/loading");
   };
 
   const sendForm = () => (canSubmit() ? submitAct() : setAlertText(true));
