@@ -1,0 +1,44 @@
+@mixin breakpoint {
+    @media screen and (min-width: 400px) {
+      @content;
+    }
+  }
+
+.static_ {
+    &title {
+        color: #ffee77;
+        font-size: 1.4rem;
+        margin: 1rem auto;
+        @include breakpoint {
+            font-size: 2rem;
+        }
+    }
+    &box {
+        width: 90%;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-around;
+        @include breakpoint {
+            justify-content: center;
+        }
+    }
+    &item {
+        padding: 1rem;
+        border: 3px dotted #fff;
+        border-radius: 20px;
+        margin: 0 .2rem;
+        @include breakpoint {
+            margin: 0 2rem;
+        }
+        &_title {
+            margin-bottom: 0.7rem;
+            font-size: 1.1rem;
+            @include breakpoint {
+                font-size: 1.7rem;
+            }
+        }
+        &_desc {
+            font-size: 0.8rem;
+        }
+    }
+}

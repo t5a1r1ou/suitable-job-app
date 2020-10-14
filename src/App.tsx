@@ -4,6 +4,9 @@ import axios from "axios";
 import { HelmetProvider } from "react-helmet-async";
 import loadable from "@loadable/component";
 
+import logoTitle from "./images/logo-title.png";
+import logoLeft from "./images/logo-item_left.png";
+import logoRight from "./images/logo-item_right.png";
 import valuesImg from "./images/values.png";
 import personalityImg from "./images/personality.png";
 import laboLogo from "./images/labo-logo.png";
@@ -91,8 +94,20 @@ const App = memo(() => {
     },
   };
 
+  const topImg = {
+    logoTitle: logoTitle,
+    logoLeft: logoLeft,
+    logoRight: logoRight,
+  };
+
   const ROUTES = [
-    { path: "/", Component: Start },
+    {
+      path: "/",
+      Component: Start,
+      attributes: {
+        topImg: topImg,
+      },
+    },
     {
       path: "/values/top",
       Component: SectionTop,

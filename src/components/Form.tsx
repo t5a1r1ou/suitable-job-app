@@ -1,5 +1,4 @@
 import React, { memo, useState } from "react";
-
 import { Redirect, useHistory } from "react-router-dom";
 import { Label, Checkbox } from "@rebass/forms";
 
