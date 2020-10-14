@@ -4,7 +4,6 @@
   }
 }
 
-@import './fonts/TanukiMagic.ttf';
 @import './styles/reset.scss';
 @import './styles/btn.scss';
 @import './styles/routeTransition.scss';
@@ -19,7 +18,7 @@
 
 @font-face {
   font-family: 'blackBoard';
-  src: local('blackBoard'), url(./fonts/TanukiMagic.ttf) format('truetype');
+  src: local('blackBoard'), url(./fonts/TanukiMagic.woff2) format('woff2');
   font-display: swap;
 }
 
