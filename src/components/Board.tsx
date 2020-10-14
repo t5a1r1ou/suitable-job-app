@@ -117,7 +117,7 @@ export const Board: React.FC<Props> = memo(
           )}
         </Transition>
         {index !== "1" && (
-          <p className="btn_back" onClick={() => doBack()}>
+          <p className="btn_border" onClick={() => doBack()}>
             戻る
           </p>
         )}
