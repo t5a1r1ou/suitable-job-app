@@ -47,6 +47,9 @@ const WaitResult: React.FC<Props> = memo(({ docWaiting, docWaited }) => {
     <div className="wait_box">
       <h1 className="wait_text">{wait.text}</h1>
       <img src={wait.img} alt={wait.alt} className="wait_doc" />
+      <p className="btn" onClick={() => history.push("/result")}>
+        スキップする
+      </p>
       <Progressbar now={now} length={100} type="waiting" />
     </div>
   );
