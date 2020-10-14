@@ -1,9 +1,3 @@
-@mixin breakpoint {
-  @media screen and (min-width: 400px) {
-    @content;
-  }
-}  
-
 .form- {
     &title {
       font-size: 2rem;

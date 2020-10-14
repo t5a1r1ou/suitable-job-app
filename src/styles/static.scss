@@ -1,9 +1,3 @@
-@mixin breakpoint {
-    @media screen and (min-width: 400px) {
-      @content;
-    }
-  }
-
 .static_ {
     &title {
         color: #ffee77;
@@ -18,9 +12,6 @@
         margin: 0 auto;
         display: flex;
         justify-content: space-around;
-        @include breakpoint {
-            justify-content: center;
-        }
     }
     &item {
         padding: 1rem;

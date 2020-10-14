@@ -10,5 +10,8 @@
     &doc {
         width: 60%;
         margin-bottom: 1.5rem;
+        @include breakpoint {
+            width: 20%;
+        }
     }
 }

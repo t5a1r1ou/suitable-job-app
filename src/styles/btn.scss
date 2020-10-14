@@ -1,9 +1,3 @@
-@mixin breakpoint {
-    @media screen and (min-width: 400px) {
-      @content;
-    }
-  }  
-
 .btn {
     cursor: pointer;
     padding: 1rem 2rem;
@@ -15,7 +9,6 @@
     border-radius: 8px;
     box-shadow: inset 0 2px 0 #ffffff33, 0 2px 2px #00000030;
     font-weight: bold;
-  
     @include breakpoint {
       margin: 1rem 2rem;
     }
