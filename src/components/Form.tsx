@@ -43,7 +43,7 @@ const Form: React.FC<Props> = memo(({ answers, checkAnswers }) => {
   return !validAnswers ? (
     <>
       <PageHeader title="アンケート" />
-      <h1>アンケート</h1>
+      <h1 className="form-title">アンケート</h1>
       <div className="form-box">
         {formElements.map((ele) => (
           <FormComp

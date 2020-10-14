@@ -5,6 +5,9 @@
 }  
 
 .form- {
+    &title {
+      font-size: 2rem;
+    }
     &box {
       width: 80%;
       margin: 0 auto;
