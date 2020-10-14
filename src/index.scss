@@ -20,6 +20,7 @@
 @font-face {
   font-family: 'blackBoard';
   src: local('blackBoard'), url(./fonts/TanukiMagic.ttf) format('truetype');
+  font-display: swap;
 }
 
 body {
