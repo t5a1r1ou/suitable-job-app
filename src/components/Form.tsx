@@ -1,12 +1,10 @@
 import React, { memo, useState } from "react";
 import { Redirect, useHistory } from "react-router-dom";
 import { Label, Checkbox } from "@rebass/forms";
-import loadable from "@loadable/component";
 
+import FormComp from "./FormComp";
+import PageHeader from "./PageHeader";
 import Constants from "../Constants";
-
-const FormComp = loadable(() => import("./FormComp"));
-const PageHeader = loadable(() => import("./PageHeader"));
 
 interface Props {
   answers: number[][];

@@ -1,11 +1,10 @@
 import React, { useState, memo } from "react";
 import { useHistory, useParams } from "react-router-dom";
 import { Transition } from "react-transition-group";
-import loadable from "@loadable/component";
 
-const Card = loadable(() => import("./Card"));
-const ProgressBar = loadable(() => import("./ProgressBar"));
-const PageHeader = loadable(() => import("./PageHeader"));
+import Card from "./Card";
+import ProgressBar from "./ProgressBar";
+import PageHeader from "./PageHeader";
 
 interface questionsItems {
   title: string;

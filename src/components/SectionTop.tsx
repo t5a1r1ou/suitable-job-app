@@ -2,11 +2,10 @@ import React, { memo } from "react";
 import { useHistory } from "react-router-dom";
 // @ts-ignore
 import Typewriter from "typewriter-effect";
-import loadable from "@loadable/component";
+
+import PageHeader from "./PageHeader";
 
 import Constants from "../Constants";
-
-const PageHeader = loadable(() => import("./PageHeader"));
 
 interface Props {
   type: string;
