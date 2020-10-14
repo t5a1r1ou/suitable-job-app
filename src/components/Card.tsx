@@ -1,6 +1,7 @@
 import React, { memo } from "react";
+import loadable from "@loadable/component";
 
-import AnswerButtons from "./AnswerButtons";
+const AnswerButtons = loadable(() => import("./AnswerButtons"));
 
 const FLIP_STYLE = {
   // 前面⇒背面

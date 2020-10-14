@@ -1,7 +1,8 @@
 import React, { memo, useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
+import loadable from "@loadable/component";
 
-import Progressbar from "./ProgressBar";
+const Progressbar = loadable(() => import("./ProgressBar"));
 
 interface Props {
   docWaiting: string;

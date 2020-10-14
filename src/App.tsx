@@ -18,7 +18,6 @@ import docWaited from "./images/doctor4.png";
 import resultTop from "./images/result.png";
 
 import Constants from "./Constants";
-import WaitResult from "./components/WaitResult";
 
 axios.defaults.headers.post["Content-Type"] =
   "application/x-www-form-urlencoded";
@@ -29,6 +28,7 @@ const Board = loadable(() => import("./components/Board"));
 const Form = loadable(() => import("./components/Form"));
 const Result = loadable(() => import("./components/Result"));
 const Routes = loadable(() => import("./components/Routes"));
+const WaitResult = loadable(() => import("./components/WaitResult"));
 
 const App = memo(() => {
   const { questionsLen, answersLen } = Constants;

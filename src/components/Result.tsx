@@ -1,10 +1,11 @@
 import React, { memo } from "react";
 import { Redirect, useHistory } from "react-router-dom";
-
-import TwitterShare from "./TwitterShare";
-import PageHeader from "./PageHeader";
+import loadable from "@loadable/component";
 
 import Constants from "../Constants";
+
+const TwitterShare = loadable(() => import("./TwitterShare"));
+const PageHeader = loadable(() => import("./PageHeader"));
 
 interface Props {
   vAnswers: number[][];

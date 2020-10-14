@@ -1,8 +1,9 @@
 import React, { memo } from "react";
 import { useHistory } from "react-router-dom";
+import loadable from "@loadable/component";
 
-import PageHeader from "./PageHeader";
-import StaticStart from "./StaticStart";
+const PageHeader = loadable(() => import("./PageHeader"));
+const StaticStart = loadable(() => import("./StaticStart"));
 
 interface TopImg {
   logoTitle: string;
