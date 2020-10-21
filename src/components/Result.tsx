@@ -60,23 +60,6 @@ const Result: React.FC<Props> = memo(
       return targetArr;
     };
 
-    const sortedIndexs = (arr) => {
-      let sumArr = arr.reduce((acc, current) =>
-        acc.map((a, i) => a + current[i])
-      );
-      const targetArr: number[] = [];
-      for (let n = 0; n < sumArr.length; n++) {
-        const max = sumArr.reduce((a, b) => Math.max(a, b));
-        const index: number = sumArr.findIndex((a) => a === max);
-        targetArr.push(index);
-        const tempArr = sumArr.slice();
-        tempArr[index] = 0;
-        sumArr = tempArr;
-      }
-      console.log(sumArr);
-      return targetArr;
-    };
-
     const valuesMax = maxIndexs(vAnswers);
     const personalityMax = maxIndexs(pAnswers);
 
