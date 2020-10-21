@@ -63,6 +63,7 @@ const App = memo(() => {
         .get(process.env.REACT_APP_SJC_PQUESTIONS as string)
         .then((r) => {
           const datas = r.data.data;
+          console.log(datas);
           setpQuestions(datas);
         })
         .catch((err) => {

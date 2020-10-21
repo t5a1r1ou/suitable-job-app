@@ -2,7 +2,7 @@ import React, { memo } from "react";
 import { Route } from "react-router-dom";
 import { CSSTransition } from "react-transition-group";
 
-import ErrorBoundary from "./ErrorBoundary";
+// import ErrorBoundary from "./ErrorBoundary";
 
 interface routeItems {
   path: string;
@@ -36,9 +36,9 @@ const Routes: React.FC<Props> = memo(({ ROUTES, footerImg }) => {
               unmountOnExit
             >
               <div className="page__item base_box">
-                <ErrorBoundary>
-                  <Component {...attributes} />
-                </ErrorBoundary>
+                {/* <ErrorBoundary> */}
+                <Component {...attributes} />
+                {/* </ErrorBoundary> */}
                 <img src={footerImg} alt="ロゴフッター" />
               </div>
             </CSSTransition>

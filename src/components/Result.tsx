@@ -54,9 +54,26 @@ const Result: React.FC<Props> = memo(
       const targetArr: number[] = [];
       sumArr.forEach((a, index) => {
         if (a === max) {
-          targetArr.push(index + 1);
+          targetArr.push(index);
         }
       });
+      return targetArr;
+    };
+
+    const sortedIndexs = (arr) => {
+      let sumArr = arr.reduce((acc, current) =>
+        acc.map((a, i) => a + current[i])
+      );
+      const targetArr: number[] = [];
+      for (let n = 0; n < sumArr.length; n++) {
+        const max = sumArr.reduce((a, b) => Math.max(a, b));
+        const index: number = sumArr.findIndex((a) => a === max);
+        targetArr.push(index);
+        const tempArr = sumArr.slice();
+        tempArr[index] = 0;
+        sumArr = tempArr;
+      }
+      console.log(sumArr);
       return targetArr;
     };
 
@@ -65,8 +82,8 @@ const Result: React.FC<Props> = memo(
 
     const MaxTitle: (max: number[]) => number = (max) =>
       max.length === 1 ? max[0] : max[Math.floor(Math.random() * max.length)];
-    const valuesResult = valuesResults[MaxTitle(valuesMax) - 1];
-    const personalityResult = personalityResults[MaxTitle(personalityMax) - 1];
+    const valuesResult = valuesResults[MaxTitle(valuesMax)];
+    const personalityResult = personalityResults[MaxTitle(personalityMax)];
 
     return !validAnswers ? (
       <>
