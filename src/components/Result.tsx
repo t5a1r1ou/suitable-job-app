@@ -3,6 +3,7 @@ import { Redirect, useHistory } from "react-router-dom";
 
 import TwitterShare from "./TwitterShare";
 import PageHeader from "./PageHeader";
+import ResultComp from "./ResultComp";
 
 import Constants from "../Constants";
 
@@ -46,7 +47,7 @@ const Result: React.FC<Props> = memo(
       history.push("/");
     };
 
-    const maxIndexs: (arr: number[][]) => number[] = (arr) => {
+    const maxIndex: (arr: number[][]) => number = (arr) => {
       const sumArr = arr.reduce((acc, current) =>
         acc.map((a, i) => a + current[i])
       );
@@ -57,16 +58,47 @@ const Result: React.FC<Props> = memo(
           targetArr.push(index);
         }
       });
+
+      const [targetFirst] = targetArr;
+      return targetArr.length === 1
+        ? targetFirst
+        : targetArr[Math.floor(Math.random() * targetArr.length)];
+    };
+
+    const sortedIndexs: (arr: number[][]) => number[] = (arr) => {
+      let sumArr: number[] = arr.reduce((acc, current) =>
+        acc.map((a, i) => a + current[i])
+      );
+      const targetArr: number[] = [];
+      for (let n = 0; n < sumArr.length; n++) {
+        const max: number = sumArr.reduce((a, b) => Math.max(a, b));
+        const index: number = sumArr.findIndex((a) => a === max);
+        targetArr.push(index);
+        const tempArr: number[] = sumArr.slice();
+        tempArr[index] = 0;
+        sumArr = tempArr;
+      }
       return targetArr;
     };
 
-    const valuesMax = maxIndexs(vAnswers);
-    const personalityMax = maxIndexs(pAnswers);
+    const personalityMax: number[] = sortedIndexs(pAnswers)
+      .slice(0, 2)
+      .sort((a, b) => a - b); // 順番無視するためにソート
 
-    const MaxTitle: (max: number[]) => number = (max) =>
-      max.length === 1 ? max[0] : max[Math.floor(Math.random() * max.length)];
-    const valuesResult = valuesResults[MaxTitle(valuesMax)];
-    const personalityResult = personalityResults[MaxTitle(personalityMax)];
+    const valuesResult = valuesResults[maxIndex(vAnswers)];
+
+    const personalityResult = personalityResults.find((result) => {
+      const array_equal = (a: number[], b: number[]) => {
+        if (a.length !== b.length) return false;
+        for (let i = 0, n = a.length; i < n; ++i) {
+          if (a[i] !== b[i]) return false;
+        }
+        return true;
+      };
+      return array_equal(result["arr"], personalityMax);
+    });
+
+    console.log(personalityResult);
 
     return !validAnswers ? (
       <>
@@ -75,14 +107,8 @@ const Result: React.FC<Props> = memo(
           <img src={resultTop} alt="診断結果" className="sectop-result" />
         </h1>
         <div className="result-box">
-          <h2 className="result-top">価値観診断テスト結果</h2>
-          <p className="result-you">あなたは…</p>
-          <p className="result-type">{valuesResult["type"]}タイプ！</p>
-          <p className="result-desc">{valuesResult["desc"]}</p>
-          <h2 className="result-top">性格診断テスト結果</h2>
-          <p className="result-you">あなたは…</p>
-          <p className="result-type">{personalityResult["type"]}タイプ！</p>
-          <p className="result-desc">{personalityResult["desc"]}</p>
+          <ResultComp results={valuesResult} type="values" />
+          <ResultComp results={personalityResult} type="personality" />
         </div>
         <p onClick={() => backTop()} className="btn">
           トップへ
