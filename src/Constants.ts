@@ -11,7 +11,11 @@ class Constants {
     late: "あともう少し！",
   };
 
-  static progressWaitText = "お待ちください…";
+  static progressWaitTexts = {
+    early: "診断中…",
+    middle: "診断中………",
+    late: "診断中……………",
+  };
 
   static formElements = [
     {
@@ -135,33 +139,6 @@ class Constants {
       desc: "タイプ4の説明説明説明説明説明説\n明説明説明説明説明説明説明",
     },
   ];
-
-  // static personalityResults = [
-  //   {
-  //     type: "1",
-  //     desc: "タイプ1の説明説明説明説明説明説明\n説明説明説明説明説明説明",
-  //   },
-  //   {
-  //     type: "2",
-  //     desc: "タイプ2の説明説明説明説明説\n明説明説明説明説明説明説明説明",
-  //   },
-  //   {
-  //     type: "3",
-  //     desc: "タイプ3の説明説明説明説明説明説\n明説明説明説明説明説明説明",
-  //   },
-  //   {
-  //     type: "4",
-  //     desc: "タイプ4の説明説明説明説明説明説明\n説明説明説明説明説明説明",
-  //   },
-  //   {
-  //     type: "5",
-  //     desc: "タイプ5の説明説明説明説明説\n明説明説明説明説明説明説明説明",
-  //   },
-  //   {
-  //     type: "6",
-  //     desc: "タイプ6の説明説明説明説明説明説\n明説明説明説明説明説明説明",
-  //   },
-  // ];
 
   static personalityResults = [
     {

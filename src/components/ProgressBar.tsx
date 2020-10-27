@@ -9,21 +9,18 @@ interface Props {
 }
 
 const ProgressBar: React.FC<Props> = memo(({ now, length, type }) => {
-  const { progressTexts, progressWaitText } = Constants;
+  const { progressTexts, progressWaitTexts } = Constants;
 
   const percent = Math.floor((now / length) * 100);
 
   const text = (function () {
-    if (type !== "waiting") {
-      if (percent < 30) {
-        return progressTexts["early"];
-      } else if (percent < 70) {
-        return progressTexts["middle"];
-      } else {
-        return progressTexts["late"];
-      }
+    const texts = type !== "waiting" ? progressTexts : progressWaitTexts;
+    if (percent < 30) {
+      return texts["early"];
+    } else if (percent < 70) {
+      return texts["middle"];
     } else {
-      return progressWaitText;
+      return texts["late"];
     }
   })();
 
