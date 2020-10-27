@@ -47,7 +47,9 @@ const ProgressBar: React.FC<Props> = memo(({ now, length, type }) => {
           ></div>
         </div>
         {percent === 100 ? (
-          <p className="text">終了！お疲れ様！</p>
+          <p className="text">
+            {type !== "waiting" ? "終了！お疲れ様！" : "診断完了！"}
+          </p>
         ) : (
           <p className="text">{text}</p>
         )}
