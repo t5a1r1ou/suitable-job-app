@@ -25,7 +25,6 @@ ReactDOM.render(
 // Learn more about service workers: https://bit.ly/CRA-PWA
 serviceWorker.register({
   onUpdate: (registration) => {
-    console.log(registration);
     if (registration.waiting) {
       ReactDOM.render(
         <SWUpdateDialog registration={registration} />,
