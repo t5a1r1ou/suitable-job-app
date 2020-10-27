@@ -25,6 +25,12 @@ interface Props {
   };
 }
 
+interface Writer {
+  typeString: (
+    arg0: string
+  ) => { (): any; new (): any; start: { (): any; new (): any } };
+}
+
 const SectionTop: React.FC<Props> = memo(({ type, secImg }) => {
   const { sectionTexts } = Constants;
   const history = useHistory();
@@ -58,7 +64,7 @@ const SectionTop: React.FC<Props> = memo(({ type, secImg }) => {
         <div className="sectop-dia">
           <p className="sectop-name">Dr.Nisso</p>
           <Typewriter
-            onInit={(writer) => writer.typeString(texts).start()}
+            onInit={(writer: Writer) => writer.typeString(texts).start()}
             options={{
               delay: 70,
             }}

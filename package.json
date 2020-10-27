@@ -66,6 +66,7 @@
     "eslint-plugin-prettier": "^3.1.4",
     "eslint-plugin-react": "^7.21.3",
     "prettier": "^2.1.2",
-    "typesync": "^0.7.0"
+    "typesync": "^0.7.0",
+    "why-did-you-update": "^1.0.8"
   }
 }

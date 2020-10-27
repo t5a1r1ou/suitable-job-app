@@ -62,23 +62,13 @@ export const Board: React.FC<Props> = memo(
       setFlip(!flip);
 
       const path: string = (function () {
-        //   const path: string = (function (answers: number[][]) {
-        // const sumArr: number[] = answers.reduce((acc, curr) =>
-        //   acc.map((a, i) => a + curr[i])
-        // );
-        // const max: number = sumArr.reduce((a, b) => Math.max(a, b));
-        // const checkAnswer: boolean =
-        //   sumArr.filter((a) => a === max).length >= 2; // 最大値を取る項目が2つ以上
         if (parseInt(index, 10) < questions.length) {
           return `/${type}/questions/${parseInt(index, 10) + 1}`;
-          // } else if (checkAnswer) {
-          //   return `/${type}/questions/extra/1`;
         } else if (type === "values") {
           return "/personality/top";
         } else {
           return "/form";
         }
-        //   })(answers);
       })();
       history.push(path);
     };
