@@ -22,7 +22,9 @@ const SWUpdateDialog: React.FC<{
           🎉
         </span>
       </span>
-      <button onClick={handleUpdate}>アップデート</button>
+      <button onClick={handleUpdate} className="btn-em">
+        アップデート
+      </button>
     </div>
   ) : (
     <></>

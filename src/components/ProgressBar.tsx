@@ -29,7 +29,7 @@ const ProgressBar: React.FC<Props> = memo(({ now, length, type }) => {
       return "_v";
     } else if (type === "personality") {
       return "_p";
-    } else {
+    } else if (type === "waiting") {
       return "_w";
     }
   })();
