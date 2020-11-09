@@ -17,7 +17,7 @@ const StaticStart = memo(() => {
         <div className="static_item">
           <h3 className="static_item_title">性格診断</h3>
           <p className="static_item_desc">
-            性格診断の説明説明説明説明説明説明説明説明説明説明説明説明説明説明説明説明説明説明説明説明説明説明説明説明説明説明
+            変更性格診断の説明説明説明説明説明説明説明説明説明説明説明説明説明説明説明説明説明説明説明説明説明説明説明説明説明説明
           </p>
         </div>
       </div>
