@@ -29,6 +29,7 @@ interface Props {
       docAlt: string;
     };
   };
+  quesImg: string[];
 }
 
 interface RouteParams {
@@ -43,7 +44,7 @@ interface secTop {
 }
 
 export const Board: React.FC<Props> = memo(
-  ({ questions, answers, setAnswers, type, secImg }) => {
+  ({ questions, answers, setAnswers, type, secImg, quesImg }) => {
     const [flip, setFlip] = useState(false);
     const [flipBack, setFlipBack] = useState(false);
     const [flipFlag, setFlipFlag] = useState(true);
@@ -103,6 +104,7 @@ export const Board: React.FC<Props> = memo(
               questionIndex={questionIndex}
               questions={questions}
               doAnswer={doAnswer}
+              quesImg={quesImg}
             />
           )}
         </Transition>

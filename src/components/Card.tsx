@@ -60,10 +60,21 @@ interface Props {
   questionIndex: number;
   questions: questionsItems[];
   doAnswer: (answer: number[]) => void;
+  quesImg: string[];
 }
 
 const Card: React.FC<Props> = memo(
-  ({ state, flipFlag, index, type, questionIndex, questions, doAnswer }) => {
+  ({
+    state,
+    flipFlag,
+    index,
+    type,
+    questionIndex,
+    questions,
+    doAnswer,
+    quesImg,
+  }) => {
+    const [question_img1, question_img2] = quesImg;
     return (
       <div
         className="flip-card"
@@ -73,6 +84,12 @@ const Card: React.FC<Props> = memo(
           <em>問{index}</em>
         </div>
         <h2 className="flip-card_title">{questions[questionIndex].title}</h2>
+        <div className="card-imgbox">
+          <img
+            src={parseInt(index) % 2 === 0 ? question_img1 : question_img2}
+            alt={parseInt(index) % 2 === 0 ? question_img1 : question_img2}
+          />
+        </div>
         <div className="btn_box">
           <AnswerButtons
             questions={questions}
