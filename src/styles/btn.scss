@@ -17,6 +17,12 @@
       border-bottom: solid 3px #242424;
       box-shadow: 0 0 2px #0000004d;
     }
+
+    &-answer {
+      @extend .btn;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',sans-serif;
+    }
   
     &-em {
       @extend .btn;

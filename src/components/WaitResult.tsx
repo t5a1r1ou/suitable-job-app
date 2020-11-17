@@ -30,16 +30,14 @@ const WaitResult: React.FC<Props> = memo(({ docWaiting, docWaited }) => {
     const progressTimer = setInterval(() => {
       setNow((prevNow) => (prevNow >= 100 ? 100 : prevNow + 20));
     }, 800);
-    const completeTimer = setTimeout(() => {
+    setTimeout(() => {
       setComplete(true);
     }, 4000);
-    const redirectTimer = setTimeout(() => {
+    setTimeout(() => {
       history.push("/result");
     }, 5000);
     return () => {
       clearInterval(progressTimer);
-      clearInterval(completeTimer);
-      clearInterval(redirectTimer);
     };
   }, [history]);
 

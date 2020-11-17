@@ -27,7 +27,7 @@ const Form: React.FC<Props> = memo(({ answers, checkAnswers }) => {
     result_title: "",
   });
 
-  const handleChecked = (e) =>
+  const handleChecked = (e: React.ChangeEvent<HTMLInputElement>) =>
     setSendElements({ ...sendElements, [e.target.name]: e.target.checked });
 
   const history = useHistory();
@@ -56,7 +56,9 @@ const Form: React.FC<Props> = memo(({ answers, checkAnswers }) => {
         <Label>
           <Checkbox
             name="dormitory"
-            onChange={(e) => handleChecked(e)}
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+              handleChecked(e)
+            }
             className="form-elements"
           />
           寮付きのお仕事を希望している

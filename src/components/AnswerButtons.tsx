@@ -30,7 +30,7 @@ const AnswerButtons: React.FC<Props> = memo(
           <p
             onClick={() => doAnswer(obj.answer)}
             key={obj.index}
-            className="btn"
+            className="btn-answer"
           >
             {questions[questionIndex][`choice${obj.index + 1}`]}
           </p>

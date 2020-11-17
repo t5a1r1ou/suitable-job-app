@@ -3,7 +3,8 @@ import { Redirect, useHistory } from "react-router-dom";
 
 import TwitterShare from "./TwitterShare";
 import PageHeader from "./PageHeader";
-import ResultComp from "./ResultComp";
+import PersonalityResultComp from "./PersonalityResultComp";
+import ValuesResultComp from "./ValuesResultComp";
 
 import Constants from "../Constants";
 
@@ -107,8 +108,8 @@ const Result: React.FC<Props> = memo(
           <img src={resultTop} alt="診断結果" className="sectop-result" />
         </h1>
         <div className="result-box">
-          <ResultComp results={valuesResult} type="values" />
-          <ResultComp results={personalityResult} type="personality" />
+          <ValuesResultComp results={valuesResult} />
+          <PersonalityResultComp results={personalityResult} />
         </div>
         <p onClick={() => backTop()} className="btn">
           トップへ
