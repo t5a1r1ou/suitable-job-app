@@ -99,8 +99,6 @@ const Result: React.FC<Props> = memo(
       return array_equal(result["arr"], personalityMax);
     });
 
-    console.log(personalityResult);
-
     return !validAnswers ? (
       <>
         <PageHeader title="診断結果" />
