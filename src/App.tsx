@@ -146,6 +146,7 @@ const App = memo(() => {
         setAnswers: setpAnswers,
         type: "personality",
         secImg: secImg,
+        quesImg: quesImg,
       },
     },
     {

@@ -74,7 +74,6 @@ const Card: React.FC<Props> = memo(
     doAnswer,
     quesImg,
   }) => {
-    const [question_img1, question_img2] = quesImg;
     return (
       <div
         className="flip-card"
@@ -86,8 +85,8 @@ const Card: React.FC<Props> = memo(
         <h2 className="flip-card_title">{questions[questionIndex].title}</h2>
         <div className="card-imgbox">
           <img
-            src={parseInt(index) % 2 === 0 ? question_img1 : question_img2}
-            alt={parseInt(index) % 2 === 0 ? question_img1 : question_img2}
+            src={parseInt(index) % 2 === 0 ? quesImg[0] : quesImg[1]}
+            alt={parseInt(index) % 2 === 0 ? quesImg[0] : quesImg[1]}
           />
         </div>
         <div className="btn_box">
