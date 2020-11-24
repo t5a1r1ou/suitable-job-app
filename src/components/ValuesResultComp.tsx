@@ -16,9 +16,9 @@ const ValuesResultComp: React.FC<Props> = memo(({ results }) => {
       <h2 className="result-top">価値観診断テスト結果</h2>
       <p className="result-text">あなたは…</p>
       <p className="result-type">
-        {results ? results["type"] : "...now loading"}
+        {results ? `${results["type"]}タイプ！` : "...now loading"}
       </p>
-      <p className="result-text">中でもあなたが最も大切にしているのは</p>
+      <p className="result-text">あなたの長所は…</p>
       <p className="result-importance">
         {results ? results["importance"] : "...now loading"}
       </p>

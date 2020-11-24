@@ -32,13 +32,12 @@ const Form: React.FC<Props> = memo(({ answers, checkAnswers }) => {
 
   const history = useHistory();
 
-  const canSubmit = () => sendElements.age !== "";
-
   const submitAct = () => {
     history.push("/loading");
   };
 
-  const sendForm = () => (canSubmit() ? submitAct() : setAlertText(true));
+  const sendForm = () =>
+    sendElements.age !== "" ? submitAct() : setAlertText(true);
 
   return !validAnswers ? (
     <>
