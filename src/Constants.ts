@@ -91,6 +91,22 @@ class Constants {
       ],
     },
     {
+      label: "distance",
+      labelName: "通勤にかかる時間の許容範囲",
+      type: "select",
+      placeholder: "",
+      required: false,
+      options: ["-", "10分圏内", "30分", "1時間", "2時間"],
+    },
+    {
+      label: "importance",
+      labelName: "仕事を探す上で重要視している点",
+      type: "select",
+      placeholder: "",
+      required: false,
+      options: ["-", "勤務地", "給料", "仕事内容", "休日"],
+    },
+    {
       label: "email",
       labelName: "メールアドレス",
       type: "email",

@@ -8,6 +8,8 @@ interface Props {
     sex: string;
     area: string;
     status: string;
+    distance: string;
+    importance: string;
     answers: number[][];
     result_id: string;
     result_title: string;

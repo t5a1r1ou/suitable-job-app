@@ -82,13 +82,12 @@ const Result: React.FC<Props> = memo(
       return targetArr;
     };
 
-    const personalityMax: number[] = sortedIndexs(pAnswers)
-      .slice(0, 2)
-      .sort((a, b) => a - b); // 順番無視するためにソート
-
     const valuesResult = valuesResults[maxIndex(vAnswers)];
 
     const personalityResult = personalityResults.find((result) => {
+      const personalityMax: number[] = sortedIndexs(pAnswers)
+        .slice(0, 2)
+        .sort((a, b) => a - b); // 順番無視するためにソート
       const array_equal = (a: number[], b: number[]) => {
         if (a.length !== b.length) return false;
         for (let i = 0, n = a.length; i < n; ++i) {

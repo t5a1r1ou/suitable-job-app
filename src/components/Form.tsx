@@ -21,6 +21,8 @@ const Form: React.FC<Props> = memo(({ answers, checkAnswers }) => {
     sex: "男",
     area: "北海道",
     status: "就業中",
+    distance: "-",
+    importance: "-",
     answers: answers,
     result_id: "",
     result_title: "",
