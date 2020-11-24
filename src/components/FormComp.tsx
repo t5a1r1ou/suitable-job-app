@@ -1,4 +1,4 @@
-import React, { memo, useCallback } from "react";
+import React, { memo } from "react";
 import { Label, Input, Select } from "@rebass/forms";
 
 interface Props {
@@ -6,14 +6,12 @@ interface Props {
     age: string;
     email: string;
     sex: string;
-    job: string;
-    wage: string;
-    dormitory: boolean;
+    area: string;
+    status: string;
     answers: number[][];
     result_id: string;
     result_title: string;
   };
-  setSendElements: any;
   eachData: {
     label: string;
     labelName: string;
@@ -22,16 +20,12 @@ interface Props {
     required: boolean;
     options?: string[];
   };
+  handleChange: (e: any) => void;
 }
 
 const FormComp: React.FC<Props> = memo(
-  ({ sendElements, setSendElements, eachData }) => {
+  ({ sendElements, eachData, handleChange }) => {
     const { label, labelName, type, placeholder, required, options } = eachData;
-    const handleChange = useCallback(
-      (e) =>
-        setSendElements({ ...sendElements, [e.target.name]: e.target.value }),
-      [sendElements, setSendElements]
-    );
     return (
       <>
         <Label htmlFor={label}>

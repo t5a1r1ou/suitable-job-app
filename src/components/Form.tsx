@@ -1,6 +1,6 @@
-import React, { memo, useState } from "react";
+import React, { memo, useState, useCallback } from "react";
 import { Redirect, useHistory } from "react-router-dom";
-import { Label, Checkbox } from "@rebass/forms";
+import { Label, Radio } from "@rebass/forms";
 
 import FormComp from "./FormComp";
 import PageHeader from "./PageHeader";
@@ -19,16 +19,18 @@ const Form: React.FC<Props> = memo(({ answers, checkAnswers }) => {
     age: "",
     email: "",
     sex: "男",
-    job: "",
-    wage: "",
-    dormitory: false,
+    area: "北海道",
+    status: "就業中",
     answers: answers,
     result_id: "",
     result_title: "",
   });
 
-  const handleChecked = (e: React.ChangeEvent<HTMLInputElement>) =>
-    setSendElements({ ...sendElements, [e.target.name]: e.target.checked });
+  const handleChange = useCallback(
+    (e) =>
+      setSendElements({ ...sendElements, [e.target.name]: e.target.value }),
+    [sendElements, setSendElements]
+  );
 
   const history = useHistory();
 
@@ -47,21 +49,34 @@ const Form: React.FC<Props> = memo(({ answers, checkAnswers }) => {
         {formElements.map((ele) => (
           <FormComp
             sendElements={sendElements}
-            setSendElements={setSendElements}
             eachData={ele}
             key={ele.label}
+            handleChange={handleChange}
           />
         ))}
-        <Label>
-          <Checkbox
-            name="dormitory"
-            onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-              handleChecked(e)
-            }
-            className="form-elements"
-          />
-          寮付きのお仕事を希望している
-        </Label>
+        <div className="form-radiobox">
+          <Label>
+            <Radio
+              name="status"
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                handleChange(e)
+              }
+              value="就業中"
+              checked
+            />
+            就業中
+          </Label>
+          <Label>
+            <Radio
+              name="status"
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                handleChange(e)
+              }
+              value="離職中"
+            />
+            離職中
+          </Label>
+        </div>
       </div>
       {alertText && <p className="form-alert">年齢を入力してください</p>}
       <button className="btn-em" onClick={() => sendForm()}>
