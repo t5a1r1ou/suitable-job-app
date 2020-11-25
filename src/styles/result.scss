@@ -16,6 +16,7 @@
         margin-bottom: 3rem;
         text-align: left;
         white-space: pre-line;
+        line-height: 1.7;
         @include breakpoint {
             text-align: center;
         }
