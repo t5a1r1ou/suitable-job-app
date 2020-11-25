@@ -73,6 +73,14 @@ const Result: React.FC<Props> = memo(
           valuesResult={valuesResult}
           personalityResult={personalityResult}
         />
+        <a
+          className="btn-em mb2"
+          href="https://www.717450.net/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          工場求人ナビトップに戻る
+        </a>
       </>
     ) : (
       <Redirect to="/" />

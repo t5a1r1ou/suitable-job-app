@@ -32,9 +32,6 @@ const Form: React.FC<Props> = memo(
       personalityDesc: personalityResult.desc,
     });
 
-    console.log(valuesResult);
-    console.log(personalityResult);
-
     const handleChange = useCallback(
       (e) =>
         setSendElements({ ...sendElements, [e.target.name]: e.target.value }),

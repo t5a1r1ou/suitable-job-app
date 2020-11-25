@@ -1,5 +1,5 @@
 @mixin breakpoint {
-  @media screen and (min-width: 400px) {
+  @media screen and (min-width: 415px) {
     @content;
   }
 }
@@ -72,4 +72,17 @@ header {
     font-size: 1.2rem;
     margin-bottom: 2rem;
   }
+}
+
+.mb1 {
+  margin-bottom: 1rem;
+}
+.mb2 {
+  margin-bottom: 2rem;
+}
+.mb3 {
+  margin-bottom: 3rem;
+}
+.mb4 {
+  margin-bottom: 4rem;
 }
