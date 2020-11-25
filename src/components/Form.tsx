@@ -1,6 +1,7 @@
 import React, { memo, useState, useCallback } from "react";
 import { Redirect, useHistory } from "react-router-dom";
 import { Label, Radio } from "@rebass/forms";
+import axios from "axios";
 
 import FormComp from "./FormComp";
 import PageHeader from "./PageHeader";
@@ -24,8 +25,8 @@ const Form: React.FC<Props> = memo(
       status: "就業中",
       distance: "-",
       importance: "-",
-      valuesResult: valuesResult,
-      personalityResult: personalityResult,
+      valuesResult: valuesResult.type,
+      personalityResult: personalityResult.type,
     });
 
     console.log(valuesResult);
@@ -39,12 +40,21 @@ const Form: React.FC<Props> = memo(
 
     const history = useHistory();
 
-    const submitAct = () => {
+    const submitAct = (data) => {
       history.push("/loading");
+      axios
+        .post(process.env.REACT_APP_SJC_RESULTS as string, data)
+        .then((res) => {
+          console.log(res.data.data);
+        })
+        .catch((err) => {
+          alert("送信に失敗しました。");
+          console.log(err);
+        });
     };
 
     const sendForm = () =>
-      sendElements.age !== "" ? submitAct() : setAlertText(true);
+      sendElements.age !== "" ? submitAct(sendElements) : setAlertText(true);
 
     return !validAnswers ? (
       <>
