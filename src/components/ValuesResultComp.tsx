@@ -2,12 +2,12 @@ import React, { memo } from "react";
 
 interface Results {
   id: number;
-  arr?: number[];
   desc: string;
+  importance: string;
 }
 
 interface Props {
-  results: Results | undefined;
+  results: Results;
 }
 
 const ValuesResultComp: React.FC<Props> = memo(({ results }) => {

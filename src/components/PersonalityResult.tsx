@@ -2,7 +2,7 @@ import React, { memo } from "react";
 
 interface Results {
   id: number;
-  arr?: number[];
+  arr: number[];
   desc: string;
 }
 

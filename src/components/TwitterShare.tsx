@@ -21,6 +21,8 @@ interface Props {
 
 const TwitterShare: React.FC<Props> = memo(
   ({ valuesResult, personalityResult }) => {
+    console.log(valuesResult);
+    console.log(personalityResult);
     const attributes = {
       url: "https://nisso-jobcheck.netlify.app/",
       title: `あなたの価値観タイプは「${

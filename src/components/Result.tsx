@@ -8,31 +8,39 @@ import ValuesResultComp from "./ValuesResultComp";
 
 import Constants from "../Constants";
 
+interface ValueResult {
+  id: number;
+  type: string;
+  desc: string;
+  importance: string;
+}
+
+interface PersonalityResult {
+  id: number;
+  arr: number[];
+  desc: string;
+  type: string;
+}
+
 interface Props {
-  vAnswers: number[][];
-  pAnswers: number[][];
+  validAnswers: boolean;
   setpAnswers: React.Dispatch<React.SetStateAction<any[]>>;
   setvAnswers: React.Dispatch<React.SetStateAction<any[]>>;
-  checkAnswers: (answers: number[][]) => boolean;
   resultTop: string;
+  valuesResult: ValueResult;
+  personalityResult: PersonalityResult;
 }
 
 const Result: React.FC<Props> = memo(
   ({
-    vAnswers,
-    pAnswers,
+    validAnswers,
     setpAnswers,
     setvAnswers,
-    checkAnswers,
     resultTop,
+    valuesResult,
+    personalityResult,
   }) => {
-    const {
-      questionsLen,
-      answersLen,
-      valuesResults,
-      personalityResults,
-    } = Constants;
-    const validAnswers = checkAnswers(vAnswers);
+    const { questionsLen, answersLen } = Constants;
     const history = useHistory();
     const backTop = () => {
       setvAnswers(
@@ -47,56 +55,6 @@ const Result: React.FC<Props> = memo(
       );
       history.push("/");
     };
-
-    const maxIndex: (arr: number[][]) => number = (arr) => {
-      const sumArr = arr.reduce((acc, current) =>
-        acc.map((a, i) => a + current[i])
-      );
-      const max = sumArr.reduce((a, b) => Math.max(a, b));
-      const targetArr: number[] = [];
-      sumArr.forEach((a, index) => {
-        if (a === max) {
-          targetArr.push(index);
-        }
-      });
-
-      const [targetFirst] = targetArr;
-      return targetArr.length === 1
-        ? targetFirst
-        : targetArr[Math.floor(Math.random() * targetArr.length)];
-    };
-
-    const sortedIndexs: (arr: number[][]) => number[] = (arr) => {
-      let sumArr: number[] = arr.reduce((acc, current) =>
-        acc.map((a, i) => a + current[i])
-      );
-      const targetArr: number[] = [];
-      for (let n = 0; n < sumArr.length; n++) {
-        const max: number = sumArr.reduce((a, b) => Math.max(a, b));
-        const index: number = sumArr.findIndex((a) => a === max);
-        targetArr.push(index);
-        const tempArr: number[] = sumArr.slice();
-        tempArr[index] = 0;
-        sumArr = tempArr;
-      }
-      return targetArr;
-    };
-
-    const valuesResult = valuesResults[maxIndex(vAnswers)];
-
-    const personalityResult = personalityResults.find((result) => {
-      const personalityMax: number[] = sortedIndexs(pAnswers)
-        .slice(0, 2)
-        .sort((a, b) => a - b); // 順番無視するためにソート
-      const array_equal = (a: number[], b: number[]) => {
-        if (a.length !== b.length) return false;
-        for (let i = 0, n = a.length; i < n; ++i) {
-          if (a[i] !== b[i]) return false;
-        }
-        return true;
-      };
-      return array_equal(result["arr"], personalityMax);
-    });
 
     return !validAnswers ? (
       <>

@@ -10,9 +10,8 @@ interface Props {
     status: string;
     distance: string;
     importance: string;
-    answers: number[][];
-    result_id: string;
-    result_title: string;
+    valuesResult: any;
+    personalityResult: any;
   };
   eachData: {
     label: string;
