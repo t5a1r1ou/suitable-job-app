@@ -41,6 +41,7 @@ class Constants {
       placeholder: "",
       required: true,
       options: [
+        "-",
         "北海道",
         "青森県",
         "岩手県",
