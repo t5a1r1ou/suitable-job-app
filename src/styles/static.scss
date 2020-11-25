@@ -27,6 +27,7 @@
         border: 3px dotted #fff;
         border-radius: 20px;
         margin: 0 .2rem;
+        white-space: pre-wrap;
         @include breakpoint {
             margin: 0 2rem;
         }
