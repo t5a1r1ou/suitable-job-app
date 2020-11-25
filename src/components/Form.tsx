@@ -26,7 +26,10 @@ const Form: React.FC<Props> = memo(
       distance: "-",
       importance: "-",
       valuesResult: valuesResult.type,
+      valuesDesc: valuesResult.desc,
+      valuesImportance: valuesResult.importance,
       personalityResult: personalityResult.type,
+      personalityDesc: personalityResult.desc,
     });
 
     console.log(valuesResult);
