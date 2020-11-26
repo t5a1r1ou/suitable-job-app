@@ -87,7 +87,7 @@ const Card: React.FC<Props> = memo(
         {type === "personality" && (
           <div className="card-imgbox">
             <img
-              src={questions[questionIndex].image_url}
+              src={`https://www.717450.net/priority/sjc_img/${questions[questionIndex].image_url}`}
               alt={questions[questionIndex].title}
             />
           </div>
