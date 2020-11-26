@@ -49,7 +49,7 @@ const Form: React.FC<Props> = memo(
           console.log(res.data.data);
         })
         .catch((err) => {
-          alert("送信に失敗しました。");
+          alert("送信に失敗しました");
           console.log(err);
         });
     };
