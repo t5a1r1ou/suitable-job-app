@@ -16,7 +16,8 @@ interface Props {
 const Form: React.FC<Props> = memo(
   ({ validAnswers, valuesResult, personalityResult }) => {
     const { formElements } = Constants;
-    const [alertText, setAlertText] = useState(false);
+    const [alertAge, setAlertAge] = useState(false);
+    const [alertArea, setAlertArea] = useState(false);
     const [sendElements, setSendElements] = useState({
       age: "",
       email: "",
@@ -53,8 +54,27 @@ const Form: React.FC<Props> = memo(
         });
     };
 
+    const canSubmit = () => {
+      const validAge = sendElements.age !== "";
+      const validArea = sendElements.area !== "-";
+      return validAge && validArea;
+    };
+
+    const checkAlert = () => {
+      if (sendElements.age === "" && sendElements.area === "-") {
+        setAlertAge(true);
+        setAlertArea(true);
+      } else if (sendElements.age === "") {
+        setAlertAge(true);
+        setAlertArea(false);
+      } else if (sendElements.area === "-") {
+        setAlertAge(false);
+        setAlertArea(true);
+      }
+    };
+
     const sendForm = () =>
-      sendElements.age !== "" ? submitAct(sendElements) : setAlertText(true);
+      canSubmit() ? submitAct(sendElements) : checkAlert();
 
     return !validAnswers ? (
       <>
@@ -93,7 +113,8 @@ const Form: React.FC<Props> = memo(
             </Label>
           </div>
         </div>
-        {alertText && <p className="form-alert">年齢を入力してください</p>}
+        {alertAge && <p className="form-alert">年齢を入力してください</p>}
+        {alertArea && <p className="form-alert">都道府県を選択してください</p>}
         <button className="btn-em" onClick={() => sendForm()}>
           結果へ
         </button>
