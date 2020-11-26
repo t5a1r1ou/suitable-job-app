@@ -16,8 +16,6 @@ import docPersonality from "./images/doctor2.png";
 import docWaiting from "./images/doctor3.png";
 import docWaited from "./images/doctor4.png";
 import resultTop from "./images/result.png";
-import question_img1 from "./images/question_img1.png";
-import question_img2 from "./images/question_img2.png";
 
 import Constants from "./Constants";
 
@@ -153,8 +151,6 @@ const App = memo(() => {
     },
   };
 
-  const quesImg = [question_img1, question_img2];
-
   const topImg = {
     logoTitle: logoTitle,
     logoLeft: logoLeft,
@@ -183,7 +179,6 @@ const App = memo(() => {
         setAnswers: setvAnswers,
         type: "values",
         secImg: secImg,
-        quesImg: quesImg,
       },
     },
     {
@@ -203,7 +198,6 @@ const App = memo(() => {
         setAnswers: setpAnswers,
         type: "personality",
         secImg: secImg,
-        quesImg: quesImg,
       },
     },
     {
