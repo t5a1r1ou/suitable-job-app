@@ -36,6 +36,9 @@
     &-start {
       @extend .btn-em;
       width: 15%;
+      @include breakpoint {
+        margin: 1rem;
+      }
     }
   
     &_box {
