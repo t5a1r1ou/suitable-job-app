@@ -50,6 +50,7 @@ const FLIP_BACK_STYLE = {
 
 interface questionsItems {
   title: string;
+  image_url: string;
 }
 
 interface Props {
@@ -83,12 +84,14 @@ const Card: React.FC<Props> = memo(
           <em>問{index}</em>
         </div>
         <h2 className="flip-card_title">{questions[questionIndex].title}</h2>
-        <div className="card-imgbox">
-          <img
-            src={parseInt(index) % 2 === 0 ? quesImg[0] : quesImg[1]}
-            alt={parseInt(index) % 2 === 0 ? quesImg[0] : quesImg[1]}
-          />
-        </div>
+        {type === "personality" && (
+          <div className="card-imgbox">
+            <img
+              src={questions[questionIndex].image_url}
+              alt={questions[questionIndex].title}
+            />
+          </div>
+        )}
         <div className="btn_box">
           <AnswerButtons
             questions={questions}

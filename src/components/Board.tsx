@@ -8,6 +8,7 @@ import PageHeader from "./PageHeader";
 
 interface questionsItems {
   title: string;
+  image_url: string;
 }
 
 interface Props {
