@@ -42,6 +42,7 @@ const FormComp: React.FC<Props> = memo(
             placeholder={placeholder}
             required={required}
             className="form-elements"
+            min="0"
           />
         ) : (
           <Select
