@@ -71,13 +71,24 @@ const Form: React.FC<Props> = memo(
       }
     };
 
-    const sendForm = () => {
-      if (checkAge() && sendElements.area === "-") {
+    const checkArea = () => {
+      if (sendElements.area === "-") {
         setAlertArea(true);
-      } else if (checkAge() && sendElements.area !== "-") {
+        return false;
+      } else {
         setAlertArea(false);
-        submitAct(sendElements);
+        return true;
       }
+    };
+
+    const canSubmit = () => {
+      const validAge = checkAge();
+      const vlidArea = checkArea();
+      return validAge && vlidArea;
+    };
+
+    const sendForm = () => {
+      return canSubmit() ? submitAct(sendElements) : false;
     };
 
     return !validAnswers ? (
