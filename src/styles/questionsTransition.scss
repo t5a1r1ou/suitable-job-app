@@ -9,6 +9,9 @@
         width: 80%;
         margin: .2em auto;
         font-size: 4.7vw;
+        @include breakpoint {
+          font-size: 2rem;
+        }
         }
       }
   }
