@@ -8,7 +8,13 @@ import PageHeader from "./PageHeader";
 
 interface questionsItems {
   title: string;
-  image_url: string;
+  image_url?: string;
+  countA: string;
+  countB: string;
+  choice1: string;
+  choice2: string;
+  choice3?: string;
+  choice4?: string;
 }
 
 interface Props {

@@ -50,7 +50,13 @@ const FLIP_BACK_STYLE = {
 
 interface questionsItems {
   title: string;
-  image_url: string;
+  image_url?: string;
+  countA: string;
+  countB: string;
+  choice1: string;
+  choice2: string;
+  choice3?: string;
+  choice4?: string;
 }
 
 interface Props {
@@ -65,6 +71,7 @@ interface Props {
 
 const Card: React.FC<Props> = memo(
   ({ state, flipFlag, index, type, questionIndex, questions, doAnswer }) => {
+    const thisQuestion = questions[questionIndex];
     return (
       <div
         className="flip-card"
@@ -73,19 +80,18 @@ const Card: React.FC<Props> = memo(
         <div className="flip-card_id">
           <em>問{index}</em>
         </div>
-        <h2 className="flip-card_title">{questions[questionIndex].title}</h2>
+        <h2 className="flip-card_title">{thisQuestion.title}</h2>
         {type === "personality" && (
           <div className="card-imgbox">
             <img
-              src={`https://www.717450.net/priority/sjc_img/${questions[questionIndex].image_url}`}
-              alt={questions[questionIndex].title}
+              src={`https://www.717450.net/priority/sjc_img/${thisQuestion.image_url}`}
+              alt={thisQuestion.title}
             />
           </div>
         )}
         <div className="btn_box">
           <AnswerButtons
-            questions={questions}
-            questionIndex={questionIndex}
+            thisQuestion={thisQuestion}
             type={type}
             doAnswer={doAnswer}
           />

@@ -1,24 +1,29 @@
 import React, { memo } from "react";
 
 interface questionsItems {
-  title: string;
+  countA: string;
+  countB: string;
+  choice1: string;
+  choice2: string;
+  choice3?: string;
+  choice4?: string;
 }
 
 interface Props {
-  questions: questionsItems[];
-  questionIndex: number;
+  thisQuestion: questionsItems;
   type: string;
   doAnswer: (answer: number[]) => void;
 }
 
 const AnswerButtons: React.FC<Props> = memo(
-  ({ questions, questionIndex, type, doAnswer }) => {
+  ({ thisQuestion, type, doAnswer }) => {
+    console.log(thisQuestion);
     const choices_count = type === "values" ? 4 : 2;
     const answers = [...Array(choices_count).keys()].map((i) => {
       const vAnswer = [...Array(choices_count).keys()].map((n) =>
         n === i ? 1 : 0
       );
-      const pAnswer = questions[questionIndex][`count${i === 0 ? "A" : "B"}`]
+      const pAnswer = thisQuestion[`count${i === 0 ? "A" : "B"}`]
         .split("")
         .map((n: string) => parseInt(n, 10));
       const answer = type === "values" ? vAnswer : pAnswer;
@@ -32,7 +37,7 @@ const AnswerButtons: React.FC<Props> = memo(
             key={obj.index}
             className="btn-answer"
           >
-            {questions[questionIndex][`choice${obj.index + 1}`]}
+            {thisQuestion[`choice${obj.index + 1}`]}
           </p>
         ))}
       </>
