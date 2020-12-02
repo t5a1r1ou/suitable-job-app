@@ -88,7 +88,7 @@ const Form: React.FC<Props> = memo(
     };
 
     const sendForm = () => {
-      return canSubmit() ? submitAct(sendElements) : false;
+      return canSubmit() && submitAct(sendElements);
     };
 
     return !validAnswers ? (
