@@ -2,7 +2,7 @@
     cursor: pointer;
     display: block;
     padding: 1rem 2rem;
-    margin: 1rem 1rem;
+    margin: 1rem;
     text-decoration: none;
     color: #fff;
     background: #747474;
@@ -21,6 +21,7 @@
 
     &-answer {
       @extend .btn;
+      margin: .8rem;
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',sans-serif;
     }
@@ -43,7 +44,7 @@
   
     &_box {
       width: 90%;
-      margin: 0 auto;
+      margin: 0 auto .8rem;
       display: flex;
       flex-direction: column;
       justify-content: space-between;

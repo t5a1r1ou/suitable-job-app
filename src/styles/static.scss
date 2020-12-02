@@ -2,17 +2,16 @@
     &title {
         color: #ffee77;
         font-size: 1.4rem;
-        margin: 1rem auto;
+        margin: 0 auto .7rem;
         @include breakpoint {
             font-size: 2rem;
         }
     }
     &text {
         width: 80%;
-        margin: 0 auto;
+        margin: 0 auto .4rem;
         font-size: 1rem;
         color: #ffbbff;
-        margin-bottom: 1rem;
         padding-bottom: 0.3rem;
         border-bottom: 2px solid #ffbbff;
     }
