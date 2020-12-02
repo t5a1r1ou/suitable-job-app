@@ -17,7 +17,6 @@ interface Props {
 
 const AnswerButtons: React.FC<Props> = memo(
   ({ thisQuestion, type, doAnswer }) => {
-    console.log(thisQuestion);
     const choices_count = type === "values" ? 4 : 2;
     const answers = [...Array(choices_count).keys()].map((i) => {
       const vAnswer = [...Array(choices_count).keys()].map((n) =>
