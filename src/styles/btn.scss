@@ -51,8 +51,10 @@
     }
     &_border {
       @extend .btn;
+      font-size: .9rem;
+      padding: 0.8rem 1rem;
       width: 80px;
-      margin: 1.4rem auto;
+      margin: .7rem auto;
       background-color: inherit;
       border: solid 2px #fff;
     }
