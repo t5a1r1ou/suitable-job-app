@@ -90,6 +90,7 @@ export const Board: React.FC<Props> = memo(
       type === "values" ? secImg["values"] : secImg["personality"];
 
     const pageTitle: string = type === "values" ? "価値観" : "性格";
+    const thisQuestion = questions[questionIndex];
     return (
       <>
         <PageHeader title={`${pageTitle}診断 設問${index}`} />
@@ -107,8 +108,7 @@ export const Board: React.FC<Props> = memo(
               flipFlag={flipFlag}
               index={index}
               type={type}
-              questionIndex={questionIndex}
-              questions={questions}
+              thisQuestion={thisQuestion}
               doAnswer={doAnswer}
             />
           )}

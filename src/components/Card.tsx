@@ -64,14 +64,12 @@ interface Props {
   flipFlag: boolean;
   index: string;
   type: string;
-  questionIndex: number;
-  questions: questionsItems[];
+  thisQuestion: questionsItems;
   doAnswer: (answer: number[]) => void;
 }
 
 const Card: React.FC<Props> = memo(
-  ({ state, flipFlag, index, type, questionIndex, questions, doAnswer }) => {
-    const thisQuestion = questions[questionIndex];
+  ({ state, flipFlag, index, type, thisQuestion, doAnswer }) => {
     return (
       <div
         className="flip-card"

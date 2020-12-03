@@ -1,8 +1,6 @@
 import React, { memo } from "react";
-import { useHistory } from "react-router-dom";
 
 const StaticStart = memo(() => {
-  const history = useHistory();
   return (
     <>
       <h2 className="static_title">プチ自分発見診断でわかること</h2>
@@ -21,9 +19,6 @@ const StaticStart = memo(() => {
           </p>
         </div>
       </div>
-      <p className="btn-em" onClick={() => history.push("/values/top")}>
-        始める
-      </p>
     </>
   );
 });
