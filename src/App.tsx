@@ -1,5 +1,5 @@
 import React, { useState, useEffect, memo, useCallback } from "react";
-import { BrowserRouter } from "react-router-dom";
+import { HashRouter as Router } from "react-router-dom";
 import axios from "axios";
 import { HelmetProvider } from "react-helmet-async";
 import loadable from "@loadable/component";
@@ -238,7 +238,7 @@ const App = memo(() => {
         <header className="header">
           <img src={laboLogo} className="labo-logo" alt="日総ラボロゴ" />
         </header>
-        <BrowserRouter>
+        <Router>
           <div className="page__container">
             <Routes
               // @ts-ignore
@@ -246,7 +246,7 @@ const App = memo(() => {
               footerImg={footerImg}
             />
           </div>
-        </BrowserRouter>
+        </Router>
       </HelmetProvider>
     </div>
   );

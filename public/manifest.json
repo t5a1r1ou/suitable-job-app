@@ -1,52 +1,53 @@
 {
-  "short_name": "プチ自分発見診断",
-  "name": "プチ自分発見診断 presented by 工場求人ナビ",
-  "description": "プチ自分発見診断です",
-  "icons": [
-    {
-      "src": "/icons/icon-72x72.png",
-      "type": "image/png",
-      "sizes": "72x72"
-    },
-    {
-      "src": "/icons/icon-96x96.png",
-      "type": "image/png",
-      "sizes": "96x96"
-    },
-    {
-      "src": "/icons/icon-128x128.png",
-      "type": "image/png",
-      "sizes": "128x128"
-    },
-    {
-      "src": "/icons/icon-144x144.png",
-      "type": "image/png",
-      "sizes": "144x144"
-    },
-    {
-      "src": "/icons/icon-152x152.png",
-      "type": "image/png",
-      "sizes": "152x152"
-    },
-    {
-      "src": "/icons/icon-192x192.png",
-      "type": "image/png",
-      "sizes": "192x192"
-    },
-    {
-      "src": "/icons/icon-384x384.png",
-      "type": "image/png",
-      "sizes": "384x384"
-    },
-    {
-      "src": "/icons/icon-512x512.png",
-      "type": "image/png",
-      "sizes": "512x512"
-    }
-  ],
-  "scope": "/",
-  "start_url": "/",
-  "display": "standalone",
-  "theme_color": "#68a9ce",
-  "background_color": "#19452d"
-}
+    "short_name": "プチ自分発見診断",
+    "name": "プチ自分発見診断 presented by 工場求人ナビ",
+    "description": "プチ自分発見診断です",
+    "icons": [
+      {
+        "src": "/priority/jibun-hakken/icons/icon-72x72.png",
+        "type": "image/png",
+        "sizes": "72x72"
+      },
+      {
+        "src": "/priority/jibun-hakken/icons/icon-96x96.png",
+        "type": "image/png",
+        "sizes": "96x96"
+      },
+      {
+        "src": "/priority/jibun-hakken/icons/icon-128x128.png",
+        "type": "image/png",
+        "sizes": "128x128"
+      },
+      {
+        "src": "/priority/jibun-hakken/icons/icon-144x144.png",
+        "type": "image/png",
+        "sizes": "144x144"
+      },
+      {
+        "src": "/priority/jibun-hakken/icons/icon-152x152.png",
+        "type": "image/png",
+        "sizes": "152x152"
+      },
+      {
+        "src": "/priority/jibun-hakken/icons/icon-192x192.png",
+        "type": "image/png",
+        "sizes": "192x192"
+      },
+      {
+        "src": "/priority/jibun-hakken/icons/icon-384x384.png",
+        "type": "image/png",
+        "sizes": "384x384"
+      },
+      {
+        "src": "/priority/jibun-hakken/icons/icon-512x512.png",
+        "type": "image/png",
+        "sizes": "512x512"
+      }
+    ],
+    "scope": ".",
+    "start_url": "./",
+    "display": "standalone",
+    "theme_color": "#68a9ce",
+    "background_color": "#19452d"
+  }
+  
