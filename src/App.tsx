@@ -1,4 +1,4 @@
-import React, { useState, useEffect, memo, useCallback } from "react";
+import React, { useState, useEffect, memo, useCallback, useMemo } from "react";
 import { HashRouter as Router } from "react-router-dom";
 import axios from "axios";
 import { HelmetProvider } from "react-helmet-async";
@@ -29,6 +29,22 @@ const Form = loadable(() => import("./components/Form"));
 const Result = loadable(() => import("./components/Result"));
 const Routes = loadable(() => import("./components/Routes"));
 const WaitResult = loadable(() => import("./components/WaitResult"));
+
+interface ValuesResult {
+  id: number;
+  type: string;
+  importance: string;
+  desc: string;
+}
+
+type PersonalityResult =
+  | {
+      id: number;
+      arr: number[];
+      type: string;
+      desc: string;
+    }
+  | undefined;
 
 const App = memo(() => {
   const {
@@ -118,21 +134,28 @@ const App = memo(() => {
     return targetArr;
   };
 
-  const valuesResult = valuesResults[maxIndex(vAnswers)];
+  const valuesResult: ValuesResult = useMemo(
+    () => valuesResults[maxIndex(vAnswers)],
+    [valuesResults, vAnswers]
+  );
 
-  const personalityResult = personalityResults.find((result) => {
-    const personalityMax: number[] = sortedIndexs(pAnswers)
-      .slice(0, 2)
-      .sort((a, b) => a - b); // 順番無視するためにソート
-    const array_equal = (a: number[], b: number[]) => {
-      if (a.length !== b.length) return false;
-      for (let i = 0, n = a.length; i < n; ++i) {
-        if (a[i] !== b[i]) return false;
-      }
-      return true;
-    };
-    return array_equal(result["arr"], personalityMax);
-  });
+  const personalityResult: PersonalityResult = useMemo(
+    () =>
+      personalityResults.find((result) => {
+        const personalityMax: number[] = sortedIndexs(pAnswers)
+          .slice(0, 2)
+          .sort((a, b) => a - b); // 順番無視するためにソート
+        const array_equal = (a: number[], b: number[]) => {
+          if (a.length !== b.length) return false;
+          for (let i = 0, n = a.length; i < n; ++i) {
+            if (a[i] !== b[i]) return false;
+          }
+          return true;
+        };
+        return array_equal(result["arr"], personalityMax);
+      }),
+    [pAnswers, personalityResults]
+  );
 
   const validAnswers = checkAnswers([...pAnswers, ...vAnswers]);
 
