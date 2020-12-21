@@ -1,8 +1,10 @@
-import React, { useState, useEffect, memo, useCallback, useMemo } from "react";
+import React, { useState, useEffect, memo } from "react";
 import { HashRouter as Router } from "react-router-dom";
 import axios from "axios";
 import { HelmetProvider } from "react-helmet-async";
 import loadable from "@loadable/component";
+
+import { useCalcResults } from "./logic/useCalcResults";
 
 import logoTitle from "./images/logo-title.png";
 import logoLeft from "./images/logo-item_left.png";
@@ -30,29 +32,8 @@ const Result = loadable(() => import("./components/Result"));
 const Routes = loadable(() => import("./components/Routes"));
 const WaitResult = loadable(() => import("./components/WaitResult"));
 
-interface ValuesResult {
-  id: number;
-  type: string;
-  importance: string;
-  desc: string;
-}
-
-type PersonalityResult =
-  | {
-      id: number;
-      arr: number[];
-      type: string;
-      desc: string;
-    }
-  | undefined;
-
 const App = memo(() => {
-  const {
-    questionsLen,
-    answersLen,
-    valuesResults,
-    personalityResults,
-  } = Constants;
+  const { questionsLen, answersLen } = Constants;
   const [vQuestions, setvQuestions] = useState([]);
   const [pQuestions, setpQuestions] = useState([]);
   const [vAnswers, setvAnswers] = useState(
@@ -95,68 +76,10 @@ const App = memo(() => {
     getpQuestions();
   }, []);
 
-  const checkAnswers = useCallback(
-    (answers) => answers[0].every((ele: number) => ele === 0),
-    []
-  );
+  const [valuesResult, personalityResult] = useCalcResults(vAnswers, pAnswers);
 
-  const maxIndex: (arr: number[][]) => number = (arr) => {
-    const sumArr = arr.reduce((acc, current) =>
-      acc.map((a, i) => a + current[i])
-    );
-    const max = sumArr.reduce((a, b) => Math.max(a, b));
-    const targetArr: number[] = [];
-    sumArr.forEach((a, index) => {
-      if (a === max) {
-        targetArr.push(index);
-      }
-    });
-
-    const [targetFirst] = targetArr;
-    return targetArr.length === 1
-      ? targetFirst
-      : targetArr[Math.floor(Math.random() * targetArr.length)];
-  };
-
-  const sortedIndexs: (arr: number[][]) => number[] = (arr) => {
-    let sumArr: number[] = arr.reduce((acc, current) =>
-      acc.map((a, i) => a + current[i])
-    );
-    const targetArr: number[] = [];
-    for (let n = 0; n < sumArr.length; n++) {
-      const max: number = sumArr.reduce((a, b) => Math.max(a, b));
-      const index: number = sumArr.findIndex((a) => a === max);
-      targetArr.push(index);
-      const tempArr: number[] = sumArr.slice();
-      tempArr[index] = 0;
-      sumArr = tempArr;
-    }
-    return targetArr;
-  };
-
-  const valuesResult: ValuesResult = useMemo(
-    () => valuesResults[maxIndex(vAnswers)],
-    [valuesResults, vAnswers]
-  );
-
-  const personalityResult: PersonalityResult = useMemo(
-    () =>
-      personalityResults.find((result) => {
-        const personalityMax: number[] = sortedIndexs(pAnswers)
-          .slice(0, 2)
-          .sort((a, b) => a - b); // 順番無視するためにソート
-        const array_equal = (a: number[], b: number[]) => {
-          if (a.length !== b.length) return false;
-          for (let i = 0, n = a.length; i < n; ++i) {
-            if (a[i] !== b[i]) return false;
-          }
-          return true;
-        };
-        return array_equal(result["arr"], personalityMax);
-      }),
-    [pAnswers, personalityResults]
-  );
-
+  const checkAnswers = (answers: number[][]) =>
+    answers[0].every((ele: number) => ele === 0);
   const validAnswers = checkAnswers([...pAnswers, ...vAnswers]);
 
   const secImg = {
