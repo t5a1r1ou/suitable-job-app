@@ -21,7 +21,6 @@ const Form: React.FC<Props> = memo(
     const [alertArea, setAlertArea] = useState(false);
     const [sendElements, setSendElements] = useState({
       age: "",
-      email: "",
       sex: "男",
       area: "-",
       status: "就業中",

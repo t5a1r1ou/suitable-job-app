@@ -107,13 +107,6 @@ class Constants {
       required: false,
       options: ["-", "勤務地", "給料", "仕事内容", "休日"],
     },
-    {
-      label: "email",
-      labelName: "メールアドレス",
-      type: "email",
-      placeholder: "診断結果をメールでお送りします。",
-      required: false,
-    },
   ];
 
   static categories = [

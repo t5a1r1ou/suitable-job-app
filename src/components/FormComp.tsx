@@ -4,7 +4,6 @@ import { Label, Input, Select } from "@rebass/forms";
 interface Props {
   sendElements: {
     age: string;
-    email: string;
     sex: string;
     area: string;
     status: string;
