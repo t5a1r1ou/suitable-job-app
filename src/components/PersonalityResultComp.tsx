@@ -5,6 +5,7 @@ interface Results {
   arr?: number[];
   type: string;
   desc: string;
+  importance?: string;
 }
 
 interface Props {

@@ -1,29 +1,162 @@
-import React, { memo } from "react";
+import React, { memo, useContext, useEffect } from "react";
 import { Route } from "react-router-dom";
 import { CSSTransition } from "react-transition-group";
+import valuesImg from "../images/values.png";
+import personalityImg from "../images/personality.png";
+import docValues from "../images/doctor1.png";
+import docPersonality from "../images/doctor2.png";
+
+import loadable from "@loadable/component";
 
 import ErrorBoundary from "./ErrorBoundary";
+
+import axios from "axios";
+
+import { vQuestionsContext, pQuestionsContext } from "../contexts/AppContext";
+
+const Start = loadable(() => import("./Start"));
+const SectionTop = loadable(() => import("./SectionTop"));
+const Board = loadable(() => import("./Board"));
+const Form = loadable(() => import("./Form"));
+const Result = loadable(() => import("./Result"));
+const WaitResult = loadable(() => import("./WaitResult"));
 
 interface routeItems {
   path: string;
   Component: any;
   attributes?: {
-    questions: any;
-    vAnswers: any;
-    pAnswers: any;
-    answers: number[];
-    setAnswers: any;
-    type: string;
-    secImg: any;
+    questions?: questionItems[];
+    vAnswers?: any;
+    pAnswers?: any;
+    answers?: number[][];
+    setAnswers?: any;
+    type?: string;
+    secImg?: any;
+    docWaiting?: any;
+    topImg?: any;
+    docWaited?: any;
+    valuesResult?: any;
+    personalityResult?: any;
+    setpAnswers?: any;
+    setvAnswers?: any;
+    resultTop?: any;
   };
 }
 
+interface questionItems {
+  choice1: string;
+  choice2: string;
+  choice3: string;
+  choice4: string;
+  countA: string;
+  countB: string;
+  id: number;
+  image_url?: string;
+  title: string;
+}
+
 interface Props {
-  ROUTES: routeItems[];
   footerImg: any;
 }
 
-const Routes: React.FC<Props> = memo(({ ROUTES, footerImg }) => {
+const Routes: React.FC<Props> = memo(({ footerImg }) => {
+  const { setvQuestions } = useContext(vQuestionsContext);
+  const { setpQuestions } = useContext(pQuestionsContext);
+  useEffect(() => {
+    const getvQuestions = () => {
+      axios
+        .get(process.env.REACT_APP_SJC_VQUESTIONS as string)
+        .then((r) => {
+          const data = r.data.data;
+          console.log(data);
+          setvQuestions(data);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    };
+
+    const getpQuestions = () => {
+      axios
+        .get(process.env.REACT_APP_SJC_PQUESTIONS as string)
+        .then((r) => {
+          const data = r.data.data;
+          setpQuestions(data);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    };
+
+    getvQuestions();
+    getpQuestions();
+  }, [setpQuestions, setvQuestions]);
+
+  const secImg = {
+    values: {
+      title: valuesImg,
+      titleAlt: "価値観診断タイトル",
+      doc: docValues,
+      docAlt: "博士（価値観）",
+    },
+    personality: {
+      title: personalityImg,
+      titleAlt: "性格診断タイトル",
+      doc: docPersonality,
+      docAlt: "博士（性格）",
+    },
+  };
+
+  const ROUTES: routeItems[] = [
+    {
+      path: "/",
+      Component: Start,
+    },
+    {
+      path: "/values/top",
+      Component: SectionTop,
+      attributes: {
+        type: "values",
+        secImg: secImg,
+      },
+    },
+    {
+      path: "/values/questions/:index",
+      Component: Board,
+      attributes: {
+        type: "values",
+        secImg: secImg,
+      },
+    },
+    {
+      path: "/personality/top",
+      Component: SectionTop,
+      attributes: {
+        type: "personality",
+        secImg: secImg,
+      },
+    },
+    {
+      path: "/personality/questions/:index",
+      Component: Board,
+      attributes: {
+        type: "personality",
+        secImg: secImg,
+      },
+    },
+    {
+      path: "/loading",
+      Component: WaitResult,
+    },
+    {
+      path: "/form",
+      Component: Form,
+    },
+    {
+      path: "/result",
+      Component: Result,
+    },
+  ];
   return (
     <>
       {ROUTES.map(({ path, Component, attributes }) => (

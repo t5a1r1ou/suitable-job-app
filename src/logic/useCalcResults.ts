@@ -1,26 +1,20 @@
 import { useMemo } from "react";
 import Constants from "../Constants";
 
-interface ValuesResult {
-  id: number;
-  type: string;
-  importance: string;
-  desc: string;
-}
-
-type PersonalityResult =
+type Result =
   | {
       id: number;
-      arr: number[];
+      arr?: number[];
       type: string;
       desc: string;
+      importance?: string;
     }
   | undefined;
 
-export const useCalcResults = (vanswers: number[][], panswers: number[][]) => {
+const useCalcResults = (vanswers: number[][], panswers: number[][]) => {
   const { valuesResults, personalityResults } = Constants;
 
-  const valuesResult: ValuesResult = useMemo(() => {
+  const valuesResult: Result = useMemo(() => {
     const maxIndex: (arr: number[][]) => number = (arr) => {
       const sumArr = arr.reduce((acc, current) =>
         acc.map((a, i) => a + current[i])
@@ -42,7 +36,7 @@ export const useCalcResults = (vanswers: number[][], panswers: number[][]) => {
     return valuesResults[maxIndex(vanswers)];
   }, [valuesResults, vanswers]);
 
-  const personalityResult: PersonalityResult = useMemo(
+  const personalityResult: Result = useMemo(
     () =>
       personalityResults.find((result) => {
         const sortedIndexs: (arr: number[][]) => number[] = (arr) => {
@@ -77,3 +71,5 @@ export const useCalcResults = (vanswers: number[][], panswers: number[][]) => {
 
   return [valuesResult, personalityResult];
 };
+
+export default useCalcResults;

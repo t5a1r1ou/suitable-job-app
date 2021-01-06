@@ -3,7 +3,7 @@ import React, { memo } from "react";
 interface Results {
   id: number;
   desc: string;
-  importance: string;
+  importance?: string;
 }
 
 interface Props {

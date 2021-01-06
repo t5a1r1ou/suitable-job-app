@@ -4,19 +4,12 @@ import { useHistory } from "react-router-dom";
 import PageHeader from "./PageHeader";
 import StaticStart from "./StaticStart";
 
-interface TopImg {
-  logoTitle: string;
-  logoLeft: string;
-  logoRight: string;
-}
+import logoTitle from "../images/logo-title.png";
+import logoLeft from "../images/logo-item_left.png";
+import logoRight from "../images/logo-item_right.png";
 
-interface Props {
-  topImg: TopImg;
-}
-
-const Start: React.FC<Props> = memo(({ topImg }) => {
+const Start: React.FC = memo(() => {
   const history = useHistory();
-  const { logoTitle, logoLeft, logoRight } = topImg;
   return (
     <>
       <PageHeader />

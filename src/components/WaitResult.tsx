@@ -3,12 +3,10 @@ import { useHistory } from "react-router-dom";
 
 import Progressbar from "./ProgressBar";
 
-interface Props {
-  docWaiting: string;
-  docWaited: string;
-}
+import docWaiting from "../images/doctor3.png";
+import docWaited from "../images/doctor4.png";
 
-const WaitResult: React.FC<Props> = memo(({ docWaiting, docWaited }) => {
+const WaitResult: React.FC = memo(() => {
   const history = useHistory();
   const [complete, setComplete] = useState(false);
   const [now, setNow] = useState(0);

@@ -9,8 +9,8 @@ interface Props {
     status: string;
     distance: string;
     importance: string;
-    valuesResult: any;
-    personalityResult: any;
+    values_result: any;
+    personality_result: any;
   };
   eachData: {
     label: string;
