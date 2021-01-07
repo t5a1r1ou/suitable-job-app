@@ -64,12 +64,13 @@ const useCalcResults = (vanswers: number[][], panswers: number[][]) => {
           }
           return true;
         };
+        console.log(personalityMax);
         return array_equal(result["arr"], personalityMax);
       }),
     [personalityResults, panswers]
   );
 
-  return [valuesResult, personalityResult];
+  return { valuesResult, personalityResult };
 };
 
 export default useCalcResults;

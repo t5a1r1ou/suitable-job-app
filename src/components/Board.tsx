@@ -1,33 +1,16 @@
-import React, { useState, memo, useContext } from "react";
-import { useHistory, useParams } from "react-router-dom";
+import React, { memo, useContext } from "react";
+import { useParams } from "react-router-dom";
 import { Transition } from "react-transition-group";
 
 import Card from "./Card";
 import ProgressBar from "./ProgressBar";
 import PageHeader from "./PageHeader";
 
-import {
-  vQuestionsContext,
-  pQuestionsContext,
-  pAnswersContext,
-  vAnswersContext,
-} from "../contexts/AppContext";
-
-interface questionsItems {
-  title: string;
-  image_url?: string;
-  countA: string;
-  countB: string;
-  choice1: string;
-  choice2: string;
-  choice3?: string;
-  choice4?: string;
-}
+import { answersContext, questionsContext } from "../contexts/AppContext";
+import BackButton from "./BackButton";
+import Constants from "../Constants";
 
 interface Props {
-  questions: questionsItems[];
-  answers: number[][];
-  setAnswers: any;
   type: string;
   secImg: {
     values: {
@@ -57,53 +40,28 @@ interface secTop {
 }
 
 export const Board: React.FC<Props> = memo(({ type, secImg }) => {
-  const { pQuestions } = useContext(pQuestionsContext);
-  const { vQuestions } = useContext(vQuestionsContext);
-  const { pAnswers, setpAnswers } = useContext(pAnswersContext);
-  const { vAnswers, setvAnswers } = useContext(vAnswersContext);
+  const { questionsState } = useContext(questionsContext);
+  const { answersState } = useContext(answersContext);
+
+  const { vQuestions, pQuestions } = questionsState;
+  const { flip, flipBack, flipFlag } = answersState;
+
+  const { questionsLen } = Constants;
+  const questionsLength =
+    type === "values" ? questionsLen["vQuestions"] : questionsLen["pQuestions"];
 
   const questions = type === "values" ? vQuestions : pQuestions;
-  const answers = type === "values" ? vAnswers : pAnswers;
-  const setAnswers = type === "values" ? setvAnswers : setpAnswers;
-
-  const [flip, setFlip] = useState(false);
-  const [flipBack, setFlipBack] = useState(false);
-  const [flipFlag, setFlipFlag] = useState(true);
-  const history = useHistory();
-  const { index } = useParams<RouteParams>();
-  const questionIndex = index ? parseInt(index, 10) - 1 : questions.length - 1;
-  const questionProgress = index ? parseInt(index, 10) - 1 : questions.length;
-
-  const doAnswer: (answer: number[]) => void = (answer) => {
-    const newAnswers = answers.slice();
-    newAnswers[questionIndex] = answer;
-    setAnswers(newAnswers);
-    setFlipFlag(true);
-    setFlip(!flip);
-
-    const path: string = (function () {
-      if (parseInt(index, 10) < questions.length) {
-        return `/${type}/questions/${parseInt(index, 10) + 1}`;
-      } else if (type === "values") {
-        return "/personality/top";
-      } else {
-        return "/form";
-      }
-    })();
-    history.push(path);
-  };
-
-  const doBack: () => void = () => {
-    setFlipFlag(false);
-    setFlipBack(!flipBack);
-    history.push(`/${type}/questions/${questionIndex}`);
-  };
-
   const secTop: secTop =
     type === "values" ? secImg["values"] : secImg["personality"];
 
   const pageTitle: string = type === "values" ? "価値観" : "性格";
+
+  const { index } = useParams<RouteParams>();
+  const questionIndex = index ? parseInt(index, 10) - 1 : questionsLength - 1;
+  const questionProgress = parseInt(index, 10) - 1;
   const thisQuestion = questions[questionIndex];
+  console.log(questionsLength);
+
   return (
     <>
       <PageHeader title={`${pageTitle}診断 設問${index}`} />
@@ -114,22 +72,16 @@ export const Board: React.FC<Props> = memo(({ type, secImg }) => {
         {(state: string) => (
           <Card
             state={state}
-            flipFlag={flipFlag}
             index={index}
             type={type}
             thisQuestion={thisQuestion}
-            doAnswer={doAnswer}
           />
         )}
       </Transition>
-      {index !== "1" && (
-        <p className="btn_border" onClick={() => doBack()}>
-          戻る
-        </p>
-      )}
+      <BackButton index={index} type={type} />
       <ProgressBar
         now={questionProgress}
-        length={questions.length}
+        length={questionsLength}
         type={type}
       />
     </>

@@ -8,12 +8,16 @@ import useCalcResults from "../logic/useCalcResults";
 import FormComp from "./FormComp";
 import PageHeader from "./PageHeader";
 import Constants from "../Constants";
-import { pAnswersContext, vAnswersContext } from "../contexts/AppContext";
+import { answersContext } from "../contexts/AppContext";
 
 const Form: React.FC = memo(() => {
-  const { vAnswers } = useContext(vAnswersContext);
-  const { pAnswers } = useContext(pAnswersContext);
-  const [valuesResult, personalityResult] = useCalcResults(vAnswers, pAnswers);
+  const { answersState } = useContext(answersContext);
+  const { vAnswers, pAnswers } = answersState;
+  console.log(pAnswers);
+  const { valuesResult, personalityResult } = useCalcResults(
+    vAnswers,
+    pAnswers
+  );
   const { formElements } = Constants;
   const [alertAge, setAlertAge] = useState(false);
   const [alertMinus, setAlertMinus] = useState(false);

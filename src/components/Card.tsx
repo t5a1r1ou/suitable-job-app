@@ -1,4 +1,5 @@
-import React, { memo } from "react";
+import React, { memo, useContext } from "react";
+import { answersContext } from "../contexts/AppContext";
 
 import AnswerButtons from "./AnswerButtons";
 
@@ -61,42 +62,36 @@ interface questionsItems {
 
 interface Props {
   state: string;
-  flipFlag: boolean;
   index: string;
   type: string;
   thisQuestion: questionsItems;
-  doAnswer: (answer: number[]) => void;
 }
 
-const Card: React.FC<Props> = memo(
-  ({ state, flipFlag, index, type, thisQuestion, doAnswer }) => {
-    return (
-      <div
-        className="flip-card"
-        style={flipFlag ? FLIP_STYLE[state] : FLIP_BACK_STYLE[state]}
-      >
-        <div className="flip-card_id">
-          <em>問{index}</em>
-        </div>
-        <h2 className="flip-card_title">{thisQuestion.title}</h2>
-        {type === "personality" && (
-          <div className="card-imgbox">
-            <img
-              src={`https://www.717450.net/priority/sjc_img/${thisQuestion.image_url}`}
-              alt={thisQuestion.title}
-            />
-          </div>
-        )}
-        <div className="btn_box">
-          <AnswerButtons
-            thisQuestion={thisQuestion}
-            type={type}
-            doAnswer={doAnswer}
+const Card: React.FC<Props> = memo(({ state, index, type, thisQuestion }) => {
+  const { answersState } = useContext(answersContext);
+  const { flipFlag } = answersState;
+  return (
+    <div
+      className="flip-card"
+      style={flipFlag ? FLIP_STYLE[state] : FLIP_BACK_STYLE[state]}
+    >
+      <div className="flip-card_id">
+        <em>問{index}</em>
+      </div>
+      <h2 className="flip-card_title">{thisQuestion.title}</h2>
+      {type === "personality" && (
+        <div className="card-imgbox">
+          <img
+            src={`https://www.717450.net/priority/sjc_img/${thisQuestion.image_url}`}
+            alt={thisQuestion.title}
           />
         </div>
+      )}
+      <div className="btn_box">
+        <AnswerButtons thisQuestion={thisQuestion} type={type} />
       </div>
-    );
-  }
-);
+    </div>
+  );
+});
 
 export default Card;

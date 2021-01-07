@@ -1,8 +1,9 @@
-import React, { createContext, useState } from "react";
+import React, { createContext, useReducer } from "react";
 import Constants from "../Constants";
+
 const { questionsLen, answersLen } = Constants;
 
-interface questionItems {
+interface questionItem {
   choice1: string;
   choice2: string;
   choice3: string;
@@ -14,91 +15,139 @@ interface questionItems {
   title: string;
 }
 
-export const vQuestionsContext = createContext(
+interface questionsObj {
+  vQuestions: questionItem[];
+  pQuestions: questionItem[];
+}
+
+type FetchAction = {
+  type: "FETCH_QUESTIONS";
+  payload: questionItem[];
+  which: string;
+};
+
+type AnswerAction =
+  | {
+      type: "ANSWER_QUESTION";
+      which: string;
+      index: number;
+      answer: any;
+    }
+  | {
+      type: "ANSWER_BACK";
+    }
+  | {
+      type: "ANSWER_RESET";
+    };
+
+export const questionsContext = createContext(
   {} as {
-    vQuestions: questionItems[];
-    setvQuestions: React.Dispatch<React.SetStateAction<questionItems[]>>;
+    questionsState: questionsObj;
+    dispatch: React.Dispatch<FetchAction>;
   }
 );
 
-export const pQuestionsContext = createContext(
+export const answersContext = createContext(
   {} as {
-    pQuestions: questionItems[];
-    setpQuestions: React.Dispatch<React.SetStateAction<questionItems[]>>;
+    answersState: any;
+    dispatch: React.Dispatch<AnswerAction>;
   }
 );
 
-export const vAnswersContext = createContext(
-  {} as {
-    vAnswers: number[][];
-    setvAnswers: React.Dispatch<React.SetStateAction<number[][]>>;
-  }
-);
+const questionsInitialState = {
+  vQuestions: [],
+  pQuestions: [],
+};
 
-export const pAnswersContext = createContext(
-  {} as {
-    pAnswers: number[][];
-    setpAnswers: React.Dispatch<React.SetStateAction<number[][]>>;
+const questionsFetchReducer = (questionsState, action) => {
+  switch (action.type) {
+    case "FETCH_QUESTIONS": {
+      const { payload, which } = action;
+      return which === "values"
+        ? { ...questionsState, vQuestions: payload }
+        : { ...questionsState, pQuestions: payload };
+    }
+    default:
+      return questionsState;
   }
-);
+};
 
-const VQuestionsProvider = (props: { children: React.ReactNode }) => {
-  const [vQuestions, setvQuestions] = useState<questionItems[]>([]);
+const QuestionsProvider = (props: { children: React.ReactNode }) => {
+  const [questionsState, dispatch] = useReducer(
+    questionsFetchReducer,
+    questionsInitialState
+  );
 
   return (
-    <vQuestionsContext.Provider value={{ vQuestions, setvQuestions }}>
+    <questionsContext.Provider value={{ questionsState, dispatch }}>
       {props.children}
-    </vQuestionsContext.Provider>
+    </questionsContext.Provider>
   );
 };
 
-const PQuestionsProvider = (props: { children: React.ReactNode }) => {
-  const [pQuestions, setpQuestions] = useState<questionItems[]>([]);
-
-  return (
-    <pQuestionsContext.Provider value={{ pQuestions, setpQuestions }}>
-      {props.children}
-    </pQuestionsContext.Provider>
-  );
+const answersInitialState = {
+  vAnswers: Array(questionsLen["vQuestions"]).fill(
+    Array(answersLen["vQuestions"]).fill(0)
+  ),
+  pAnswers: Array(questionsLen["pQuestions"]).fill(
+    Array(answersLen["pQuestions"]).fill(0)
+  ),
+  flip: false,
+  flipBack: false,
+  flipFlag: true,
 };
 
-const VAnswersProvider = (props: { children: React.ReactNode }) => {
-  const [vAnswers, setvAnswers] = useState<number[][]>(
-    Array(questionsLen["vQuestions"]).fill(
-      Array(answersLen["vQuestions"]).fill(0)
-    )
-  );
-
-  return (
-    <vAnswersContext.Provider value={{ vAnswers, setvAnswers }}>
-      {props.children}
-    </vAnswersContext.Provider>
-  );
+const answersCalculateReducer = (answersState, action) => {
+  switch (action.type) {
+    case "ANSWER_QUESTION": {
+      const { vAnswers, pAnswers, flip } = answersState;
+      const { index, answer, which } = action;
+      console.log(answer);
+      const answers = which === "values" ? vAnswers : pAnswers;
+      const answerKey = which === "values" ? "vAnswers" : "pAnswers";
+      const newAnswers = answers.slice();
+      newAnswers[index] = answer;
+      console.log(newAnswers);
+      return {
+        ...answersState,
+        [answerKey]: newAnswers,
+        flipFlag: true,
+        flip: !flip,
+      };
+    }
+    case "ANSWER_BACK": {
+      const { flipBack } = answersState;
+      return {
+        ...answersState,
+        flipFlag: false,
+        flipBack: !flipBack,
+      };
+    }
+    case "ANSWER_RESET":
+      return answersInitialState;
+    default:
+      return answersInitialState;
+  }
 };
 
-const PAnswersProvider = (props: { children: React.ReactNode }) => {
-  const [pAnswers, setpAnswers] = useState<number[][]>(
-    Array(questionsLen["pQuestions"]).fill(
-      Array(answersLen["pQuestions"]).fill(0)
-    )
+const AnswersProvider = (props: { children: React.ReactNode }) => {
+  const [answersState, dispatch] = useReducer(
+    answersCalculateReducer,
+    answersInitialState
   );
 
   return (
-    <pAnswersContext.Provider value={{ pAnswers, setpAnswers }}>
+    <answersContext.Provider value={{ answersState, dispatch }}>
       {props.children}
-    </pAnswersContext.Provider>
+    </answersContext.Provider>
   );
 };
 
 const AppContext = (props: { children: React.ReactNode }) => {
   return (
-    <VQuestionsProvider>
-      <PQuestionsProvider>
-        <VAnswersProvider>
-          <PAnswersProvider>{props.children}</PAnswersProvider>
-        </VAnswersProvider>
-      </PQuestionsProvider>
-    </VQuestionsProvider>
+    <AnswersProvider>
+      <QuestionsProvider>{props.children}</QuestionsProvider>
+    </AnswersProvider>
   );
 };
 

@@ -6,8 +6,7 @@ import PageHeader from "./PageHeader";
 import PersonalityResultComp from "./PersonalityResultComp";
 import ValuesResultComp from "./ValuesResultComp";
 
-import Constants from "../Constants";
-import { pAnswersContext, vAnswersContext } from "../contexts/AppContext";
+import { answersContext } from "../contexts/AppContext";
 
 import useCalcResults from "../logic/useCalcResults";
 
@@ -22,26 +21,20 @@ interface Result {
 }
 
 const Result: React.FC = memo(() => {
-  const { questionsLen, answersLen } = Constants;
-  const { pAnswers, setpAnswers } = useContext(pAnswersContext);
-  const { vAnswers, setvAnswers } = useContext(vAnswersContext);
-  const [valuesResult, personalityResult] = useCalcResults(vAnswers, pAnswers);
+  const { answersState, dispatch } = useContext(answersContext);
+  const { vAnswers, pAnswers } = answersState;
+  const { valuesResult, personalityResult } = useCalcResults(
+    vAnswers,
+    pAnswers
+  );
+
   const checkAnswers = (answers: number[][]) => {
     return answers !== [] ? answers[0].every((ele: number) => ele === 0) : [];
   };
   const validAnswers = checkAnswers([...pAnswers, ...vAnswers]);
   const history = useHistory();
   const backTop = () => {
-    setvAnswers(
-      Array(questionsLen["vQuestions"]).fill(
-        Array(answersLen["vQuestions"]).fill(0)
-      )
-    );
-    setpAnswers(
-      Array(questionsLen["pQuestions"]).fill(
-        Array(answersLen["pQuestions"]).fill(0)
-      )
-    );
+    dispatch({ type: "ANSWER_RESET" });
     history.push("/");
   };
 

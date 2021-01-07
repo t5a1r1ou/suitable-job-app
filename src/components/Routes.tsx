@@ -12,7 +12,7 @@ import ErrorBoundary from "./ErrorBoundary";
 
 import axios from "axios";
 
-import { vQuestionsContext, pQuestionsContext } from "../contexts/AppContext";
+import { questionsContext } from "../contexts/AppContext";
 
 const Start = loadable(() => import("./Start"));
 const SectionTop = loadable(() => import("./SectionTop"));
@@ -60,16 +60,17 @@ interface Props {
 }
 
 const Routes: React.FC<Props> = memo(({ footerImg }) => {
-  const { setvQuestions } = useContext(vQuestionsContext);
-  const { setpQuestions } = useContext(pQuestionsContext);
+  const { dispatch } = useContext(questionsContext);
   useEffect(() => {
     const getvQuestions = () => {
       axios
         .get(process.env.REACT_APP_SJC_VQUESTIONS as string)
         .then((r) => {
-          const data = r.data.data;
-          console.log(data);
-          setvQuestions(data);
+          dispatch({
+            type: "FETCH_QUESTIONS",
+            payload: r.data.data,
+            which: "values",
+          });
         })
         .catch((err) => {
           console.log(err);
@@ -80,8 +81,11 @@ const Routes: React.FC<Props> = memo(({ footerImg }) => {
       axios
         .get(process.env.REACT_APP_SJC_PQUESTIONS as string)
         .then((r) => {
-          const data = r.data.data;
-          setpQuestions(data);
+          dispatch({
+            type: "FETCH_QUESTIONS",
+            payload: r.data.data,
+            which: "personality",
+          });
         })
         .catch((err) => {
           console.log(err);
@@ -90,7 +94,7 @@ const Routes: React.FC<Props> = memo(({ footerImg }) => {
 
     getvQuestions();
     getpQuestions();
-  }, [setpQuestions, setvQuestions]);
+  }, [dispatch]);
 
   const secImg = {
     values: {
