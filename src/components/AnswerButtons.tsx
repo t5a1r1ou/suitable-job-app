@@ -1,5 +1,6 @@
 import React, { memo } from "react";
 import useAnswerCalc from "../logic/useAnswerCalc";
+import Constants from "../Constants";
 
 interface questionsItems {
   countA: string;
@@ -17,17 +18,24 @@ interface Props {
 
 const AnswerButtons: React.FC<Props> = memo(({ thisQuestion, type }) => {
   const { doAnswer } = useAnswerCalc();
+  const { optionsLen } = Constants;
 
-  const choices_count = type === "values" ? 4 : 2;
-  const answers = [...Array(choices_count).keys()].map((i) => {
+  const answers = [
+    ...Array(
+      type === "values" ? optionsLen["vQuestions"] : optionsLen["pQuestions"]
+    ).keys(),
+  ].map((i) => {
     const answer =
       type === "values"
-        ? [...Array(choices_count).keys()].map((n) => (n === i ? 1 : 0))
+        ? [...Array(type === "values" ? 4 : 2).keys()].map((n) =>
+            n === i ? 1 : 0
+          )
         : thisQuestion[`count${i === 0 ? "A" : "B"}`]
             .split("")
             .map((n: string) => parseInt(n, 10));
     return { index: i, answer: answer };
   });
+
   return (
     <>
       {answers.map((obj) => (

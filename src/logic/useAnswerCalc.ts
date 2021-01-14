@@ -41,10 +41,7 @@ const useAnswerCalc = () => {
   };
 
   const doBack: (type: string) => void = (type) => {
-    const questionsLength =
-      type === "values"
-        ? questionsLen["vQuestions"]
-        : questionsLen["pQuestions"];
+    const questionsLength = questionsLengthCalc(type);
     dispatch({ type: "ANSWER_BACK" });
     history.push(
       `/${type}/questions/${

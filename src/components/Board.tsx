@@ -9,6 +9,7 @@ import PageHeader from "./PageHeader";
 import { answersContext, questionsContext } from "../contexts/AppContext";
 import BackButton from "./BackButton";
 import Constants from "../Constants";
+import useWhichQuestions from "../logic/useWhichQuestions";
 
 interface Props {
   type: string;
@@ -40,22 +41,12 @@ interface secTop {
 }
 
 export const Board: React.FC<Props> = memo(({ type, secImg }) => {
-  const { questionsState } = useContext(questionsContext);
   const { answersState } = useContext(answersContext);
-
-  const { vQuestions, pQuestions } = questionsState;
   const { flip, flipBack, flipFlag } = answersState;
-
-  const { questionsLen } = Constants;
-  const questionsLength =
-    type === "values" ? questionsLen["vQuestions"] : questionsLen["pQuestions"];
-
-  const questions = type === "values" ? vQuestions : pQuestions;
-  const secTop: secTop =
-    type === "values" ? secImg["values"] : secImg["personality"];
-
-  const pageTitle: string = type === "values" ? "価値観" : "性格";
-
+  const { questionsLength, questions, secTop, pageTitle } = useWhichQuestions(
+    type,
+    secImg
+  );
   const { index } = useParams<RouteParams>();
   const questionIndex = index ? parseInt(index, 10) - 1 : questionsLength - 1;
   const questionProgress = parseInt(index, 10) - 1;

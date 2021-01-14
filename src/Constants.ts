@@ -161,6 +161,11 @@ class Constants {
     pQuestions: 6,
   };
 
+  static optionsLen = {
+    vQuestions: 4,
+    pQuestions: 2,
+  };
+
   static valuesResults = [
     {
       id: 1,
