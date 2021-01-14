@@ -1,4 +1,4 @@
-import React, { memo, useContext, useEffect } from "react";
+import React, { memo } from "react";
 import { Route } from "react-router-dom";
 import { CSSTransition } from "react-transition-group";
 import valuesImg from "../images/values.png";
@@ -9,10 +9,6 @@ import docPersonality from "../images/doctor2.png";
 import loadable from "@loadable/component";
 
 import ErrorBoundary from "./ErrorBoundary";
-
-import axios from "axios";
-
-import { questionsContext } from "../contexts/AppContext";
 
 const Start = loadable(() => import("./Start"));
 const SectionTop = loadable(() => import("./SectionTop"));
@@ -60,42 +56,6 @@ interface Props {
 }
 
 const Routes: React.FC<Props> = memo(({ footerImg }) => {
-  const { dispatch } = useContext(questionsContext);
-  useEffect(() => {
-    const getvQuestions = () => {
-      axios
-        .get(process.env.REACT_APP_SJC_VQUESTIONS as string)
-        .then((r) => {
-          dispatch({
-            type: "FETCH_QUESTIONS",
-            payload: r.data.data,
-            which: "values",
-          });
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-    };
-
-    const getpQuestions = () => {
-      axios
-        .get(process.env.REACT_APP_SJC_PQUESTIONS as string)
-        .then((r) => {
-          dispatch({
-            type: "FETCH_QUESTIONS",
-            payload: r.data.data,
-            which: "personality",
-          });
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-    };
-
-    getvQuestions();
-    getpQuestions();
-  }, [dispatch]);
-
   const secImg = {
     values: {
       title: valuesImg,

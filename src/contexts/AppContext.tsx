@@ -102,12 +102,10 @@ const answersCalculateReducer = (answersState, action) => {
     case "ANSWER_QUESTION": {
       const { vAnswers, pAnswers, flip } = answersState;
       const { index, answer, which } = action;
-      console.log(answer);
       const answers = which === "values" ? vAnswers : pAnswers;
       const answerKey = which === "values" ? "vAnswers" : "pAnswers";
       const newAnswers = answers.slice();
       newAnswers[index] = answer;
-      console.log(newAnswers);
       return {
         ...answersState,
         [answerKey]: newAnswers,

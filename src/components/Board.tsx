@@ -60,7 +60,6 @@ export const Board: React.FC<Props> = memo(({ type, secImg }) => {
   const questionIndex = index ? parseInt(index, 10) - 1 : questionsLength - 1;
   const questionProgress = parseInt(index, 10) - 1;
   const thisQuestion = questions[questionIndex];
-  console.log(questionsLength);
 
   return (
     <>

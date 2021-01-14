@@ -13,7 +13,6 @@ import { answersContext } from "../contexts/AppContext";
 const Form: React.FC = memo(() => {
   const { answersState } = useContext(answersContext);
   const { vAnswers, pAnswers } = answersState;
-  console.log(pAnswers);
   const { valuesResult, personalityResult } = useCalcResults(
     vAnswers,
     pAnswers
