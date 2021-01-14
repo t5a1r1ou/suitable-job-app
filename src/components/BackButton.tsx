@@ -7,12 +7,12 @@ interface Props {
 }
 
 const BackButton: React.FC<Props> = ({ index, type }) => {
-  const { doBack } = useAnswerCalc(type);
+  const { doBack } = useAnswerCalc();
 
   return (
     <>
       {index !== "1" && (
-        <p className="btn_border" onClick={() => doBack()}>
+        <p className="btn_border" onClick={() => doBack(type)}>
           戻る
         </p>
       )}

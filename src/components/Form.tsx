@@ -1,4 +1,4 @@
-import React, { memo, useState, useCallback, useContext } from "react";
+import React, { memo, useState, useCallback } from "react";
 import { Redirect, useHistory } from "react-router-dom";
 import { Label, Radio } from "@rebass/forms";
 import axios from "axios";
@@ -8,15 +8,9 @@ import useCalcResults from "../logic/useCalcResults";
 import FormComp from "./FormComp";
 import PageHeader from "./PageHeader";
 import Constants from "../Constants";
-import { answersContext } from "../contexts/AppContext";
 
 const Form: React.FC = memo(() => {
-  const { answersState } = useContext(answersContext);
-  const { vAnswers, pAnswers } = answersState;
-  const { valuesResult, personalityResult } = useCalcResults(
-    vAnswers,
-    pAnswers
-  );
+  const { valuesResult, personalityResult, validAnswers } = useCalcResults();
   const { formElements } = Constants;
   const [alertAge, setAlertAge] = useState(false);
   const [alertMinus, setAlertMinus] = useState(false);
@@ -31,12 +25,6 @@ const Form: React.FC = memo(() => {
     values_result: valuesResult.type,
     personality_result: personalityResult.type,
   });
-
-  const checkAnswers = (answers: number[][]) => {
-    return answers !== [] ? answers[0].every((ele: number) => ele === 0) : [];
-  };
-
-  const validAnswers = checkAnswers([...pAnswers, ...vAnswers]);
 
   const handleChange = useCallback(
     (e) =>

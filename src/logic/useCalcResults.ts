@@ -1,5 +1,6 @@
-import { useMemo } from "react";
+import { useMemo, useContext } from "react";
 import Constants from "../Constants";
+import { answersContext } from "../contexts/AppContext";
 
 type Result =
   | {
@@ -11,7 +12,9 @@ type Result =
     }
   | undefined;
 
-const useCalcResults = (vanswers: number[][], panswers: number[][]) => {
+const useCalcResults = () => {
+  const { answersState } = useContext(answersContext);
+  const { vAnswers, pAnswers } = answersState;
   const { valuesResults, personalityResults } = Constants;
 
   const valuesResult: Result = useMemo(() => {
@@ -33,8 +36,8 @@ const useCalcResults = (vanswers: number[][], panswers: number[][]) => {
         : targetArr[Math.floor(Math.random() * targetArr.length)];
     };
 
-    return valuesResults[maxIndex(vanswers)];
-  }, [valuesResults, vanswers]);
+    return valuesResults[maxIndex(vAnswers)];
+  }, [valuesResults, vAnswers]);
 
   const personalityResult: Result = useMemo(
     () =>
@@ -54,7 +57,7 @@ const useCalcResults = (vanswers: number[][], panswers: number[][]) => {
           }
           return targetArr;
         };
-        const personalityMax: number[] = sortedIndexs(panswers)
+        const personalityMax: number[] = sortedIndexs(pAnswers)
           .slice(0, 2)
           .sort((a, b) => a - b); // 順番無視するためにソート
         const array_equal = (a: number[], b: number[]) => {
@@ -66,10 +69,16 @@ const useCalcResults = (vanswers: number[][], panswers: number[][]) => {
         };
         return array_equal(result["arr"], personalityMax);
       }),
-    [personalityResults, panswers]
+    [personalityResults, pAnswers]
   );
 
-  return { valuesResult, personalityResult };
+  const checkAnswers = (answers: number[][]) => {
+    return answers.some((arr) => arr.every((ele: number) => ele === 0));
+  };
+
+  const validAnswers = checkAnswers([...pAnswers, ...vAnswers]);
+
+  return { valuesResult, personalityResult, validAnswers };
 };
 
 export default useCalcResults;

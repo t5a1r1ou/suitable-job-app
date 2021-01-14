@@ -1,16 +1,15 @@
-import React, { memo, useContext } from "react";
-import { Redirect, useHistory } from "react-router-dom";
+import React, { memo } from "react";
+import { Redirect } from "react-router-dom";
 
 import TwitterShare from "./TwitterShare";
 import PageHeader from "./PageHeader";
 import PersonalityResultComp from "./PersonalityResultComp";
 import ValuesResultComp from "./ValuesResultComp";
 
-import { answersContext } from "../contexts/AppContext";
-
 import useCalcResults from "../logic/useCalcResults";
 
 import resultTop from "../images/result.png";
+import useAnswerCalc from "../logic/useAnswerCalc";
 
 interface Result {
   id: number;
@@ -21,22 +20,8 @@ interface Result {
 }
 
 const Result: React.FC = memo(() => {
-  const { answersState, dispatch } = useContext(answersContext);
-  const { vAnswers, pAnswers } = answersState;
-  const { valuesResult, personalityResult } = useCalcResults(
-    vAnswers,
-    pAnswers
-  );
-
-  const checkAnswers = (answers: number[][]) => {
-    return answers !== [] ? answers[0].every((ele: number) => ele === 0) : [];
-  };
-  const validAnswers = checkAnswers([...pAnswers, ...vAnswers]);
-  const history = useHistory();
-  const backTop = () => {
-    dispatch({ type: "ANSWER_RESET" });
-    history.push("/");
-  };
+  const { valuesResult, personalityResult, validAnswers } = useCalcResults();
+  const { backTop } = useAnswerCalc();
 
   return !validAnswers ? (
     <>

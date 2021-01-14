@@ -7,16 +7,21 @@ interface RouteParams {
   index: string;
 }
 
-const useAnswerCalc = (type: string) => {
+const useAnswerCalc = () => {
   const { questionsLen } = Constants;
-  const questionsLength =
-    type === "values" ? questionsLen["vQuestions"] : questionsLen["pQuestions"];
   const { index } = useParams<RouteParams>();
-  const questionIndex = index ? parseInt(index, 10) - 1 : questionsLength - 1;
   const { dispatch } = useContext(answersContext);
   const history = useHistory();
 
-  const doAnswer: (answer: number[]) => void = (answer) => {
+  const questionsLengthCalc = (type: string) => {
+    return type === "values"
+      ? questionsLen["vQuestions"]
+      : questionsLen["pQuestions"];
+  };
+
+  const doAnswer: (answer: number[], type: string) => void = (answer, type) => {
+    const questionsLength = questionsLengthCalc(type);
+    const questionIndex = index ? parseInt(index, 10) - 1 : questionsLength - 1;
     dispatch({
       type: "ANSWER_QUESTION",
       index: questionIndex,
@@ -35,7 +40,11 @@ const useAnswerCalc = (type: string) => {
     history.push(path);
   };
 
-  const doBack: () => void = () => {
+  const doBack: (type: string) => void = (type) => {
+    const questionsLength =
+      type === "values"
+        ? questionsLen["vQuestions"]
+        : questionsLen["pQuestions"];
     dispatch({ type: "ANSWER_BACK" });
     history.push(
       `/${type}/questions/${
@@ -44,7 +53,12 @@ const useAnswerCalc = (type: string) => {
     );
   };
 
-  return { doAnswer, doBack };
+  const backTop: () => void = () => {
+    dispatch({ type: "ANSWER_RESET" });
+    history.push("/");
+  };
+
+  return { doAnswer, doBack, backTop };
 };
 
 export default useAnswerCalc;

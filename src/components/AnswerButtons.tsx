@@ -16,7 +16,7 @@ interface Props {
 }
 
 const AnswerButtons: React.FC<Props> = memo(({ thisQuestion, type }) => {
-  const { doAnswer } = useAnswerCalc(type);
+  const { doAnswer } = useAnswerCalc();
 
   const choices_count = type === "values" ? 4 : 2;
   const answers = [...Array(choices_count).keys()].map((i) => {
@@ -32,7 +32,7 @@ const AnswerButtons: React.FC<Props> = memo(({ thisQuestion, type }) => {
     <>
       {answers.map((obj) => (
         <p
-          onClick={() => doAnswer(obj.answer)}
+          onClick={() => doAnswer(obj.answer, type)}
           key={obj.index}
           className="btn-answer"
         >
