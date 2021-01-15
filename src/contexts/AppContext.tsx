@@ -141,12 +141,10 @@ const AnswersProvider = (props: { children: React.ReactNode }) => {
   );
 };
 
-const AppContext = (props: { children: React.ReactNode }) => {
+export const AppProvider = (props: { children: React.ReactNode }) => {
   return (
     <AnswersProvider>
       <QuestionsProvider>{props.children}</QuestionsProvider>
     </AnswersProvider>
   );
 };
-
-export default AppContext;

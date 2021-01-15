@@ -1,14 +1,6 @@
 import { useContext } from "react";
 import { questionsContext } from "../contexts/AppContext";
 import Constants from "../Constants";
-import useQuestionsCollect from "./useQuestionsCollect";
-
-interface secTop {
-  title: string;
-  titleAlt: string;
-  doc: string;
-  docAlt: string;
-}
 
 interface secImg {
   values: {
@@ -27,20 +19,27 @@ interface secImg {
 
 const useWhichQuestions = (type: string, secImg: secImg) => {
   const { questionsState } = useContext(questionsContext);
-
   const { vQuestions, pQuestions } = questionsState;
-
   const { questionsLen } = Constants;
-  const questionsLength =
-    type === "values" ? questionsLen["vQuestions"] : questionsLen["pQuestions"];
 
-  const questions = type === "values" ? vQuestions : pQuestions;
-  const secTop: secTop =
-    type === "values" ? secImg["values"] : secImg["personality"];
+  const questionObj = {
+    values: {
+      questionsLength: questionsLen["vQuestions"],
+      questions: vQuestions,
+      secTop: secImg["values"],
+      pageTitle: "価値観",
+    },
+    personality: {
+      questionsLength: questionsLen["pQuestions"],
+      questions: pQuestions,
+      secTop: secImg["personality"],
+      pageTitle: "性格",
+    },
+  };
 
-  const pageTitle: string = type === "values" ? "価値観" : "性格";
+  const whichQuestions = questionObj[type];
 
-  return { questionsLength, questions, secTop, pageTitle };
+  return whichQuestions;
 };
 
 export default useWhichQuestions;

@@ -39,24 +39,24 @@ const SectionTop: React.FC<Props> = memo(({ type, secImg }) => {
     values: {
       imgs: secImg["values"],
       texts: sectionTexts["values"],
+      headerTitle: "価値観診断テスト",
     },
     personality: {
       imgs: secImg["personality"],
       texts: sectionTexts["personality"],
+      headerTitle: "性格診断テスト",
     },
   };
 
   const secElement =
     type === "values" ? secElements["values"] : secElements["personality"];
 
-  const { imgs, texts } = secElement;
+  const { imgs, texts, headerTitle } = secElement;
 
   const test_start = () => history.push(`/${type}/questions/1`);
   return (
     <>
-      <PageHeader
-        title={type === "values" ? "価値観診断テスト" : "性格診断テスト"}
-      />
+      <PageHeader title={headerTitle} />
       <h1>
         <img src={imgs.title} alt={imgs.titleAlt} className="sectop-img" />
       </h1>

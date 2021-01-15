@@ -6,7 +6,7 @@ import loadable from "@loadable/component";
 import laboLogo from "./images/labo-logo.png";
 import footerImg from "./images/logo-footer.png";
 
-import AppContext from "./contexts/AppContext";
+import { AppProvider } from "./contexts/AppContext";
 
 const Routes = loadable(() => import("./components/Routes"));
 
@@ -20,12 +20,12 @@ const App = memo(() => {
         </header>
         <Router>
           <div className="page__container">
-            <AppContext>
+            <AppProvider>
               <Routes
                 // @ts-ignore
                 footerImg={footerImg}
               />
-            </AppContext>
+            </AppProvider>
           </div>
         </Router>
       </HelmetProvider>

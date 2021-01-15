@@ -6,9 +6,8 @@ import Card from "./Card";
 import ProgressBar from "./ProgressBar";
 import PageHeader from "./PageHeader";
 
-import { answersContext, questionsContext } from "../contexts/AppContext";
+import { answersContext } from "../contexts/AppContext";
 import BackButton from "./BackButton";
-import Constants from "../Constants";
 import useWhichQuestions from "../logic/useWhichQuestions";
 
 interface Props {
@@ -31,13 +30,6 @@ interface Props {
 
 interface RouteParams {
   index: string;
-}
-
-interface secTop {
-  title: string;
-  titleAlt: string;
-  doc: string;
-  docAlt: string;
 }
 
 export const Board: React.FC<Props> = memo(({ type, secImg }) => {

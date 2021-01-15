@@ -1,6 +1,6 @@
 import React, { memo } from "react";
-import useAnswerCalc from "../logic/useAnswerCalc";
 import Constants from "../Constants";
+import AnswerButton from "./AnswerButton";
 
 interface questionsItems {
   countA: string;
@@ -17,37 +17,34 @@ interface Props {
 }
 
 const AnswerButtons: React.FC<Props> = memo(({ thisQuestion, type }) => {
-  const { doAnswer } = useAnswerCalc();
   const { optionsLen } = Constants;
 
-  const answers = [
-    ...Array(
-      type === "values" ? optionsLen["vQuestions"] : optionsLen["pQuestions"]
-    ).keys(),
-  ].map((i) => {
+  const answerLen =
+    type === "values" ? optionsLen["vQuestions"] : optionsLen["pQuestions"];
+  const answers = [...Array(answerLen).keys()].map((index) => {
     const answer =
       type === "values"
-        ? [...Array(type === "values" ? 4 : 2).keys()].map((n) =>
-            n === i ? 1 : 0
+        ? [...Array(optionsLen["vQuestions"]).keys()].map((n) =>
+            n === index ? 1 : 0
           )
-        : thisQuestion[`count${i === 0 ? "A" : "B"}`]
+        : thisQuestion[`count${index === 0 ? "A" : "B"}`]
             .split("")
             .map((n: string) => parseInt(n, 10));
-    return { index: i, answer: answer };
+    return { index: index, answer: answer };
   });
 
   return (
-    <>
+    <div className="btn_box">
       {answers.map((obj) => (
-        <p
-          onClick={() => doAnswer(obj.answer, type)}
+        <AnswerButton
+          answer={obj.answer}
+          index={obj.index}
+          thisQuestion={thisQuestion}
           key={obj.index}
-          className="btn-answer"
-        >
-          {thisQuestion[`choice${obj.index + 1}`]}
-        </p>
+          type={type}
+        />
       ))}
-    </>
+    </div>
   );
 });
 
