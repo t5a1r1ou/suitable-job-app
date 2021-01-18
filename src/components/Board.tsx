@@ -12,32 +12,17 @@ import useWhichQuestions from "../logic/useWhichQuestions";
 
 interface Props {
   type: string;
-  secImg: {
-    values: {
-      title: string;
-      titleAlt: string;
-      doc: string;
-      docAlt: string;
-    };
-    personality: {
-      title: string;
-      titleAlt: string;
-      doc: string;
-      docAlt: string;
-    };
-  };
 }
 
 interface RouteParams {
   index: string;
 }
 
-export const Board: React.FC<Props> = memo(({ type, secImg }) => {
+export const Board: React.FC<Props> = memo(({ type }) => {
   const { answersState } = useContext(answersContext);
   const { flip, flipBack, flipFlag } = answersState;
-  const { questionsLength, questions, secTop, pageTitle } = useWhichQuestions(
-    type,
-    secImg
+  const { questionsLength, questions, title, titleSrc } = useWhichQuestions(
+    type
   );
   const { index } = useParams<RouteParams>();
   const questionIndex = index ? parseInt(index, 10) - 1 : questionsLength - 1;
@@ -46,9 +31,9 @@ export const Board: React.FC<Props> = memo(({ type, secImg }) => {
 
   return (
     <>
-      <PageHeader title={`${pageTitle}診断 設問${index}`} />
+      <PageHeader title={`${title}診断 設問${index}`} />
       <h1>
-        <img src={secTop.title} alt={secTop.titleAlt} className="sectop-img" />
+        <img src={titleSrc} alt={title} className="sectop-img" />
       </h1>
       <Transition in={flipFlag ? flip : flipBack} timeout={550}>
         {(state: string) => (

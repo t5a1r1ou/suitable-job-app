@@ -16,7 +16,7 @@ const App = memo(() => {
       <HelmetProvider>
         <div className="SW-update-dialog"></div>
         <header className="header">
-          <img src={laboLogo} className="labo-logo" alt="日総ラボロゴ" />
+          <img src={laboLogo} className="labo-logo" alt="NISSOLABO" />
         </header>
         <Router>
           <div className="page__container">

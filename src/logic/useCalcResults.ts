@@ -1,6 +1,6 @@
 import { useMemo, useContext } from "react";
 import Constants from "../Constants";
-import { answersContext } from "../contexts/AppProvider";
+import { answersContext } from "../contexts/AppContext";
 
 type Result =
   | {
@@ -72,11 +72,9 @@ const useCalcResults = () => {
     [personalityResults, pAnswers]
   );
 
-  const checkAnswers = (answers: number[][]) => {
+  const validAnswers = ((answers: number[][]) => {
     return answers.some((arr) => arr.every((ele: number) => ele === 0));
-  };
-
-  const validAnswers = checkAnswers([...pAnswers, ...vAnswers]);
+  })([...pAnswers, ...vAnswers]);
 
   return { valuesResult, personalityResult, validAnswers };
 };

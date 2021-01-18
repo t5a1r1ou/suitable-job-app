@@ -1,6 +1,7 @@
 import React, { memo, useContext } from "react";
 import { answersContext } from "../contexts/AppContext";
 
+import CardImg from "./CardImg";
 import AnswerButtons from "./AnswerButtons";
 
 const FLIP_STYLE = {
@@ -79,17 +80,8 @@ const Card: React.FC<Props> = memo(({ state, index, type, thisQuestion }) => {
         <em>問{index}</em>
       </div>
       <h2 className="flip-card_title">{thisQuestion.title}</h2>
-      {type === "personality" && (
-        <div className="card-imgbox">
-          <img
-            src={`https://www.717450.net/priority/sjc_img/${thisQuestion.image_url}`}
-            alt={thisQuestion.title}
-          />
-        </div>
-      )}
-      <div className="btn_box">
-        <AnswerButtons thisQuestion={thisQuestion} type={type} />
-      </div>
+      {thisQuestion.image_url && <CardImg thisQuestion={thisQuestion} />}
+      <AnswerButtons thisQuestion={thisQuestion} type={type} />
     </div>
   );
 });

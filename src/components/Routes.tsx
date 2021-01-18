@@ -1,10 +1,6 @@
 import React, { memo } from "react";
 import { Route } from "react-router-dom";
 import { CSSTransition } from "react-transition-group";
-import valuesImg from "../images/values.png";
-import personalityImg from "../images/personality.png";
-import docValues from "../images/doctor1.png";
-import docPersonality from "../images/doctor2.png";
 
 import loadable from "@loadable/component";
 
@@ -56,21 +52,6 @@ interface Props {
 }
 
 const Routes: React.FC<Props> = memo(({ footerImg }) => {
-  const secImg = {
-    values: {
-      title: valuesImg,
-      titleAlt: "価値観診断タイトル",
-      doc: docValues,
-      docAlt: "博士（価値観）",
-    },
-    personality: {
-      title: personalityImg,
-      titleAlt: "性格診断タイトル",
-      doc: docPersonality,
-      docAlt: "博士（性格）",
-    },
-  };
-
   const ROUTES: routeItems[] = [
     {
       path: "/",
@@ -81,7 +62,6 @@ const Routes: React.FC<Props> = memo(({ footerImg }) => {
       Component: SectionTop,
       attributes: {
         type: "values",
-        secImg: secImg,
       },
     },
     {
@@ -89,7 +69,6 @@ const Routes: React.FC<Props> = memo(({ footerImg }) => {
       Component: Board,
       attributes: {
         type: "values",
-        secImg: secImg,
       },
     },
     {
@@ -97,7 +76,6 @@ const Routes: React.FC<Props> = memo(({ footerImg }) => {
       Component: SectionTop,
       attributes: {
         type: "personality",
-        secImg: secImg,
       },
     },
     {
@@ -105,7 +83,6 @@ const Routes: React.FC<Props> = memo(({ footerImg }) => {
       Component: Board,
       attributes: {
         type: "personality",
-        secImg: secImg,
       },
     },
     {
@@ -136,7 +113,7 @@ const Routes: React.FC<Props> = memo(({ footerImg }) => {
                 <ErrorBoundary>
                   <Component {...attributes} />
                 </ErrorBoundary>
-                <img src={footerImg} alt="ロゴフッター" />
+                <img src={footerImg} alt="" />
               </div>
             </CSSTransition>
           )}

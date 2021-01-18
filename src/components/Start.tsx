@@ -17,10 +17,10 @@ const Start: React.FC = memo(() => {
     <>
       <PageHeader />
       <h1>
-        <img src={logoTitle} alt="トップロゴ" />
+        <img src={logoTitle} alt="presented by NISSO プチ自分発見診断" />
       </h1>
       <div className="top-logo_flex">
-        <img src={logoLeft} alt="ロゴ左" className="top-logo_item" />
+        <img src={logoLeft} alt="" className="top-logo_item" />
         {isError ? (
           <p>
             エラーが発生しています。
@@ -34,7 +34,7 @@ const Start: React.FC = memo(() => {
             始める
           </p>
         )}
-        <img src={logoRight} alt="ロゴ右" className="top-logo_item" />
+        <img src={logoRight} alt="" className="top-logo_item" />
       </div>
       <StaticStart />
     </>
