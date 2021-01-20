@@ -19,7 +19,6 @@ const useWhichQuestions = (type: string) => {
       title: "価値観診断テスト",
       titleSrc: valuesImg,
       doc: docValues,
-      docAlt: "博士（価値観）",
       sectionText: sectionTexts["values"],
     },
     personality: {
@@ -28,7 +27,6 @@ const useWhichQuestions = (type: string) => {
       title: "性格診断テスト",
       titleSrc: personalityImg,
       doc: docPersonality,
-      docAlt: "博士（性格）",
       sectionText: sectionTexts["personality"],
     },
   };
