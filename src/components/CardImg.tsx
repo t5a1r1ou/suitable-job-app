@@ -1,7 +1,10 @@
-import React from "react";
+import React, { memo } from "react";
 
-const CardImg = ({ thisQuestion }) => {
-  const { image_url } = thisQuestion;
+interface Props {
+  image_url: string;
+}
+
+const CardImg: React.FC<Props> = memo(({ image_url }) => {
   return (
     <div className="card-imgbox">
       <img
@@ -10,6 +13,6 @@ const CardImg = ({ thisQuestion }) => {
       />
     </div>
   );
-};
+});
 
 export default CardImg;
