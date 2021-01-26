@@ -12,9 +12,11 @@ import Constants from "../Constants";
 const Form: React.FC = memo(() => {
   const { valuesResult, personalityResult, validAnswers } = useCalcResults();
   const { formElements } = Constants;
-  const [alertAge, setAlertAge] = useState(false);
-  const [alertMinus, setAlertMinus] = useState(false);
-  const [alertArea, setAlertArea] = useState(false);
+  const [alertState, setAlertState] = useState({
+    alertAge: false,
+    alertMinus: false,
+    alertArea: false,
+  });
   const [sendElements, setSendElements] = useState({
     age: "",
     sex: "男",
@@ -49,26 +51,23 @@ const Form: React.FC = memo(() => {
 
   const checkAge = () => {
     if (parseInt(sendElements.age, 10) < 0) {
-      setAlertMinus(true);
-      setAlertAge(false);
+      setAlertState({ ...alertState, alertAge: false, alertMinus: true });
       return false;
     } else if (sendElements.age === "") {
-      setAlertAge(true);
-      setAlertMinus(false);
+      setAlertState({ ...alertState, alertAge: true, alertMinus: false });
       return false;
     } else {
-      setAlertAge(false);
-      setAlertMinus(false);
+      setAlertState({ ...alertState, alertAge: false, alertMinus: false });
       return true;
     }
   };
 
   const checkArea = () => {
     if (sendElements.area === "-") {
-      setAlertArea(true);
+      setAlertState({ ...alertState, alertArea: true });
       return false;
     } else {
-      setAlertArea(false);
+      setAlertState({ ...alertState, alertArea: false });
       return true;
     }
   };
@@ -82,6 +81,8 @@ const Form: React.FC = memo(() => {
   const sendForm = () => {
     return canSubmit() && submitAct(sendElements);
   };
+
+  const { alertAge, alertArea, alertMinus } = alertState;
 
   return !validAnswers ? (
     <>
