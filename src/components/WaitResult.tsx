@@ -1,16 +1,25 @@
-import React, { memo, useState, useEffect } from "react";
-import { useHistory } from "react-router-dom";
+import React, { memo } from "react";
+
+import useWaiter from "../logic/useWaiter";
 
 import Progressbar from "./ProgressBar";
 
 import docWaiting from "../images/doctor3.png";
 import docWaited from "../images/doctor4.png";
 
+interface WaitObj {
+  waiting: {
+    img: string;
+    text: string;
+  };
+  waited: {
+    img: string;
+    text: string;
+  };
+}
+
 const WaitResult: React.FC = memo(() => {
-  const history = useHistory();
-  const [complete, setComplete] = useState(false);
-  const [now, setNow] = useState(0);
-  const waitObj = {
+  const waitObj: WaitObj = {
     waiting: {
       img: docWaiting,
       text: "結果計算中…",
@@ -20,22 +29,8 @@ const WaitResult: React.FC = memo(() => {
       text: "結果計算完了！",
     },
   };
-  const wait = complete ? waitObj["waited"] : waitObj["waiting"];
 
-  useEffect(() => {
-    const progressTimer = setInterval(() => {
-      setNow((prevNow) => (prevNow >= 100 ? 100 : prevNow + 20));
-    }, 800);
-    setTimeout(() => {
-      setComplete(true);
-    }, 4000);
-    setTimeout(() => {
-      history.push("/result");
-    }, 5000);
-    return () => {
-      clearInterval(progressTimer);
-    };
-  }, [history]);
+  const { wait, now } = useWaiter(waitObj);
 
   return (
     <div className="wait_box">
