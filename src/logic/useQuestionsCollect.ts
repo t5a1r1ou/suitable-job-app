@@ -4,13 +4,11 @@ import axios from "axios";
 
 const useQuestionsCollect = () => {
   const { dispatch } = useContext(questionsContext);
-  const [loadingState, setloadingState] = useState({
-    isLoading: false,
-    isError: false,
-  });
+  const [isLoading, setLoading] = useState(false);
+  const [isError, setError] = useState(false);
   useEffect(() => {
     const getvQuestions = async () => {
-      setloadingState({ ...loadingState, isLoading: true });
+      setLoading(true);
       await axios
         .get(process.env.REACT_APP_SJC_VQUESTIONS as string)
         .then((r) => {
@@ -19,15 +17,15 @@ const useQuestionsCollect = () => {
             payload: r.data.data,
             which: "values",
           });
-          setloadingState({ ...loadingState, isLoading: false });
+          setLoading(false);
         })
         .catch(() => {
-          setloadingState({ ...loadingState, isError: true });
+          setError(true);
         });
     };
 
     const getpQuestions = async () => {
-      setloadingState({ ...loadingState, isLoading: true });
+      setLoading(true);
       await axios
         .get(process.env.REACT_APP_SJC_PQUESTIONS as string)
         .then((r) => {
@@ -36,10 +34,10 @@ const useQuestionsCollect = () => {
             payload: r.data.data,
             which: "personality",
           });
-          setloadingState({ ...loadingState, isLoading: false });
+          setLoading(false);
         })
         .catch(() => {
-          setloadingState({ ...loadingState, isError: true });
+          setError(true);
         });
     };
 
@@ -47,7 +45,7 @@ const useQuestionsCollect = () => {
     getpQuestions();
   }, [dispatch]);
 
-  return loadingState;
+  return { isLoading, isError };
 };
 
 export default useQuestionsCollect;
