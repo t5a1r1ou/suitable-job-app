@@ -4,6 +4,7 @@ interface Results {
   id: number;
   desc: string;
   importance?: string;
+  type: string;
 }
 
 interface Props {

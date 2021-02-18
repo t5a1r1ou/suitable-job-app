@@ -1,7 +1,23 @@
 import React from "react";
 import useAnswerCalc from "../logic/useAnswerCalc";
 
-const AnswerButton = ({ answer, index, thisQuestion, type }) => {
+interface thisquestionItems {
+  [index: string]: string;
+}
+
+interface Props {
+  answer: number[];
+  index: number;
+  thisQuestion: thisquestionItems;
+  type: string;
+}
+
+const AnswerButton: React.FC<Props> = ({
+  answer,
+  index,
+  thisQuestion,
+  type,
+}) => {
   const { doAnswer } = useAnswerCalc();
   return (
     <p

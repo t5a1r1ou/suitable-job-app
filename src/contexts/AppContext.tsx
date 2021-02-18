@@ -20,6 +20,14 @@ interface questionsObj {
   pQuestions: questionItem[];
 }
 
+interface AnswersState {
+  vAnswers: any[];
+  pAnswers: any[];
+  flip: boolean;
+  flipBack: boolean;
+  flipFlag: boolean;
+}
+
 type FetchAction = {
   type: "FETCH_QUESTIONS";
   payload: questionItem[];
@@ -49,17 +57,20 @@ export const questionsContext = createContext(
 
 export const answersContext = createContext(
   {} as {
-    answersState: any;
+    answersState: AnswersState;
     dispatch: React.Dispatch<AnswerAction>;
   }
 );
 
-const questionsInitialState = {
+const questionsInitialState: questionsObj = {
   vQuestions: [],
   pQuestions: [],
 };
 
-const questionsFetchReducer = (questionsState, action) => {
+const questionsFetchReducer = (
+  questionsState: questionsObj,
+  action: FetchAction
+) => {
   switch (action.type) {
     case "FETCH_QUESTIONS": {
       const { payload, which } = action;
@@ -97,7 +108,10 @@ const answersInitialState = {
   flipFlag: true,
 };
 
-const answersCalculateReducer = (answersState, action) => {
+const answersCalculateReducer = (
+  answersState: AnswersState,
+  action: AnswerAction
+) => {
   switch (action.type) {
     case "ANSWER_QUESTION": {
       const { vAnswers, pAnswers, flip } = answersState;

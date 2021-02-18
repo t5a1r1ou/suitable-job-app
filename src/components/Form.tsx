@@ -9,6 +9,17 @@ import FormComp from "./FormComp";
 import PageHeader from "./PageHeader";
 import Constants from "../Constants";
 
+interface SendElements {
+  age: string;
+  sex: string;
+  area: string;
+  status: string;
+  distance: string;
+  importance: string;
+  values_result: any;
+  personality_result: any;
+}
+
 const Form: React.FC = memo(() => {
   const { valuesResult, personalityResult, validAnswers } = useCalcResults();
   const { formElements } = Constants;
@@ -36,7 +47,7 @@ const Form: React.FC = memo(() => {
 
   const history = useHistory();
 
-  const submitAct = (data) => {
+  const submitAct = (data: SendElements) => {
     history.push("/loading");
     axios
       .post(process.env.REACT_APP_SJC_RESULTS as string, data)

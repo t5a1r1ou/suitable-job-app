@@ -1,81 +1,22 @@
-import React, { memo, useContext } from "react";
-import { answersContext } from "../contexts/AppContext";
+import React, { memo } from "react";
 
 import CardImg from "./CardImg";
 import AnswerButtons from "./AnswerButtons";
 
-const FLIP_STYLE = {
-  // 前面⇒背面
-  entering: {
-    transition: "all .5s ease",
-    transform: "perspective(25rem) rotateY(360deg)",
-  },
-  // 背面
-  entered: {
-    transition: "",
-    transform: "perspective(25rem) rotateY(0deg)",
-  },
-  // 背面⇒前面
-  exiting: {
-    transition: "all .5s ease",
-    transform: "perspective(25rem) rotateY(360deg)",
-  },
-  // 前面
-  exited: {
-    transition: "",
-    transform: "perspective(25rem) rotateY(0)",
-  },
-};
-
-const FLIP_BACK_STYLE = {
-  // 前面⇒背面
-  entering: {
-    transition: "all .5s ease",
-    transform: "perspective(25rem) rotateY(-360deg)",
-  },
-  // 背面
-  entered: {
-    transition: "",
-    transform: "perspective(25rem) rotateY(0deg)",
-  },
-  // 背面⇒前面
-  exiting: {
-    transition: "all .5s ease",
-    transform: "perspective(25rem) rotateY(-360deg)",
-  },
-  // 前面
-  exited: {
-    transition: "",
-    transform: "perspective(25rem) rotateY(0)",
-  },
-};
-
-interface questionsItems {
-  title: string;
-  image_url?: string;
-  countA: string;
-  countB: string;
-  choice1: string;
-  choice2: string;
-  choice3?: string;
-  choice4?: string;
+interface thisquestionItems {
+  [index: string]: string;
 }
 
 interface Props {
-  state: string;
+  style: React.CSSProperties;
   index: string;
   type: string;
-  thisQuestion: questionsItems;
+  thisQuestion: thisquestionItems;
 }
 
-const Card: React.FC<Props> = memo(({ state, index, type, thisQuestion }) => {
-  const { answersState } = useContext(answersContext);
-  const { flipFlag } = answersState;
+const Card: React.FC<Props> = memo(({ style, index, type, thisQuestion }) => {
   return (
-    <div
-      className="flip-card"
-      style={flipFlag ? FLIP_STYLE[state] : FLIP_BACK_STYLE[state]}
-    >
+    <div className="flip-card" style={style}>
       <div className="flip-card_id">
         <em>問{index}</em>
       </div>

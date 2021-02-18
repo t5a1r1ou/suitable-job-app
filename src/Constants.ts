@@ -339,6 +339,52 @@ class Constants {
         "個性が強く、周りの人と打ち解けるまで、普通の人の数倍の時間がかかります。そのため交友関係は狭い特徴があります。",
     },
   ];
+
+  static FLIP_STYLE = {
+    // 前面⇒背面
+    entering: {
+      transition: "all .5s ease",
+      transform: "perspective(25rem) rotateY(360deg)",
+    },
+    // 背面
+    entered: {
+      transition: "",
+      transform: "perspective(25rem) rotateY(0deg)",
+    },
+    // 背面⇒前面
+    exiting: {
+      transition: "all .5s ease",
+      transform: "perspective(25rem) rotateY(360deg)",
+    },
+    // 前面
+    exited: {
+      transition: "",
+      transform: "perspective(25rem) rotateY(0)",
+    },
+  };
+
+  static FLIP_BACK_STYLE = {
+    // 前面⇒背面
+    entering: {
+      transition: "all .5s ease",
+      transform: "perspective(25rem) rotateY(-360deg)",
+    },
+    // 背面
+    entered: {
+      transition: "",
+      transform: "perspective(25rem) rotateY(0deg)",
+    },
+    // 背面⇒前面
+    exiting: {
+      transition: "all .5s ease",
+      transform: "perspective(25rem) rotateY(-360deg)",
+    },
+    // 前面
+    exited: {
+      transition: "",
+      transform: "perspective(25rem) rotateY(0)",
+    },
+  };
 }
 
 export default Constants;

@@ -3,14 +3,7 @@ import { Label, Input, Select } from "@rebass/forms";
 
 interface Props {
   sendElements: {
-    age: string;
-    sex: string;
-    area: string;
-    status: string;
-    distance: string;
-    importance: string;
-    values_result: any;
-    personality_result: any;
+    [index: string]: string;
   };
   eachData: {
     label: string;

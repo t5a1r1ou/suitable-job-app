@@ -102,7 +102,7 @@ const Routes: React.FC<Props> = memo(({ footerImg }) => {
     <>
       {ROUTES.map(({ path, Component, attributes }) => (
         <Route key={path} path={path} exact>
-          {({ match }) => (
+          {({ match }: { match: any }) => (
             <CSSTransition
               in={match != null}
               timeout={550}

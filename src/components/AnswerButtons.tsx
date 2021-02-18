@@ -2,17 +2,12 @@ import React, { memo } from "react";
 import Constants from "../Constants";
 import AnswerButton from "./AnswerButton";
 
-interface questionsItems {
-  countA: string;
-  countB: string;
-  choice1: string;
-  choice2: string;
-  choice3?: string;
-  choice4?: string;
+interface thisquestionItems {
+  [key: string]: string;
 }
 
 interface Props {
-  thisQuestion: questionsItems;
+  thisQuestion: thisquestionItems;
   type: string;
 }
 

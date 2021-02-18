@@ -1,6 +1,11 @@
 import React from "react";
 
-const CardTitle = ({ title, index }) => {
+interface Props {
+  title: string;
+  index: string;
+}
+
+const CardTitle: React.FC<Props> = ({ title, index }) => {
   return (
     <>
       <div className="flip-card_id">

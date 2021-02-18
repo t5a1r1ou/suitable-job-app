@@ -8,7 +8,11 @@ interface Writer {
   ) => { (): any; new (): any; start: { (): any; new (): any } };
 }
 
-const SecTopDialog = ({ texts }) => {
+interface Props {
+  texts: string;
+}
+
+const SecTopDialog: React.FC<Props> = ({ texts }) => {
   return (
     <div className="sectop-dia">
       <p className="sectop-name">Dr.Nisso</p>
