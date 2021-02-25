@@ -60,7 +60,7 @@ export const Board: React.FC<Props> = memo(({ type }) => {
           />
         )}
       </Transition>
-      <BackButton index={index} type={type} />
+      <BackButton visible={index !== "1"} type={type} />
       <ProgressBar
         now={questionProgress}
         length={questionsLength}

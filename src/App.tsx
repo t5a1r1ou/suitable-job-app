@@ -21,10 +21,7 @@ const App = memo(() => {
         <Router>
           <div className="page__container">
             <AppProvider>
-              <Routes
-                // @ts-ignore
-                footerImg={footerImg}
-              />
+              <Routes footerImg={footerImg} />
             </AppProvider>
           </div>
         </Router>
