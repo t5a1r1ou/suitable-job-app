@@ -7,42 +7,30 @@ const useQuestionsCollect = () => {
   const [isLoading, setLoading] = useState(false);
   const [isError, setError] = useState(false);
   useEffect(() => {
-    const getvQuestions = async () => {
+    const getQuestions = async () => {
       setLoading(true);
       await axios
-        .get(process.env.REACT_APP_SJC_VQUESTIONS as string)
+        .get(process.env.REACT_APP_QUESTIONS_JSON as string)
         .then((r) => {
           dispatch({
             type: "FETCH_QUESTIONS",
-            payload: r.data.data,
+            payload: r.data.personality,
+            which: "personality",
+          });
+          dispatch({
+            type: "FETCH_QUESTIONS",
+            payload: r.data.values,
             which: "values",
           });
           setLoading(false);
         })
-        .catch(() => {
+        .catch((e) => {
+          console.log(e);
           setError(true);
         });
     };
 
-    const getpQuestions = async () => {
-      setLoading(true);
-      await axios
-        .get(process.env.REACT_APP_SJC_PQUESTIONS as string)
-        .then((r) => {
-          dispatch({
-            type: "FETCH_QUESTIONS",
-            payload: r.data.data,
-            which: "personality",
-          });
-          setLoading(false);
-        })
-        .catch(() => {
-          setError(true);
-        });
-    };
-
-    getvQuestions();
-    getpQuestions();
+    getQuestions();
   }, [dispatch]);
 
   return { isLoading, isError };

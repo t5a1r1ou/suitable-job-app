@@ -34,7 +34,7 @@ const useAnswerCalc = () => {
       } else if (type === "values") {
         return "/personality/top";
       } else {
-        return "/form";
+        return "/loading";
       }
     })();
     history.push(path);

@@ -9,7 +9,6 @@ import ErrorBoundary from "./ErrorBoundary";
 const Start = loadable(() => import("./Start"));
 const SectionTop = loadable(() => import("./SectionTop"));
 const Board = loadable(() => import("./Board"));
-const Form = loadable(() => import("./Form"));
 const Result = loadable(() => import("./Result"));
 const WaitResult = loadable(() => import("./WaitResult"));
 
@@ -88,10 +87,6 @@ const Routes: React.FC<Props> = memo(({ footerImg }) => {
     {
       path: "/loading",
       Component: WaitResult,
-    },
-    {
-      path: "/form",
-      Component: Form,
     },
     {
       path: "/result",

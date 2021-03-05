@@ -1,7 +1,6 @@
 import React, { memo, useState, useCallback } from "react";
 import { Redirect, useHistory } from "react-router-dom";
 import { Label, Radio } from "@rebass/forms";
-import axios from "axios";
 
 import useCalcResults from "../logic/useCalcResults";
 
@@ -47,19 +46,6 @@ const Form: React.FC = memo(() => {
 
   const history = useHistory();
 
-  const submitAct = (data: SendElements) => {
-    history.push("/loading");
-    axios
-      .post(process.env.REACT_APP_SJC_RESULTS as string, data)
-      .then((res) => {
-        console.log(res.data.data);
-      })
-      .catch((err) => {
-        alert("送信に失敗しました");
-        console.log(err);
-      });
-  };
-
   const checkAge = () => {
     if (parseInt(sendElements.age, 10) < 0) {
       setAlertState({ ...alertState, alertAge: false, alertMinus: true });
@@ -90,7 +76,7 @@ const Form: React.FC = memo(() => {
   };
 
   const sendForm = () => {
-    return canSubmit() && submitAct(sendElements);
+    return canSubmit() && history.push("/loading");
   };
 
   const { alertAge, alertArea, alertMinus } = alertState;

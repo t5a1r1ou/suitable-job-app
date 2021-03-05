@@ -2,7 +2,7 @@
   "name": "suitable-job-app",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://www.717450.net/priority/jibun-hakken",
+  "homepage": "./",
   "dependencies": {
     "@loadable/component": "^5.13.2",
     "@rebass/forms": "^4.0.6",
