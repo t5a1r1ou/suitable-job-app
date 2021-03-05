@@ -10,7 +10,7 @@ interface Props {
   type: string;
 }
 
-const SectionTop: React.FC<Props> = memo(({ type }) => {
+const SectionTop: React.VFC<Props> = memo(({ type }) => {
   const history = useHistory();
   const { title, titleSrc, doc, sectionText } = useWhichQuestions(type);
 

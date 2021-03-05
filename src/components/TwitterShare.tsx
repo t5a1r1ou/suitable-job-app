@@ -13,7 +13,7 @@ interface Props {
   personalityResult: Result;
 }
 
-const TwitterShare: React.FC<Props> = memo(
+const TwitterShare: React.VFC<Props> = memo(
   ({ valuesResult, personalityResult }) => {
     const attributes = {
       url: "https://nisso-jobcheck.netlify.app/",

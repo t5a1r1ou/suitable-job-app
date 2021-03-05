@@ -8,7 +8,7 @@ import logoTitle from "../images/logo-title.png";
 import logoLeft from "../images/logo-item_left.png";
 import logoRight from "../images/logo-item_right.png";
 
-const Start: React.FC = memo(() => {
+const Start: React.VFC = memo(() => {
   return (
     <>
       <PageHeader />

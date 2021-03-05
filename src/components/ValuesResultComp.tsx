@@ -11,7 +11,7 @@ interface Props {
   results: Results;
 }
 
-const ValuesResultComp: React.FC<Props> = memo(({ results }) => {
+const ValuesResultComp: React.VFC<Props> = memo(({ results }) => {
   return (
     <>
       <h2 className="result-top">価値観診断テスト結果</h2>

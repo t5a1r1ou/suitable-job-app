@@ -19,7 +19,7 @@ interface SendElements {
   personality_result: any;
 }
 
-const Form: React.FC = memo(() => {
+const Form: React.VFC = memo(() => {
   const { valuesResult, personalityResult, validAnswers } = useCalcResults();
   const { formElements } = Constants;
   const [alertState, setAlertState] = useState({

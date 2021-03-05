@@ -11,7 +11,7 @@ interface Props {
   type: string;
 }
 
-const AnswerButtons: React.FC<Props> = memo(({ thisQuestion, type }) => {
+const AnswerButtons: React.VFC<Props> = memo(({ thisQuestion, type }) => {
   const answers = useCalcAnswerCount(type, thisQuestion);
   return (
     <div className="btn_box">

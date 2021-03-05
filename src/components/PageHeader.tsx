@@ -5,7 +5,7 @@ interface Props {
   title?: string;
 }
 
-const PageHeader: React.FC<Props> = memo(({ title }) => {
+const PageHeader: React.VFC<Props> = memo(({ title }) => {
   const head = [
     { charset: "utf-8" },
     { name: "theme-color", content: "#000000" },

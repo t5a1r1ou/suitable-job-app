@@ -19,7 +19,7 @@ interface Result {
   importance?: string;
 }
 
-const Result: React.FC = memo(() => {
+const Result: React.VFC = memo(() => {
   const { valuesResult, personalityResult, validAnswers } = useCalcResults();
   const { backTop } = useAnswerCalc();
 

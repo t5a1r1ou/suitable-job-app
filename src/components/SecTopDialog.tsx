@@ -12,7 +12,7 @@ interface Props {
   texts: string;
 }
 
-const SecTopDialog: React.FC<Props> = ({ texts }) => {
+const SecTopDialog: React.VFC<Props> = ({ texts }) => {
   return (
     <div className="sectop-dia">
       <p className="sectop-name">Dr.Nisso</p>

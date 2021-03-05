@@ -8,7 +8,7 @@ interface Props {
   type: string;
 }
 
-const ProgressBar: React.FC<Props> = memo(({ now, length, type }) => {
+const ProgressBar: React.VFC<Props> = memo(({ now, length, type }) => {
   const { progressTexts, progressWaitTexts } = Constants;
 
   const percent = Math.floor((now / length) * 100);

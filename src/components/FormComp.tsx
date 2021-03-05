@@ -16,7 +16,7 @@ interface Props {
   handleChange: (e: any) => void;
 }
 
-const FormComp: React.FC<Props> = memo(
+const FormComp: React.VFC<Props> = memo(
   ({ sendElements, eachData, handleChange }) => {
     const { label, labelName, type, placeholder, required, options } = eachData;
     return (

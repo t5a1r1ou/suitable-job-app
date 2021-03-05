@@ -14,7 +14,7 @@ interface Props {
   thisQuestion: thisquestionItems;
 }
 
-const Card: React.FC<Props> = memo(({ style, index, type, thisQuestion }) => {
+const Card: React.VFC<Props> = memo(({ style, index, type, thisQuestion }) => {
   return (
     <div className="flip-card" style={style}>
       <div className="flip-card_id">

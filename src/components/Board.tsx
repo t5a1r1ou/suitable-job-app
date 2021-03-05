@@ -27,7 +27,7 @@ interface FlipState {
   exited: { transition: string; transform: string };
 }
 
-export const Board: React.FC<Props> = memo(({ type }) => {
+export const Board: React.VFC<Props> = memo(({ type }) => {
   const { answersState } = useContext(answersContext);
   const { flip, flipBack, flipFlag } = answersState;
   const { questionsLength, questions, title, titleSrc } = useWhichQuestions(

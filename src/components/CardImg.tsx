@@ -4,7 +4,7 @@ interface Props {
   image_url: string;
 }
 
-const CardImg: React.FC<Props> = memo(({ image_url }) => {
+const CardImg: React.VFC<Props> = memo(({ image_url }) => {
   return (
     <div className="card-imgbox">
       <img

@@ -5,7 +5,7 @@ interface Props {
   index: string;
 }
 
-const CardTitle: React.FC<Props> = ({ title, index }) => {
+const CardTitle: React.VFC<Props> = ({ title, index }) => {
   return (
     <>
       <div className="flip-card_id">

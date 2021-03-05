@@ -50,7 +50,7 @@ interface Props {
   footerImg: any;
 }
 
-const Routes: React.FC<Props> = memo(({ footerImg }) => {
+const Routes: React.VFC<Props> = memo(({ footerImg }) => {
   const ROUTES: routeItems[] = [
     {
       path: "/",

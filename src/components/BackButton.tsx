@@ -6,7 +6,7 @@ interface Props {
   type: string;
 }
 
-const BackButton: React.FC<Props> = ({ visible, type }) => {
+const BackButton: React.VFC<Props> = ({ visible, type }) => {
   const { doBack } = useAnswerCalc();
 
   return (

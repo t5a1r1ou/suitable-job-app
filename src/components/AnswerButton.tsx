@@ -12,7 +12,7 @@ interface Props {
   type: string;
 }
 
-const AnswerButton: React.FC<Props> = ({
+const AnswerButton: React.VFC<Props> = ({
   answer,
   index,
   thisQuestion,

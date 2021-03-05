@@ -18,7 +18,7 @@ interface WaitObj {
   };
 }
 
-const WaitResult: React.FC = memo(() => {
+const WaitResult: React.VFC = memo(() => {
   const waitObj: WaitObj = {
     waiting: {
       img: docWaiting,
