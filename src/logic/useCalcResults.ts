@@ -73,7 +73,7 @@ const useCalcResults = () => {
   );
 
   const validAnswers = ((answers: number[][]) => {
-    return answers.some((arr) => arr.every((ele: number) => ele === 0));
+    return answers.every((arr) => arr.every((ele: number) => ele === 0));
   })([...pAnswers, ...vAnswers]);
 
   return { valuesResult, personalityResult, validAnswers };
