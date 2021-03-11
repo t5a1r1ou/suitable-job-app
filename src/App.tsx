@@ -4,7 +4,6 @@ import { HelmetProvider } from "react-helmet-async";
 import loadable from "@loadable/component";
 
 import laboLogo from "./images/labo-logo.png";
-import footerImg from "./images/logo-footer.png";
 
 import { AppProvider } from "./contexts/AppContext";
 
@@ -21,7 +20,7 @@ const App = memo(() => {
         <Router>
           <div className="page__container">
             <AppProvider>
-              <Routes footerImg={footerImg} />
+              <Routes />
             </AppProvider>
           </div>
         </Router>

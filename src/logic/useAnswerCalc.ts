@@ -50,12 +50,11 @@ const useAnswerCalc = () => {
     );
   };
 
-  const backTop: () => void = () => {
+  const resetAnswers: () => void = () => {
     dispatch({ type: "ANSWER_RESET" });
-    history.push("/");
   };
 
-  return { doAnswer, doBack, backTop };
+  return { doAnswer, doBack, resetAnswers };
 };
 
 export default useAnswerCalc;

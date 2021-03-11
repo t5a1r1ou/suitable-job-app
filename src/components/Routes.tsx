@@ -2,6 +2,8 @@ import React, { memo } from "react";
 import { Route } from "react-router-dom";
 import { CSSTransition } from "react-transition-group";
 
+import footerImg from "../images/logo-footer.png";
+
 import loadable from "@loadable/component";
 
 import ErrorBoundary from "./ErrorBoundary";
@@ -46,11 +48,7 @@ interface questionItems {
   title: string;
 }
 
-interface Props {
-  footerImg: any;
-}
-
-const Routes: React.VFC<Props> = memo(({ footerImg }) => {
+const Routes: React.VFC = memo(() => {
   const ROUTES: routeItems[] = [
     {
       path: "/",

@@ -1,5 +1,5 @@
 import React, { memo } from "react";
-import { Redirect } from "react-router-dom";
+import { Redirect, useHistory } from "react-router-dom";
 
 import TwitterShare from "./TwitterShare";
 import PageHeader from "./PageHeader";
@@ -20,10 +20,23 @@ interface Result {
 }
 
 const Result: React.VFC = memo(() => {
+  const history = useHistory();
   const { valuesResult, personalityResult, validAnswers } = useCalcResults();
-  const { backTop } = useAnswerCalc();
+  const { resetAnswers } = useAnswerCalc();
 
-  return !validAnswers ? (
+  console.log(validAnswers);
+
+  if (validAnswers) {
+    resetAnswers();
+    return <Redirect to="/" />;
+  }
+
+  const backTop = () => {
+    resetAnswers();
+    history.push("/");
+  };
+
+  return (
     <>
       <PageHeader title="診断結果" />
       <h1>
@@ -49,8 +62,6 @@ const Result: React.VFC = memo(() => {
         工場求人ナビトップに戻る
       </a>
     </>
-  ) : (
-    <Redirect to="/" />
   );
 });
 
