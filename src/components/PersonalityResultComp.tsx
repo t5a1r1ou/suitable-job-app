@@ -5,13 +5,14 @@ interface Results {
   arr?: number[];
   type: string;
   desc: string;
+  importance?: string;
 }
 
 interface Props {
   results: Results | undefined;
 }
 
-const PersonalityResultComp: React.FC<Props> = memo(({ results }) => {
+const PersonalityResultComp: React.VFC<Props> = memo(({ results }) => {
   return (
     <>
       <h2 className="result-top">性格診断テスト結果</h2>

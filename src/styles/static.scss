@@ -14,7 +14,7 @@
         letter-spacing: 2px;
         &_box {
             width: 80%;
-            margin: .4rem auto;
+            margin: .7rem auto 1.4rem;
         }
         &_strong {
             color: #ffbbff;
@@ -22,26 +22,20 @@
     }
     &text {
         width: 80%;
-        margin: 0 auto .4rem;
+        margin: 0 auto .8rem;
         font-size: 1rem;
         color: #ffbbff;
         padding-bottom: 0.3rem;
         border-bottom: 2px solid #ffbbff;
     }
-    &box {
-        width: 90%;
-        margin: 0 auto 1rem;
-        display: flex;
-        justify-content: space-around;
-    }
     &item {
-        padding: 1rem;
+        padding: 1.8rem;
         border: 3px dotted #fff;
         border-radius: 20px;
-        margin: 0 .2rem;
+        margin: 0 1rem 1rem;
         white-space: pre-wrap;
         @include breakpoint {
-            margin: 0 2rem;
+            margin: 0 2rem 1rem;
         }
         &_title {
             margin-bottom: 0.7rem;

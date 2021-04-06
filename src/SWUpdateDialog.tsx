@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const SWUpdateDialog: React.FC<{
+const SWUpdateDialog: React.VFC<{
   registration: ServiceWorkerRegistration;
 }> = ({ registration }) => {
   const [show, setShow] = useState(!!registration.waiting);

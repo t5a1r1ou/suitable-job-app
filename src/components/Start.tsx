@@ -1,34 +1,24 @@
 import React, { memo } from "react";
-import { useHistory } from "react-router-dom";
 
 import PageHeader from "./PageHeader";
 import StaticStart from "./StaticStart";
+import StartButton from "./StartButton";
 
-interface TopImg {
-  logoTitle: string;
-  logoLeft: string;
-  logoRight: string;
-}
+import logoTitle from "../images/logo-title.png";
+import logoLeft from "../images/logo-item_left.png";
+import logoRight from "../images/logo-item_right.png";
 
-interface Props {
-  topImg: TopImg;
-}
-
-const Start: React.FC<Props> = memo(({ topImg }) => {
-  const history = useHistory();
-  const { logoTitle, logoLeft, logoRight } = topImg;
+const Start: React.VFC = memo(() => {
   return (
     <>
       <PageHeader />
       <h1>
-        <img src={logoTitle} alt="トップロゴ" />
+        <img src={logoTitle} alt="presented by NISSO プチ自分発見診断" />
       </h1>
       <div className="top-logo_flex">
-        <img src={logoLeft} alt="ロゴ左" className="top-logo_item" />
-        <p className="btn-start" onClick={() => history.push("/values/top")}>
-          始める
-        </p>
-        <img src={logoRight} alt="ロゴ右" className="top-logo_item" />
+        <img src={logoLeft} alt="" className="top-logo_item" />
+        <StartButton />
+        <img src={logoRight} alt="" className="top-logo_item" />
       </div>
       <StaticStart />
     </>

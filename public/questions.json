@@ -1,0 +1,336 @@
+{
+  "values": [
+    {
+      "choice1": "こっそり財布にしまう",
+      "choice2": "そのままにしておく",
+      "choice3": "そのお⾦で飲み会をする",
+      "choice4": "交番に届ける",
+      "countA": "000000",
+      "countB": "000000",
+      "id": 26,
+      "image_url": null,
+      "title": "道端に1万円が落ちていました。あなたはどうしますか？"
+    },
+    {
+      "choice1": "とにかく遠くへ力一杯打つ ",
+      "choice2": "待たせたら気まずいので手早く打つ ",
+      "choice3": "ボールが当たるか心配慎重に打つ",
+      "choice4": "集中力が大切。無心で打つ",
+      "countA": "000000",
+      "countB": "000000",
+      "id": 27,
+      "image_url": null,
+      "title": "ゴルフ初体験のあなた。第一打をどう打ちますか？"
+    },
+    {
+      "choice1": "我慢して食べる",
+      "choice2": "苦手なことを伝えて残す",
+      "choice3": "持ち帰る",
+      "choice4": "人にあげる",
+      "countA": "000000",
+      "countB": "000000",
+      "id": 28,
+      "image_url": null,
+      "title": "食事会で苦手な食べ物がでました。どうする？"
+    },
+    {
+      "choice1": "イチゴジャム",
+      "choice2": "抹茶シロップ",
+      "choice3": "ナッツ＆ドライフルーツ",
+      "choice4": "チョコレートシロップ",
+      "countA": "000000",
+      "countB": "000000",
+      "id": 29,
+      "image_url": null,
+      "title": "バニラアイスにトッピングするなら、次のうちどれ？"
+    },
+    {
+      "choice1": "鮪（マグロ）",
+      "choice2": "イクラ",
+      "choice3": "蛸（タコ）",
+      "choice4": "鯛（タイ）",
+      "countA": "000000",
+      "countB": "000000",
+      "id": 30,
+      "image_url": null,
+      "title": "回転寿司であなたが取ろうと思っていた皿が、手前で取られてしまいました。そのネタは何ですか？"
+    }
+  ],
+  "personality": [
+    {
+      "choice1": "尽くされたいタイプ",
+      "choice2": "尽くしたいタイプ",
+      "choice3": null,
+      "choice4": null,
+      "countA": "020100",
+      "countB": "000012",
+      "id": 1,
+      "image_url": "devote.png",
+      "title": "どちらかというと？"
+    },
+    {
+      "choice1": "悪魔",
+      "choice2": "天使",
+      "choice3": null,
+      "choice4": null,
+      "countA": "002001",
+      "countB": "020010",
+      "id": 2,
+      "image_url": "evilangel.png",
+      "title": "お供にするならどっち？"
+    },
+    {
+      "choice1": "完璧な肉体",
+      "choice2": "完璧な頭脳",
+      "choice3": null,
+      "choice4": null,
+      "countA": "100220",
+      "countB": "001000",
+      "id": 3,
+      "image_url": "which.png",
+      "title": "欲しいのはどっち？"
+    },
+    {
+      "choice1": "絶対に怒らないから！",
+      "choice2": "行けたら行く！",
+      "choice3": null,
+      "choice4": null,
+      "countA": "200100",
+      "countB": "100200",
+      "id": 4,
+      "image_url": "credit.png",
+      "title": "どちらの言葉が信用ならない？"
+    },
+    {
+      "choice1": "指摘する。",
+      "choice2": "面白いから黙っておく",
+      "choice3": null,
+      "choice4": null,
+      "countA": "002100",
+      "countB": "200010",
+      "id": 5,
+      "image_url": "greenlaver.png",
+      "title": "友人の歯に青のりがついていたら？"
+    },
+    {
+      "choice1": "自分にはできない",
+      "choice2": "得意",
+      "choice3": null,
+      "choice4": null,
+      "countA": "100002",
+      "countB": "010020",
+      "id": 6,
+      "image_url": "selfdep.png",
+      "title": "自虐ネタで周囲を和ませることは"
+    },
+    {
+      "choice1": "とにかく利益でしょ",
+      "choice2": "信用あっての商売",
+      "choice3": null,
+      "choice4": null,
+      "countA": "201102",
+      "countB": "000000",
+      "id": 7,
+      "image_url": "sales.png",
+      "title": "商売をする上で大事なものは"
+    },
+    {
+      "choice1": "無口だけど真面目な人",
+      "choice2": "明るく元気がいいけど適当な人",
+      "choice3": null,
+      "choice4": null,
+      "countA": "000021",
+      "countB": "002100",
+      "id": 8,
+      "image_url": "corp.png",
+      "title": "仲良くするなら"
+    },
+    {
+      "choice1": "激しい運動24時間",
+      "choice2": "正座24時間",
+      "choice3": null,
+      "choice4": null,
+      "countA": "010020",
+      "countB": "100200",
+      "id": 9,
+      "image_url": "24dislike.png",
+      "title": "どっちが嫌？"
+    },
+    {
+      "choice1": "素直に嬉しい",
+      "choice2": "何か裏があるんじゃないかと疑う",
+      "choice3": null,
+      "choice4": null,
+      "countA": "100200",
+      "countB": "002001",
+      "id": 10,
+      "image_url": "praise.png",
+      "title": "人から褒められると"
+    },
+    {
+      "choice1": "イラっとする",
+      "choice2": "気にしない",
+      "choice3": null,
+      "choice4": null,
+      "countA": "001002",
+      "countB": "020100",
+      "id": 11,
+      "image_url": "impossible.png",
+      "title": "人から「それは無理じゃない？」と言われると"
+    },
+    {
+      "choice1": "仕方なく頭を下げる",
+      "choice2": "死んでも頭は下げない",
+      "choice3": null,
+      "choice4": null,
+      "countA": "010020",
+      "countB": "001002",
+      "id": 12,
+      "image_url": "sorry.png",
+      "title": "他人の失敗で頭を下げることになった"
+    },
+    {
+      "choice1": "先頭で引っ張っている",
+      "choice2": "前には出ず聞き手に回る側",
+      "choice3": null,
+      "choice4": null,
+      "countA": "200100",
+      "countB": "012000",
+      "id": 13,
+      "image_url": "group.png",
+      "title": "友だちグループの中で自分は"
+    },
+    {
+      "choice1": "外見（容姿）",
+      "choice2": "内面（性格）",
+      "choice3": null,
+      "choice4": null,
+      "countA": "100200",
+      "countB": "120000",
+      "id": 14,
+      "image_url": "firstmeet.png",
+      "title": "初対面の人はどこを見て判断する？"
+    },
+    {
+      "choice1": "笑ってごまかす",
+      "choice2": "素直に謝る",
+      "choice3": null,
+      "choice4": null,
+      "countA": "200100",
+      "countB": "010020",
+      "id": 15,
+      "image_url": "lady.png",
+      "title": "女性に「髪切った?」と声をかけたが、切っていなかったようだ"
+    },
+    {
+      "choice1": "思いやり",
+      "choice2": "ノリ",
+      "choice3": null,
+      "choice4": null,
+      "countA": "020010",
+      "countB": "200100",
+      "id": 16,
+      "image_url": "values.png",
+      "title": "生きていく上で大切だと思う事は？"
+    },
+    {
+      "choice1": "いじって笑いに繋げる",
+      "choice2": "真顔で放置しておく",
+      "choice3": null,
+      "choice4": null,
+      "countA": "100200",
+      "countB": "001002",
+      "id": 17,
+      "image_url": "nose.png",
+      "title": "友だちと会話中、鼻毛が出ていることに気づいた、どうする？"
+    },
+    {
+      "choice1": "すぐ解決に動く",
+      "choice2": "記憶にフタをする",
+      "choice3": null,
+      "choice4": null,
+      "countA": "012000",
+      "countB": "020010",
+      "id": 18,
+      "image_url": "dislike.png",
+      "title": "嫌なことは･･･"
+    },
+    {
+      "choice1": "達成するよう努力する",
+      "choice2": "無理そうだったら諦める",
+      "choice3": null,
+      "choice4": null,
+      "countA": "010002",
+      "countB": "100200",
+      "id": 19,
+      "image_url": "target.png",
+      "title": "目標は･･･"
+    },
+    {
+      "choice1": "意見をバチバチにぶつけ合う",
+      "choice2": "無の境地、黙って聞く",
+      "choice3": null,
+      "choice4": null,
+      "countA": "002001",
+      "countB": "010020",
+      "id": 20,
+      "image_url": "meeting.png",
+      "title": "話し合いの場で、自分がなりがちな立ち位置は"
+    },
+    {
+      "choice1": "ファッションセンス",
+      "choice2": "笑いのセンス",
+      "choice3": null,
+      "choice4": null,
+      "countA": "002010",
+      "countB": "200100",
+      "id": 21,
+      "image_url": "whichsense.png",
+      "title": "どちらか１つだけ完璧に磨かれるなら"
+    },
+    {
+      "choice1": "慌てて電話する",
+      "choice2": "あきらめて顔を洗う",
+      "choice3": null,
+      "choice4": null,
+      "countA": "200100",
+      "countB": "001200",
+      "id": 22,
+      "image_url": "oversleep.png",
+      "title": "寝坊した！一番最初にする行動は？"
+    },
+    {
+      "choice1": "お風呂に入る",
+      "choice2": "ご飯を食べる",
+      "choice3": null,
+      "choice4": null,
+      "countA": "020001",
+      "countB": "100200",
+      "id": 23,
+      "image_url": "comehome.png",
+      "title": "自宅に帰ってきた、まずは"
+    },
+    {
+      "choice1": "今日一日の出来事を考える",
+      "choice2": "明日のスケジュールを考える",
+      "choice3": null,
+      "choice4": null,
+      "countA": "010002",
+      "countB": "021000",
+      "id": 24,
+      "image_url": "bed.png",
+      "title": "就寝時、目を閉じ考えることは"
+    },
+    {
+      "choice1": "丈夫で長く使用できる傘を買う",
+      "choice2": "その場しのぎのビニール傘を買う",
+      "choice3": null,
+      "choice4": null,
+      "countA": "000021",
+      "countB": "120000",
+      "id": 25,
+      "image_url": "rain.png",
+      "title": "にわか雨が降ってきた、"
+    }
+  ]
+}

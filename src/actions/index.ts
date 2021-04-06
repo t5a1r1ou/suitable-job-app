@@ -1,0 +1,4 @@
+export const FETCH_QUESTIONS = "FETCH_QUESTIONS";
+export const ANSWER_QUESTION = "ANSWER_QUESTION";
+export const ANSWER_BACK = "ANSWER_BACK";
+export const ANSWER_RESET = "ANSWER_RESET";

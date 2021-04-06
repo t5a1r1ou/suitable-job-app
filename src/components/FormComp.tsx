@@ -3,14 +3,7 @@ import { Label, Input, Select } from "@rebass/forms";
 
 interface Props {
   sendElements: {
-    age: string;
-    sex: string;
-    area: string;
-    status: string;
-    distance: string;
-    importance: string;
-    valuesResult: any;
-    personalityResult: any;
+    [index: string]: string;
   };
   eachData: {
     label: string;
@@ -23,7 +16,7 @@ interface Props {
   handleChange: (e: any) => void;
 }
 
-const FormComp: React.FC<Props> = memo(
+const FormComp: React.VFC<Props> = memo(
   ({ sendElements, eachData, handleChange }) => {
     const { label, labelName, type, placeholder, required, options } = eachData;
     return (

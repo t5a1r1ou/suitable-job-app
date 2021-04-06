@@ -1,25 +1,19 @@
 import React, { memo } from "react";
 import { TwitterShareButton, TwitterIcon } from "react-share";
 
-interface valueObj {
+interface Result {
   id: number;
-  type: string;
-  desc: string;
-}
-
-interface personalityObj {
-  id: number;
-  arr: number[];
+  arr?: number[];
   type: string;
   desc: string;
 }
 
 interface Props {
-  valuesResult: valueObj;
-  personalityResult: personalityObj;
+  valuesResult: Result;
+  personalityResult: Result;
 }
 
-const TwitterShare: React.FC<Props> = memo(
+const TwitterShare: React.VFC<Props> = memo(
   ({ valuesResult, personalityResult }) => {
     const attributes = {
       url: "https://nisso-jobcheck.netlify.app/",

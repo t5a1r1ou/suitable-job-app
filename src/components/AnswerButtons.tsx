@@ -1,46 +1,31 @@
 import React, { memo } from "react";
+import AnswerButton from "./AnswerButton";
+import useCalcAnswerCount from "../logic/useCalcAnswerCount";
 
-interface questionsItems {
-  countA: string;
-  countB: string;
-  choice1: string;
-  choice2: string;
-  choice3?: string;
-  choice4?: string;
+interface thisquestionItems {
+  [key: string]: string;
 }
 
 interface Props {
-  thisQuestion: questionsItems;
+  thisQuestion: thisquestionItems;
   type: string;
-  doAnswer: (answer: number[]) => void;
 }
 
-const AnswerButtons: React.FC<Props> = memo(
-  ({ thisQuestion, type, doAnswer }) => {
-    const choices_count = type === "values" ? 4 : 2;
-    const answers = [...Array(choices_count).keys()].map((i) => {
-      const answer =
-        type === "values"
-          ? [...Array(choices_count).keys()].map((n) => (n === i ? 1 : 0))
-          : thisQuestion[`count${i === 0 ? "A" : "B"}`]
-              .split("")
-              .map((n: string) => parseInt(n, 10));
-      return { index: i, answer: answer };
-    });
-    return (
-      <>
-        {answers.map((obj) => (
-          <p
-            onClick={() => doAnswer(obj.answer)}
-            key={obj.index}
-            className="btn-answer"
-          >
-            {thisQuestion[`choice${obj.index + 1}`]}
-          </p>
-        ))}
-      </>
-    );
-  }
-);
+const AnswerButtons: React.VFC<Props> = memo(({ thisQuestion, type }) => {
+  const answers = useCalcAnswerCount(type, thisQuestion);
+  return (
+    <div className="btn_box">
+      {answers.map((obj) => (
+        <AnswerButton
+          answer={obj.answer}
+          index={obj.index}
+          thisQuestion={thisQuestion}
+          key={obj.index}
+          type={type}
+        />
+      ))}
+    </div>
+  );
+});
 
 export default AnswerButtons;
